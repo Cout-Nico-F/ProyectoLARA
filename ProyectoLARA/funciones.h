@@ -105,9 +105,9 @@ void ingresarNuevoPlato()
 
 
 }
-}
 
-bool guardarRegistro (platos reg)
+
+bool guardarRegistro (plato reg)
 {
     FILE *file;
     file = fopen("platos.dat","ab");
@@ -116,11 +116,45 @@ bool guardarRegistro (platos reg)
     {
         return 0;
     }
-    if(fwrite(&reg,sizeof (platos),1,file))
+    if(fwrite(&reg,sizeof (plato),1,file))
     {
         return 1;
     }
     return 0;
 
 }
+
+void submenuPlatos()
+{
+    cls();
+    cout<<"MENU PLATOS"<<endl;
+    cout<<"-------------------"<<endl;
+    cout<<"1) NUEVO PLATO"<<endl;
+    cout<<"2) MODIFICAR PLATO"<<endl;
+    cout<<"3) LISTAR PLATO POR ID"<<endl;
+    cout<<"4) PLATOS POR RESTAURANT"<<endl;
+    cout<<"5) LISTAR TODOS LOS PLATOS"<<endl;
+    cout<<"6) ELIMINAR PLATO"<<endl;
+    cout<<"---------------------------------------"<<endl;
+    cout<<""<<endl;
+
+}
+
+void logo()
+{
+setColor(CYAN);cout<<"                                                                    ";setColor(LIGHTCYAN);cout<<"    ,/((((((((((((((((((((/,    "<<endl;
+setColor(CYAN);cout<<"         @@                       #@@/            @@@@@@@@@@@@@*    ";setColor(LIGHTCYAN);cout<<" *((((((((((((((((((((((((((((, "<<endl;
+setColor(CYAN);cout<<"         @@                      #@*%@/           @@           @@(  ";setColor(LIGHTCYAN);cout<<"   ,*,....................,*,   "<<endl;
+setColor(CYAN);cout<<"         @@                     &@/  #@/          @@            @@, ";setColor(LIGHTCYAN);cout<<"     ,,...,////..........,,     "<<endl;
+setColor(CYAN);cout<<"         @@                    %@*    #@(         @@            @@. ";setColor(LIGHTCYAN);cout<<"      ,,...*//,..(#######)      "<<endl;
+setColor(CYAN);cout<<"         @@                   %@,      %@(        @@          ,@@*  ";setColor(LIGHTCYAN);cout<<"       .,,......########.       "<<endl;
+setColor(CYAN);cout<<"         @@                  &@*////////#@(       @@@@@@@@@@@@%     ";setColor(LIGHTCYAN);cout<<"         ,,.....#######         "<<endl;
+setColor(CYAN);cout<<"         @@                 @@%//////////@@#      @@        @@(     ";setColor(LIGHTCYAN);cout<<"          ,,.....####)          "<<endl;
+setColor(CYAN);cout<<"         @@                &@%            @@#     @@         (@@    ";setColor(LIGHTCYAN);cout<<"           .,,....,,            "<<endl;
+setColor(CYAN);cout<<"         @@QQQQQQQQQQQ    @@%              &@#    @@           @@%  ";setColor(LIGHTCYAN);cout<<"             ,,..,,             "<<endl;
+setColor(CYAN);cout<<"                                                                    ";setColor(LIGHTCYAN);cout<<"              ,,,.              "<<endl;
+setColor(CYAN);cout<<"                                                                    ";setColor(LIGHTCYAN);cout<<"               .                "<<endl;
+setColor(CYAN);cout<<"                                                                    ";setColor(LIGHTCYAN);cout<<"                                "<<endl;
+}
+
 #endif // FUNCIONES_H_INCLUDED

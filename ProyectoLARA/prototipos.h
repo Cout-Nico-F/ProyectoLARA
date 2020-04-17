@@ -2,7 +2,10 @@
 #define PROTOTIPOS_H_INCLUDED
 
 void ingresarNuevoPlato();
-bool guardarRegistro(platos);
+bool guardarRegistro(plato);
+void submenuPlatos();
+void logo();
+
 
 
 #endif // PROTOTIPOS_H_INCLUDED
