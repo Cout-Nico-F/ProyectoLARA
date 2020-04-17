@@ -32,7 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="prototipos.h" />
+		<Unit filename="tipos_de_dato.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
