@@ -5,6 +5,7 @@ void ingresarNuevoPlato();
 bool guardarRegistro(plato);
 void submenuPlatos();
 void logo();
+void menuPrincipal();
 
 
 

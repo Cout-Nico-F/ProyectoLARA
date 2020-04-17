@@ -127,16 +127,21 @@ bool guardarRegistro (plato reg)
 void submenuPlatos()
 {
     cls();
-    cout<<"MENU PLATOS"<<endl;
-    cout<<"-------------------"<<endl;
-    cout<<"1) NUEVO PLATO"<<endl;
-    cout<<"2) MODIFICAR PLATO"<<endl;
-    cout<<"3) LISTAR PLATO POR ID"<<endl;
-    cout<<"4) PLATOS POR RESTAURANT"<<endl;
-    cout<<"5) LISTAR TODOS LOS PLATOS"<<endl;
-    cout<<"6) ELIMINAR PLATO"<<endl;
-    cout<<"---------------------------------------"<<endl;
-    cout<<""<<endl;
+    logo();
+
+gotoxy(16,15);
+gotoxy(16,15);   cout<<" |1|-Nuevo plato              "<<endl;
+gotoxy(16,16.5); cout<<" |2|-Modificar  plato         "<<endl;
+gotoxy(16,17.5); cout<<" |3|-Mostrar Plato por ID     "<<endl; //gotoxy experimentales. nose si puedo mantenerlos en todo el programa.
+gotoxy(16,18);   cout<<" |4|-Platos por restaurant    "<<endl;
+gotoxy(16,19.5); cout<<" |5|-Listar todos los platos  "<<endl;
+gotoxy(16,20.5);cout<<"  |6|-Eliminar plato          "<<endl;
+gotoxy(16,22.5); cout<<" |0|-Volver al menu principal "<<endl;
+gotoxy(48,17);
+cout<<"Ingrese la opcion deseada: ";
+int op;
+cin>>op;
+//switch (op)
 
 }
 
@@ -157,4 +162,60 @@ setColor(CYAN);cout<<"                                                          
 setColor(CYAN);cout<<"                                                                    ";setColor(LIGHTCYAN);cout<<"                                "<<endl;
 }
 
+void menuPrincipal()
+{
+gotoxy(16,15);
+gotoxy(16,15);  cout<<" |1|-Platos                   "<<endl;
+gotoxy(16,16.5);cout<<" |2|-Clientes                 "<<endl;
+gotoxy(16,17.5);cout<<" |3|-Pedidos                  "<<endl; //gotoxy experimentales. nose si puedo mantenerlos en todo el programa.
+gotoxy(16,18);  cout<<" |4|-Reportes                 "<<endl;
+gotoxy(16,19.5);cout<<" |5|-Configuracion            "<<endl;
+gotoxy(16,21.5);cout<<"- - - - - - - - - - -         "<<endl;
+gotoxy(16,22);  cout<<" |0|-Salir Del Programa       "<<endl;
+gotoxy(43,16);
+cout<<"Ingrese la opcion deseada: ";
+int op;
+cin>>op;
+switch (op)
+{
+case 1:
+    {
+        submenuPlatos();
+    }
+    break;
+case 2:
+    {
+
+    }
+    break;
+case 3:
+    {
+
+    }
+    break;
+case 4:
+    {
+
+    }
+    break;
+case 5:
+    {
+
+
+    }
+    break;
+case 0:
+    {
+
+    }
+    break;
+default:
+    {
+        cout<<"Error, debe elegir una opcion del menu"<<endl;
+        Sleep(600);
+    }
+    break;
+}
+
+}
 #endif // FUNCIONES_H_INCLUDED
