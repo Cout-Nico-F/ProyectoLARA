@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1587098459 source:c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\main.cpp
+	<iostream>
+	<rlutil.h>
+
