@@ -9,5 +9,6 @@ void menuPrincipal();
 int iD_esUnico(int);
 bool borrarTodo();
 void adios();
+int indice_ID(int);
 
 #endif // PROTOTIPOS_H_INCLUDED

@@ -52,11 +52,11 @@ void nuevoPlato()
 
         }
 
-        cin.ignore();
+        cin.ignore();//el ignore fuera del ciclo para que no ignore parte de la cadena ingresada al iterar por el false del if
         while(true)// validacion de campo NOMBRE
         {
             cout<<"\nNombre: ";
-            //cin.ignore();
+            //cin.ignore(); este ignore causaba un error si el usuario pasaba por el false del if
             cin.getline(platoEntrante.nombre,50);
             if( platoEntrante.nombre[0]!='\0' && platoEntrante.nombre[0]!=32 )
             {
@@ -609,5 +609,84 @@ bool borrarTodo()
         return 1;
     }
 
+}
+
+int modificarPlato()
+{
+    cls();
+    logo();
+    cout<<"\nIngrese el ID del plato a modificar"<<endl;
+    int idBuscado;
+    while(true)
+    {
+        cout<<"\nIngrese el ID del plato a modificar"<<endl;
+        while(!(cin>>idBuscado))
+        {
+            cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        if(idBuscado>=0)
+        {
+            break; //idBuscado validado
+        }
+    }
+    int indice = indice_ID(idBuscado);
+    switch(indice)
+    {
+    case -2:
+        {
+            cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+            Sleep(1200);
+            return 0;
+        }
+        break;
+    case -1:
+        {
+            cout<<"El id ingresado no existe."<<endl;
+            Sleep(1200);
+            return -1;
+        }
+        break;
+    default:
+
+        break;
+    }
+    modificarIndice();
+
+}
+
+int indice_ID (int id_buscado)
+{
+    plato reg;
+    FILE *p;
+    p= fopen("platos.dat","rb");
+    if(p==NULL)
+    {
+        return -2;
+    }
+    int pos=0;
+    while(fread(&reg,sizeof (platos),1,p))
+    {
+        if(id_buscado== reg.id)
+        {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+    fclose(p);
+    return -1;
+}
+
+int modificarIndice(int indice,plato reg)
+{
+    FILE *p;
+    p= fopen("platos.dat","ab+");
+    if(p==NULL)
+    {
+        return -2;
+    }
+    fwrite()
 }
 #endif // FUNCIONES_H_INCLUDED
