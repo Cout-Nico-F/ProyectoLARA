@@ -7,7 +7,7 @@ using namespace rlutil;
 #include "funciones.h"
 int main()
 {
-logo();
+
 menuPrincipal();
 
 
