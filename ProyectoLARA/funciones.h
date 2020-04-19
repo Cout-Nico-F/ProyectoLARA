@@ -106,7 +106,6 @@ void ingresarNuevoPlato()
 
 }
 
-
 bool guardarRegistro (plato reg)
 {
     FILE *file;
@@ -118,8 +117,10 @@ bool guardarRegistro (plato reg)
     }
     if(fwrite(&reg,sizeof (plato),1,file))
     {
+        fclose(file);
         return 1;
     }
+    fclose(file);
     return 0;
 
 }
