@@ -10,5 +10,8 @@ int iD_esUnico(int);
 bool borrarTodo();
 void adios();
 int indice_ID(int);
+plato buscarRegistro(int);
+int modificarPlato();
+int modificarRegistro(int,plato);
 
 #endif // PROTOTIPOS_H_INCLUDED

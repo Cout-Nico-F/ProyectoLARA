@@ -631,29 +631,91 @@ int modificarPlato()
             break; //idBuscado validado
         }
     }
-    int indice = indice_ID(idBuscado);
-    switch(indice)
+    plato reg = buscarRegistro(idBuscado);
+    switch(reg.id)
     {
     case -2:
-        {
-            cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-            Sleep(1200);
-            return 0;
-        }
-        break;
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1200);
+        return 0;
+    }
+    break;
     case -1:
-        {
-            cout<<"El id ingresado no existe."<<endl;
-            Sleep(1200);
-            return -1;
-        }
-        break;
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return -1;
+    }
+    break;
     default:
 
         break;
     }
-    modificarIndice();
+    float nuevo_valor_venta;
 
+    while(true)//validacion del valor de venta
+    {
+        cout<<"\nIngrese el nuevo valor para Costo de venta: ";
+        while(!(cin>>nuevo_valor_venta))
+        {
+            cout<<"\nError en el tipo de dato ingresado.\nIngrese un valor numerico: ";
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        if(nuevo_valor_venta > reg.costo_preparacion) //si es mayor que el costo de preparacion es tambien mayor que cero(p.transitiva)
+        {
+            break;//validado.
+        }
+        else
+        {
+            cout<<"Valor de venta incorrecto. Debe ser mayor al costo de preparacion";
+            Sleep(1200);
+            continue;
+        }
+    }
+    int nuevo_tiempo_preparacion;
+    while(true)
+    {
+         cout<<"\nIngrese el nuevo valor para Tiempo de Preparacion: ";
+        while(!(cin>>nuevo_tiempo_preparacion))
+        {
+            cout<<"\nError en el tipo de dato ingresado.\nIngrese un valor numerico entero y positivo: ";
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        if(nuevo_tiempo_preparacion < 0)
+        {
+            continue;
+        }
+        else break;
+    }
+int indice = indice_ID(idBuscado);
+
+
+    switch(indice)
+    {
+    case -2:
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1200);
+        return 0;
+    }
+    break;
+    case -1:
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return -1;
+    }
+    break;
+    default:
+
+        break;
+    }
+    reg.valor_venta = nuevo_valor_venta;
+    reg.tiempo_praparacion = nuevo_tiempo_preparacion;
+    modificarRegistro(indice,reg);
 }
 
 int indice_ID (int id_buscado)
@@ -666,7 +728,7 @@ int indice_ID (int id_buscado)
         return -2;
     }
     int pos=0;
-    while(fread(&reg,sizeof (platos),1,p))
+    while(fread(&reg,sizeof (plato),1,p))
     {
         if(id_buscado== reg.id)
         {
@@ -679,14 +741,43 @@ int indice_ID (int id_buscado)
     return -1;
 }
 
-int modificarIndice(int indice,plato reg)
+plato buscarRegistro (int id_buscado) //devuelve registro entero
+{
+    plato reg;
+    FILE *p;
+    p= fopen("platos.dat","rb");
+    if(p==NULL)
+    {
+        reg.id = -2;
+        return reg;
+    }
+    int pos=0;
+    while(fread(&reg,sizeof (plato),1,p))
+    {
+        if(id_buscado== reg.id)
+        {
+            fclose(p);
+            return reg;
+        }
+        pos++;
+    }
+    fclose(p);
+    reg.id = -1;
+    return reg;
+}
+
+
+int modificarRegistro(int indice,plato reg_modificado)
 {
     FILE *p;
-    p= fopen("platos.dat","ab+");
+    p= fopen("platos.dat","rb+");
     if(p==NULL)
     {
         return -2;
     }
-    fwrite()
+    fseek(p,sizeof (plato)*indice,0);
+    fwrite(&reg_modificado,sizeof (plato),1,p);
+    fclose(p);
+
 }
 #endif // FUNCIONES_H_INCLUDED
