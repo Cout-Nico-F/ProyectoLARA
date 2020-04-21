@@ -7,7 +7,7 @@ void submenuPlatos();
 void logo();
 void menuPrincipal();
 int iD_esUnico(int);
-bool borrarTodo();
+void borrarTodo();
 void adios();
 int indice_ID(int);
 plato buscarRegistro(int);

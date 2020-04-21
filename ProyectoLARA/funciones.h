@@ -11,21 +11,21 @@ void nuevoPlato()
 //    Sleep(1000);
 
 
-        cout<<"&---Comenzar a cargar un nuevo plato?---&"<<endl;
-        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-        cout<<"       ";
-        bool op;
-        while(!(cin>>op))
-        {
-            cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para cargar otro registro, o 0 para volver al menu : ";
-            cin.clear();
-            cin.ignore(123,'\n');
-        }
-        if(op==0)
-        {
-            return;
-        }
+    cout<<"&---Comenzar a cargar un nuevo plato?---&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para cargar otro registro, o 0 para volver al menu : ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
 
     while (true)
     {
@@ -600,7 +600,7 @@ void adios()
 
 }
 
-bool borrarTodo()
+void borrarTodo()
 {
     setColor(LIGHTRED);
     cls();
@@ -608,11 +608,11 @@ bool borrarTodo()
     cout<<"----[9]-Borrar todo."<<endl;
     cout<<"----[0]-Volver al menu sin hacer cambios."<<endl;
     cout<<"--->[";
-    gotoxy(7,5);cout<<"]"<<endl;
+    gotoxy(7,5);
+    cout<<"]"<<endl;
     int op;
-    gotoxy(6,5);cin>>op;
-
-
+    gotoxy(6,5);
+    cin>>op;
     setColor(CYAN);
     if(op==9)
     {
@@ -623,11 +623,11 @@ bool borrarTodo()
             cout<<"Error: no pudo realizarse la operacion sobre el archivo.\nNo hay permisos de escritura?"<<endl;
             cout<<"Presione una tecla para volver al menu"<<endl;
             anykey();
-            return 0;
+            return;
 
         }
         fclose(p);
-        return 1;
+        return;
     }
 
 }
@@ -697,10 +697,10 @@ int modificarPlato()
         }
     }
     int nuevo_tiempo_preparacion;
-    while(true)
+    while(true)//validacion del tiempo de prep
     {
         cout<<"Tiempo de preparacion actual: "<<reg.tiempo_preparacion<<endl;
-         cout<<"\nIngrese el nuevo valor para Tiempo de Preparacion: ";
+        cout<<"\nIngrese el nuevo valor para Tiempo de Preparacion: ";
         while(!(cin>>nuevo_tiempo_preparacion))
         {
             cout<<"\nError en el tipo de dato ingresado.\nIngrese un valor numerico entero y positivo: ";
@@ -711,10 +711,10 @@ int modificarPlato()
         {
             continue;
         }
-        else break;
+        else
+            break;
     }
-int indice = indice_ID(idBuscado);
-
+    int indice = indice_ID(idBuscado);
 
     switch(indice)
     {
@@ -738,7 +738,13 @@ int indice = indice_ID(idBuscado);
     }
     reg.valor_venta = nuevo_valor_venta;
     reg.tiempo_preparacion = nuevo_tiempo_preparacion;
-    modificarRegistro(indice,reg);
+    if(modificarRegistro(indice,reg))
+    {
+            cout<<"Registro modificado con exito"<<endl;
+            Sleep(1400);
+            return 1;
+    }
+    else return 0;
 }
 
 int indice_ID (int id_buscado)
@@ -801,7 +807,7 @@ int modificarRegistro(int indice,plato reg_modificado)
     fseek(p,sizeof (plato)*indice,0);
     fwrite(&reg_modificado,sizeof (plato),1,p);
     fclose(p);
-
+    return 0;
 }
 
 void mostrarLista()
@@ -818,9 +824,20 @@ void mostrarLista()
         return;
     }
     plato reg;
+
+
+
     while(fread(&reg,sizeof (plato),1,p))
     {
-
+        char traduce_bool[3];
+        if(reg.estado==true)
+        {
+            strcpy(traduce_bool,"Si");
+        }
+        else
+        {
+            strcpy(traduce_bool,"No");
+        }
         cout<<"=============================="<<endl;
         cout<<"ID del plato:_________________"<<reg.id<<endl;
         cout<<"Nombre:_______________________"<<reg.nombre<<endl;
@@ -830,6 +847,7 @@ void mostrarLista()
         cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
         cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
         cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
+        cout<<"Habilitado:___________________"<<traduce_bool<<endl;
     }
     cout<<"=============================="<<endl;
     cout<<"FIN DEL ARCHIVO"<<endl;
