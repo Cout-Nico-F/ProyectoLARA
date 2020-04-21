@@ -297,7 +297,7 @@ void submenuPlatos()
         gotoxy(16,19.5);
         cout<<" |5|-Listar todos los platos  "<<endl;
         gotoxy(16,20.5);
-        cout<<"  |6|-Eliminar plato          "<<endl;
+        cout<<" |6|-Eliminar plato          "<<endl;
         gotoxy(16,22.5);
         cout<<" |0|-Volver al menu principal "<<endl;
         gotoxy(48,17);
@@ -314,7 +314,7 @@ void submenuPlatos()
         break;
         case 2:
         {
-
+            modificarPlato();
         }
         break;
         case 3:
@@ -589,10 +589,13 @@ bool borrarTodo()
     cout<<"Esta seguro que desea reestablecer el archivo de datos completo?\nEsto borrara toda la informacion definitivamente. "<<endl;
     cout<<"----[9]-Borrar todo."<<endl;
     cout<<"----[0]-Volver al menu sin hacer cambios."<<endl;
-    cout<<"    :";
-    setColor(CYAN);
+    cout<<"--->[";
+    gotoxy(7,5);cout<<"]"<<endl;
     int op;
-    cin>>op;
+    gotoxy(6,5);cin>>op;
+
+
+    setColor(CYAN);
     if(op==9)
     {
         FILE *p;
@@ -615,11 +618,11 @@ int modificarPlato()
 {
     cls();
     logo();
-    cout<<"\nIngrese el ID del plato a modificar"<<endl;
+
     int idBuscado;
     while(true)
     {
-        cout<<"\nIngrese el ID del plato a modificar"<<endl;
+        cout<<"\nIngrese el ID del plato a modificar";
         while(!(cin>>idBuscado))
         {
             cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
@@ -656,7 +659,8 @@ int modificarPlato()
 
     while(true)//validacion del valor de venta
     {
-        cout<<"\nIngrese el nuevo valor para Costo de venta: ";
+        cout<<"Valor de venta actual: "<<reg.valor_venta<<endl;
+        cout<<"\nIngrese el nuevo valor de venta: ";
         while(!(cin>>nuevo_valor_venta))
         {
             cout<<"\nError en el tipo de dato ingresado.\nIngrese un valor numerico: ";
@@ -677,6 +681,7 @@ int modificarPlato()
     int nuevo_tiempo_preparacion;
     while(true)
     {
+        cout<<"Tiempo de preparacion actual: "<<reg.tiempo_praparacion<<endl;
          cout<<"\nIngrese el nuevo valor para Tiempo de Preparacion: ";
         while(!(cin>>nuevo_tiempo_preparacion))
         {
@@ -778,6 +783,11 @@ int modificarRegistro(int indice,plato reg_modificado)
     fseek(p,sizeof (plato)*indice,0);
     fwrite(&reg_modificado,sizeof (plato),1,p);
     fclose(p);
+
+}
+
+void mostrarLista()
+{
 
 }
 #endif // FUNCIONES_H_INCLUDED
