@@ -4,10 +4,28 @@
 void nuevoPlato()
 {
     cls();
+    logo();
     plato platoEntrante;
     //pido un registro completo con comprobacion de tipo de dato evitando el error del ciclo en la carga.
 //    cout<<"Ingrese los datos a continuacion:"<<endl;
 //    Sleep(1000);
+
+
+        cout<<"&---Comenzar a cargar un nuevo plato?---&"<<endl;
+        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+        cout<<"       ";
+        bool op;
+        while(!(cin>>op))
+        {
+            cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para cargar otro registro, o 0 para volver al menu : ";
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        if(op==0)
+        {
+            return;
+        }
 
     while (true)
     {
@@ -119,13 +137,13 @@ void nuevoPlato()
         while(true)//validacion del tiempo de preparacion
         {
             cout<<"\nTiempo de preparacion: ";
-            while(!(cin>>platoEntrante.tiempo_praparacion))
+            while(!(cin>>platoEntrante.tiempo_preparacion))
             {
                 cout<<"\nError en el tipo de dato ingresado.\nIngrese un valor numerico entero: ";
                 cin.clear();
                 cin.ignore(123,'\n');
             }
-            if(platoEntrante.tiempo_praparacion > 1)
+            if(platoEntrante.tiempo_preparacion > 1)
             {
                 break; // validado.
             }
@@ -329,7 +347,7 @@ void submenuPlatos()
         break;
         case 5:
         {
-
+            mostrarLista();
 
         }
         break;
@@ -681,7 +699,7 @@ int modificarPlato()
     int nuevo_tiempo_preparacion;
     while(true)
     {
-        cout<<"Tiempo de preparacion actual: "<<reg.tiempo_praparacion<<endl;
+        cout<<"Tiempo de preparacion actual: "<<reg.tiempo_preparacion<<endl;
          cout<<"\nIngrese el nuevo valor para Tiempo de Preparacion: ";
         while(!(cin>>nuevo_tiempo_preparacion))
         {
@@ -719,7 +737,7 @@ int indice = indice_ID(idBuscado);
         break;
     }
     reg.valor_venta = nuevo_valor_venta;
-    reg.tiempo_praparacion = nuevo_tiempo_preparacion;
+    reg.tiempo_preparacion = nuevo_tiempo_preparacion;
     modificarRegistro(indice,reg);
 }
 
@@ -788,6 +806,34 @@ int modificarRegistro(int indice,plato reg_modificado)
 
 void mostrarLista()
 {
+    cls();
+    logo();
+    FILE *p;
+    p=fopen("platos.dat","rb");
+    if(p==NULL)
+    {
+        cout<<"Error en la apertura del archivo.     (soloLectura)"<<endl;
+        cout<<"Presione una tecla cualquiera para continuar"<<endl;
+        anykey();
+        return;
+    }
+    plato reg;
+    while(fread(&reg,sizeof (plato),1,p))
+    {
 
+        cout<<"=============================="<<endl;
+        cout<<"ID del plato:_________________"<<reg.id<<endl;
+        cout<<"Nombre:_______________________"<<reg.nombre<<endl;
+        cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
+        cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
+        cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
+        cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
+        cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
+        cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
+    }
+    cout<<"=============================="<<endl;
+    cout<<"FIN DEL ARCHIVO"<<endl;
+    cout<<"Presione una tecla para volver al menu"<<endl;
+    anykey();
 }
 #endif // FUNCIONES_H_INCLUDED

@@ -13,5 +13,6 @@ int indice_ID(int);
 plato buscarRegistro(int);
 int modificarPlato();
 int modificarRegistro(int,plato);
+void mostrarLista();
 
 #endif // PROTOTIPOS_H_INCLUDED

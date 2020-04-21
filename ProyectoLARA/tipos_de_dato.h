@@ -7,7 +7,7 @@ struct plato
     char nombre[50];
     float costo_preparacion;
     float valor_venta;
-    int tiempo_praparacion;
+    int tiempo_preparacion;
     int id_restaurante;
     int comision_restaurante;
     int id_categoria;
