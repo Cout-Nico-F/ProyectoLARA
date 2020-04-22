@@ -42,22 +42,51 @@ int main()
         break;
         case 2:
         {
+            cls();
+            logo();
+
+            gotoxy(35,15);
+            cout<<"Opcion no disponible en la version DEMO"<<endl;
+            gotoxy(45,19.5);
+            cout<<"Volviendo al menu"<<endl;
+            Sleep(2000);
 
         }
         break;
         case 3:
         {
+            cls();
+            logo();
 
+            gotoxy(35,15);
+            cout<<"Opcion no disponible en la version DEMO"<<endl;
+            gotoxy(45,19.5);
+            cout<<"Volviendo al menu"<<endl;
+            Sleep(2000);
         }
         break;
         case 4:
         {
+            cls();
+            logo();
 
+            gotoxy(35,15);
+            cout<<"Opcion no disponible en la version DEMO"<<endl;
+            gotoxy(45,19.5);
+            cout<<"Volviendo al menu"<<endl;
+            Sleep(2000);
         }
         break;
         case 5:
         {
+            cls();
+            logo();
 
+            gotoxy(35,15);
+            cout<<"Opcion no disponible en la version DEMO"<<endl;
+            gotoxy(45,19.5);
+            cout<<"Volviendo al menu"<<endl;
+            Sleep(2000);
 
         }
         break;
