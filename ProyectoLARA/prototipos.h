@@ -16,5 +16,6 @@ int modificarRegistro(int,plato);
 void mostrarLista();
 int mostrarID(int);
 void listarPlatosporID();
+void eliminarPlato();
 
 #endif // PROTOTIPOS_H_INCLUDED

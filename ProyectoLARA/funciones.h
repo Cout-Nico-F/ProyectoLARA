@@ -312,7 +312,7 @@ void submenuPlatos()
         cls();
         logo();
 
-        gotoxy(16,15);
+
         gotoxy(16,15);
         cout<<" |1|-Nuevo plato              "<<endl;
         gotoxy(16,16.5);
@@ -327,9 +327,9 @@ void submenuPlatos()
         cout<<" |6|-Eliminar plato          "<<endl;
         gotoxy(16,22.5);
         cout<<" |0|-Volver al menu principal "<<endl;
-        gotoxy(48,17);
+        gotoxy(48,16);
 
-        cout<<"Ingrese la opcion deseada: ";
+        cout<<"    Ingrese la opcion deseada: ";
         int op;
         cin>>op;
         switch (op)
@@ -358,6 +358,11 @@ void submenuPlatos()
         {
             mostrarLista();
 
+        }
+        break;
+        case 6:
+        {
+            eliminarPlato();
         }
         break;
         case 0:
@@ -574,6 +579,7 @@ int modificarPlato()
     cls();
     logo();
 
+
     int idBuscado;
     while(true)
     {
@@ -682,7 +688,12 @@ int modificarPlato()
         return 1;
     }
     else
-        return 0;
+    {
+        cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
+        Sleep(1400);
+       return 0;
+    }
+
 }
 
 int indice_ID (int id_buscado)
@@ -791,7 +802,7 @@ void mostrarLista()
     cout<<"Presione una tecla para volver al menu"<<endl;
     anykey();
 }
-void listarPlatosporID()
+void listarPlatosporID() // ejemplo de funcion rebuscada. jaja
 {
     cls();
     logo();
@@ -946,4 +957,99 @@ int mostrarID(int id)
 
 }
 
+void eliminarPlato()
+{
+    cls();
+    logo();
+    cout<<"&--------Eliminar plato por id?---------&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
+    //
+
+    int idBuscado;
+    while(true)
+    {
+        cout<<"\nIngrese el ID del plato a dar de baja: ";
+        while(!(cin>>idBuscado))
+        {
+            cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        if(idBuscado>=0)
+        {
+            break; //idBuscado validado
+        }
+    }
+    plato reg = buscarRegistro(idBuscado);
+    switch(reg.id)
+    {
+    case -2:
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1400);
+        return;
+    }
+    break;
+    case -1:
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    default:
+
+        break;
+    }
+
+    int indice = indice_ID(idBuscado);
+
+    switch(indice)
+    {
+    case -2:
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    case -1:
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    default:
+
+        break;
+    }
+    reg.estado = false; //baja logica.
+
+    if(modificarRegistro(indice,reg)==0)
+    {
+        cout<<"Registro dado de baja con exito"<<endl;
+        Sleep(1400);
+        return ;
+    }
+    else
+    {
+        cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
+        Sleep(1400);
+       return ;
+    }
+}
 #endif // FUNCIONES_H_INCLUDED
