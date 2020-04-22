@@ -403,23 +403,23 @@ void logo()
     setColor(CYAN);
     cout<<"         @@                     &@/  #@/          @@            @@, ";
     setColor(YELLOW);
-    cout<<"     ,,...,";setColor(LIGHTRED);cout<<"////";setColor(YELLOW);cout<<"..........,,     "<<endl;
+    cout<<"     ,,...,";setColor(RED);cout<<"////";setColor(YELLOW);cout<<"..........,,     "<<endl;
     setColor(CYAN);
     cout<<"         @@                    %@*    #@(         @@            @@. ";
     setColor(YELLOW);
-    cout<<"      ,,...";setColor(LIGHTRED);cout<<"*//";setColor(YELLOW);cout<<",..";setColor(LIGHTRED);cout<<"(#######)      "<<endl;
+    cout<<"      ,,...";setColor(RED);cout<<"*//";setColor(YELLOW);cout<<",..";setColor(RED);cout<<"(#######)      "<<endl;
     setColor(CYAN);
     cout<<"         @@                   %@,      %@(        @@          ,@@*  ";
     setColor(YELLOW);
-    cout<<"       .,,......";setColor(LIGHTRED);cout<<"########.       "<<endl;
+    cout<<"       .,,......";setColor(RED);cout<<"########.       "<<endl;
     setColor(CYAN);
     cout<<"         @@                  &@*////////#@(       @@@@@@@@@@@@%     ";
     setColor(YELLOW);
-    cout<<"         ,,.....";setColor(LIGHTRED);cout<<"#######         "<<endl;
+    cout<<"         ,,.....";setColor(RED);cout<<"#######         "<<endl;
     setColor(CYAN);
     cout<<"         @@                 @@%//////////@@#      @@        @@(     ";
     setColor(YELLOW);
-    cout<<"          ,,.....";setColor(LIGHTRED);cout<<"####)          "<<endl;
+    cout<<"          ,,.....";setColor(RED);cout<<"####)          "<<endl;
     setColor(CYAN);
     cout<<"         @@                &@%            @@#     @@         (@@    ";
     setColor(YELLOW);
@@ -440,6 +440,7 @@ void logo()
     cout<<"                                                                    ";
     setColor(YELLOW);
     cout<<"                                "<<endl;
+    setColor(CYAN);
 }
 void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 {
@@ -544,7 +545,7 @@ void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 
 void borrarTodo()
 {
-    setColor(LIGHTRED);
+    setColor(RED);
     cls();
     cout<<"Esta seguro que desea reestablecer el archivo de datos completo?\nEsto borrara toda la informacion definitivamente. "<<endl;
     cout<<"----[9]-Borrar todo."<<endl;
