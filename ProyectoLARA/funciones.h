@@ -555,7 +555,12 @@ void borrarTodo()
     cout<<"]"<<endl;
     int op;
     gotoxy(6,5);
-    cin>>op;
+    if(!(cin>>op))
+    {
+        op=0;
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
     setColor(GREY);
     if(op==9)
     {
@@ -572,15 +577,31 @@ void borrarTodo()
         fclose(p);
         return;
     }
+    cout<<"Operacion cancelada, volviendo al menu."<<endl;
+    Sleep(1400);
 
 }
 
-int modificarPlato()
+void modificarPlato() //convertida a void
 {
     cls();
     logo();
-
-
+    cout<<"&----Desea modificar un plato ?---------&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en la opcion ingresada.\n Ingrese 1 para modificar y 0 para volver al menu: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
+    //
     int idBuscado;
     while(true)
     {
@@ -603,14 +624,14 @@ int modificarPlato()
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
         Sleep(1200);
-        return 0;
+        return;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
         Sleep(1200);
-        return -1;
+        return;
     }
     break;
     default:
@@ -666,14 +687,14 @@ int modificarPlato()
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
         Sleep(1200);
-        return 0;
+        return ;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
         Sleep(1200);
-        return -1;
+        return ;
     }
     break;
     default:
@@ -686,13 +707,13 @@ int modificarPlato()
     {
         cout<<"Registro modificado con exito"<<endl;
         Sleep(1400);
-        return 1;
+        return ;
     }
     else
     {
         cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
         Sleep(1400);
-       return 0;
+       return ;
     }
 
 }

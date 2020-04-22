@@ -11,7 +11,7 @@ void borrarTodo();
 void adios();
 int indice_ID(int);
 plato buscarRegistro(int);
-int modificarPlato();
+void modificarPlato();
 int modificarRegistro(int,plato);
 void mostrarLista();
 int mostrarID(int);
