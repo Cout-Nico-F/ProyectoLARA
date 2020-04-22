@@ -388,58 +388,59 @@ void submenuPlatos()
 
 void logo()
 {
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
-    setColor(LIGHTCYAN);
+    setColor(BROWN);
     cout<<"    ,/((((((((((((((((((((/,    "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                       #@@/            @@@@@@@@@@@@@*    ";
-    setColor(LIGHTCYAN);
+    setColor(BROWN);
     cout<<" *((((((((((((((((((((((((((((, "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                      #@*%@/           @@           @@(  ";
-    setColor(LIGHTCYAN);
+    setColor(YELLOW);
     cout<<"   ,*,....................,*,   "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                     &@/  #@/          @@            @@, ";
-    setColor(LIGHTCYAN);
-    cout<<"     ,,...,////..........,,     "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"     ,,";setColor(BROWN);cout<<"...,";setColor(RED);cout<<"////";setColor(BROWN);cout<<"..........";setColor(YELLOW);cout<<",,     "<<endl;
+    setColor(GREY);
     cout<<"         @@                    %@*    #@(         @@            @@. ";
-    setColor(LIGHTCYAN);
-    cout<<"      ,,...*//,..(#######)      "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"      ,,";setColor(BROWN);cout<<"...";setColor(RED);cout<<"*//";setColor(BROWN);cout<<",..";setColor(RED);cout<<"(#######)      "<<endl;
+    setColor(GREY);
     cout<<"         @@                   %@,      %@(        @@          ,@@*  ";
-    setColor(LIGHTCYAN);
-    cout<<"       .,,......########.       "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"       .,,";setColor(BROWN);cout<<"......";setColor(RED);cout<<"########.       "<<endl;
+    setColor(GREY);
     cout<<"         @@                  &@*////////#@(       @@@@@@@@@@@@%     ";
-    setColor(LIGHTCYAN);
-    cout<<"         ,,.....#######         "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"         ,,";setColor(BROWN);cout<<".....";setColor(RED);cout<<"#######         "<<endl;
+    setColor(GREY);
     cout<<"         @@                 @@%//////////@@#      @@        @@(     ";
-    setColor(LIGHTCYAN);
-    cout<<"          ,,.....####)          "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"          ,,";setColor(BROWN);cout<<".....";setColor(RED);cout<<"####)          "<<endl;
+    setColor(GREY);
     cout<<"         @@                &@%            @@#     @@         (@@    ";
-    setColor(LIGHTCYAN);
-    cout<<"           .,,....,,            "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"           .,,";setColor(BROWN);cout<<"....";setColor(YELLOW);cout<<",,            "<<endl;
+    setColor(GREY);
     cout<<"         @@QQQQQQQQQQQ    @@%              &@#    @@           @@%  ";
-    setColor(LIGHTCYAN);
-    cout<<"             ,,..,,             "<<endl;
-    setColor(CYAN);
+    setColor(YELLOW);
+    cout<<"             ,,";setColor(BROWN);cout<<"..";setColor(YELLOW);cout<<",,             "<<endl;
+    setColor(GREY);
     cout<<"                                                                    ";
-    setColor(LIGHTCYAN);
+    setColor(YELLOW);
     cout<<"              ,,,.              "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
-    setColor(LIGHTCYAN);
+    setColor(YELLOW);
     cout<<"               .                "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
-    setColor(LIGHTCYAN);
+    setColor(YELLOW);
     cout<<"                                "<<endl;
+    setColor(GREY);
 }
 void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 {
@@ -544,7 +545,7 @@ void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 
 void borrarTodo()
 {
-    setColor(LIGHTRED);
+    setColor(RED);
     cls();
     cout<<"Esta seguro que desea reestablecer el archivo de datos completo?\nEsto borrara toda la informacion definitivamente. "<<endl;
     cout<<"----[9]-Borrar todo."<<endl;
@@ -555,7 +556,7 @@ void borrarTodo()
     int op;
     gotoxy(6,5);
     cin>>op;
-    setColor(CYAN);
+    setColor(GREY);
     if(op==9)
     {
         FILE *p;

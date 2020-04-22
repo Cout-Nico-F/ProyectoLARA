@@ -8,7 +8,7 @@ using namespace rlutil;
 int main()
 {
 
-
+//setBackgroundColor(8);
 
     while(true) //Menu principal
     {
