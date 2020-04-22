@@ -388,59 +388,59 @@ void submenuPlatos()
 
 void logo()
 {
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
     setColor(BROWN);
     cout<<"    ,/((((((((((((((((((((/,    "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                       #@@/            @@@@@@@@@@@@@*    ";
     setColor(BROWN);
     cout<<" *((((((((((((((((((((((((((((, "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                      #@*%@/           @@           @@(  ";
     setColor(YELLOW);
     cout<<"   ,*,....................,*,   "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"         @@                     &@/  #@/          @@            @@, ";
     setColor(YELLOW);
-    cout<<"     ,,...,";setColor(RED);cout<<"////";setColor(YELLOW);cout<<"..........,,     "<<endl;
-    setColor(CYAN);
+    cout<<"     ,,";setColor(BROWN);cout<<"...,";setColor(RED);cout<<"////";setColor(BROWN);cout<<"..........";setColor(YELLOW);cout<<",,     "<<endl;
+    setColor(GREY);
     cout<<"         @@                    %@*    #@(         @@            @@. ";
     setColor(YELLOW);
-    cout<<"      ,,...";setColor(RED);cout<<"*//";setColor(YELLOW);cout<<",..";setColor(RED);cout<<"(#######)      "<<endl;
-    setColor(CYAN);
+    cout<<"      ,,";setColor(BROWN);cout<<"...";setColor(RED);cout<<"*//";setColor(BROWN);cout<<",..";setColor(RED);cout<<"(#######)      "<<endl;
+    setColor(GREY);
     cout<<"         @@                   %@,      %@(        @@          ,@@*  ";
     setColor(YELLOW);
-    cout<<"       .,,......";setColor(RED);cout<<"########.       "<<endl;
-    setColor(CYAN);
+    cout<<"       .,,";setColor(BROWN);cout<<"......";setColor(RED);cout<<"########.       "<<endl;
+    setColor(GREY);
     cout<<"         @@                  &@*////////#@(       @@@@@@@@@@@@%     ";
     setColor(YELLOW);
-    cout<<"         ,,.....";setColor(RED);cout<<"#######         "<<endl;
-    setColor(CYAN);
+    cout<<"         ,,";setColor(BROWN);cout<<".....";setColor(RED);cout<<"#######         "<<endl;
+    setColor(GREY);
     cout<<"         @@                 @@%//////////@@#      @@        @@(     ";
     setColor(YELLOW);
-    cout<<"          ,,.....";setColor(RED);cout<<"####)          "<<endl;
-    setColor(CYAN);
+    cout<<"          ,,";setColor(BROWN);cout<<".....";setColor(RED);cout<<"####)          "<<endl;
+    setColor(GREY);
     cout<<"         @@                &@%            @@#     @@         (@@    ";
     setColor(YELLOW);
-    cout<<"           .,,....,,            "<<endl;
-    setColor(CYAN);
+    cout<<"           .,,";setColor(BROWN);cout<<"....";setColor(YELLOW);cout<<",,            "<<endl;
+    setColor(GREY);
     cout<<"         @@QQQQQQQQQQQ    @@%              &@#    @@           @@%  ";
     setColor(YELLOW);
-    cout<<"             ,,..,,             "<<endl;
-    setColor(CYAN);
+    cout<<"             ,,";setColor(BROWN);cout<<"..";setColor(YELLOW);cout<<",,             "<<endl;
+    setColor(GREY);
     cout<<"                                                                    ";
     setColor(YELLOW);
     cout<<"              ,,,.              "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
     setColor(YELLOW);
     cout<<"               .                "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
     cout<<"                                                                    ";
     setColor(YELLOW);
     cout<<"                                "<<endl;
-    setColor(CYAN);
+    setColor(GREY);
 }
 void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 {
@@ -556,7 +556,7 @@ void borrarTodo()
     int op;
     gotoxy(6,5);
     cin>>op;
-    setColor(CYAN);
+    setColor(GREY);
     if(op==9)
     {
         FILE *p;
