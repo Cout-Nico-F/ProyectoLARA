@@ -988,8 +988,30 @@ int mostrarID(int id)
     {
         if(reg.id == id)
         {
+            if(reg.estado==true)
+            {
+                cout<<"=============================="<<endl;
+                cout<<"ID del plato:_________________"<<reg.id<<endl;
+                cout<<"Nombre:_______________________"<<reg.nombre<<endl;
+                cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
+                cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
+                cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
+                cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
+                cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
+                cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
+                cout<<"=============================="<<endl;
+                return 1;
+            }
+            else
+            {
+                cout<<"El registro al que intentas acceder fue dado de baja"<<endl;
+                Sleep(2000);
+                return 1;
+            }
+        }
+    }
 
-//            char traduce_bool[3];
+    //            char traduce_bool[3];
 //            if(reg.estado==true)
 //            {
 //                strcpy(traduce_bool,"Si");
@@ -1011,20 +1033,7 @@ int mostrarID(int id)
 //            cout<<"=============================="<<endl;
 //            return 1;//exitoso
 
-            if(reg.estado==true)
-            {
-                cout<<"=============================="<<endl;
-                cout<<"ID del plato:_________________"<<reg.id<<endl;
-                cout<<"Nombre:_______________________"<<reg.nombre<<endl;
-                cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
-                cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
-                cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
-                cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
-                cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
-                cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
-            }
-        }
-    }
+
     return 0; //el id ingresado no existe
 
 }
@@ -1294,6 +1303,7 @@ int mostrarIDrestaurant(int id)
             cout<<"=============================="<<endl;
             con++;
             }
+
         }
 
     }
