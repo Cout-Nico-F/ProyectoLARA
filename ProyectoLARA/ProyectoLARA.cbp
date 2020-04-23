@@ -35,6 +35,9 @@
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="prototipos.h" />
+		<Unit filename="recurso.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="tipos_de_dato.h" />
 		<Extensions>
 			<code_completion />
