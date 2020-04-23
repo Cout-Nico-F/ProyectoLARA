@@ -7,8 +7,6 @@ void nuevoPlato()
     logo();
     plato platoEntrante;
     //pido un registro completo con comprobacion de tipo de dato evitando el error del ciclo en la carga.
-//    cout<<"Ingrese los datos a continuacion:"<<endl;
-//    Sleep(1000);
 
     while(true)
     {
@@ -331,7 +329,15 @@ void submenuPlatos()
 
         cout<<"    Ingrese la opcion deseada: ";
         int op;
-        cin>>op;
+        while(!(cin>>op))
+              {
+                gotoxy(43,17);
+                  cout<<"Error: la opcion debe ser numerica.";
+                  gotoxy(43,18);
+                  cout<<"Ingrese la opcion deseada o 0 para salir: ";
+                  cin.clear();
+                  cin.ignore(123,'\n');
+              }
         switch (op)
         {
         case 1:

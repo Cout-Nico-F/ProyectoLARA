@@ -33,14 +33,14 @@ int main()
         cout<<"Ingrese la opcion deseada: ";
         int op;
         while(!(cin>>op))
-              {
-                gotoxy(43,17);
-                  cout<<"Error: la opcion debe ser numerica.";
-                  gotoxy(43,18);
-                  cout<<"Ingrese la opcion deseada o 0 para salir: ";
-                  cin.clear();
-                  cin.ignore(123,'\n');
-              }
+        {
+            gotoxy(43,17);
+            cout<<"Error: la opcion debe ser numerica.";
+            gotoxy(43,18);
+            cout<<"Ingrese la opcion deseada o 0 para salir: ";
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
         switch (op)
         {
         case 1:
