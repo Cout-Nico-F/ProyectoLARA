@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#include <rlutil.h>
+#include "rlutil.h"
 using namespace rlutil;
 #include "tipos_de_dato.h"
 #include "prototipos.h"
