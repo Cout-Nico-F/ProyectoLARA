@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1587600858 source:c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\main.cpp
+1587683645 source:c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\main.cpp
 	<iostream>
 	"rlutil.h"
 	"tipos_de_dato.h"
@@ -8,9 +8,9 @@
 
 1587501874 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\tipos_de_dato.h
 
-1587594278 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\prototipos.h
+1587683645 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\prototipos.h
 
-1587602456 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\funciones.h
+1587752604 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\funciones.h
 
 1587597973 source:c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\recurso.rc
 
