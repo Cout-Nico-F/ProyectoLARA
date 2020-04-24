@@ -484,6 +484,7 @@ void logo()
     cout<<"                                "<<endl;
     setColor(GREY);
 }
+
 void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
 {
     cls();
@@ -877,9 +878,10 @@ void mostrarLista()
         cout<<"FIN DEL ARCHIVO"<<endl;
         cout<<"Presione una tecla para volver al menu"<<endl;
         anykey();
-    }
-    void listarPlatosporID() //(se puede mejorar)
-    {
+}
+
+void listarPlatosporID() //(se puede mejorar)
+{
         cls();
         logo();
         cout<<"&----------Listar plato por id?---------&"<<endl;
@@ -993,8 +995,8 @@ void mostrarLista()
 
     }
 
-    int mostrarID(int id)
-    {
+int mostrarID(int id)
+{
         plato reg;
         FILE *p;
         p = fopen("platos.dat","rb");
@@ -1056,8 +1058,8 @@ void mostrarLista()
 
     }
 
-    void eliminarPlato()
-    {
+void eliminarPlato()
+{
         cls();
         logo();
         cout<<"&--------Eliminar plato por id?---------&"<<endl;
@@ -1152,8 +1154,8 @@ void mostrarLista()
         }
     }
 
-    void listarPlatosPorRestaurant ()
-    {
+void listarPlatosPorRestaurant ()
+{
         cls();
         logo();
         cout<<"&----Listar plato por Restaurant?---------&"<<endl;
@@ -1266,8 +1268,8 @@ void mostrarLista()
 
     }
 
-    int mostrarIDrestaurant(int id)
-    {
+int mostrarIDrestaurant(int id)
+{
         int con=0;
         plato reg;
         FILE *p;
@@ -1335,8 +1337,8 @@ void mostrarLista()
 
     }
 
-    int iD_RestaurantExistente(int id)
-    {
+int iD_RestaurantExistente(int id)
+{
         plato reg;
         FILE *p;
         p = fopen("platos.dat","ab+");
