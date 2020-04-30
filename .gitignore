@@ -1,2 +1,5 @@
 
-ProyectoLARA/bin/Debug/ProyectoLARA.exe
+*.layout
+*.depend
+bin/
+obj/

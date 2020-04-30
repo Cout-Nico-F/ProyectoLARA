@@ -945,11 +945,10 @@ void listarPlatosporID() //(se puede mejorar)
                     }
                     if(op==0)
                     {
-                        return;
+                        return; //salida exitosa
                     }
                 }
-                // mostrar
-                //break;//id valido
+
             }
             else if (existe == 0)
             {
