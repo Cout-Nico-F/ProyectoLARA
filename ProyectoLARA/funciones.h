@@ -1077,7 +1077,7 @@ void eliminarPlato()
             return;
         }
 
-//        if(idBuscado>0)  Error del github?
+//        if(idBuscado>0)  como llego esto aca ? Error del github?
 //        {
 //            return;
 //        }
