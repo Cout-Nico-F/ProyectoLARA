@@ -816,7 +816,10 @@ void mostrarLista()
     }
     if(cuenta_vueltas == 0)
     {
-        cout<<"No hay ningun registro cargado"<<endl;
+       cout<<"=============================="<<endl;
+       setColor(LIGHTRED);
+       cout<<"No hay ningun registro cargado"<<endl;
+       setColor(GREY);
     }
         cout<<"=============================="<<endl;
         cout<<"FIN DEL ARCHIVO"<<endl;
