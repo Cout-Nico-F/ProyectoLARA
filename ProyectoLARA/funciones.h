@@ -1073,11 +1073,14 @@ void eliminarPlato()
             cin.ignore(123,'\n');
         }
         if(op==0)
-
-        if(idBuscado>0)
         {
             return;
         }
+
+//        if(idBuscado>0)  Error del github?
+//        {
+//            return;
+//        }
         //
 
         int idBuscado;
