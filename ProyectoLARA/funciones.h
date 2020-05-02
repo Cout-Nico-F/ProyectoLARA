@@ -47,7 +47,7 @@ void nuevoPlato()
                 cin.clear();
                 cin.ignore(123,'\n');
             }
-            if(platoEntrante.id < 0)
+            if(platoEntrante.id <= 0)
             {
                 cout<<"El ID debe ser un numero positivo."<<endl;
                 Sleep(1300);
@@ -62,7 +62,7 @@ void nuevoPlato()
             else if(retorno==1)
             {
                 cout<<"\nError(Ya existe el ID). El ID debe ser unico!"<<endl;
-                cout<<"Presione una tecla para volver a intentar"<<endl; ///posibilidad de preguntar si quiere salir
+                cout<<"Presione una tecla para volver a intentar"<<endl; //posibilidad de preguntar si quiere salir
                 anykey();
 
             }
@@ -106,7 +106,7 @@ void nuevoPlato()
                 cin.clear();
                 cin.ignore(123,'\n');
             }
-            if(platoEntrante.costo_preparacion < 0)
+            if(platoEntrante.costo_preparacion <= 0)
             {
                 cout<<"El costo de preparacion no puede ser negativo!"<<endl;
                 Sleep(1000);
@@ -655,7 +655,7 @@ void modificarPlato()
             cin.clear();
             cin.ignore(123,'\n');
         }
-        if(idBuscado>=0)
+        if(idBuscado>0)
         {
             break; //idBuscado validado
         }
@@ -1073,6 +1073,8 @@ void eliminarPlato()
             cin.ignore(123,'\n');
         }
         if(op==0)
+
+        if(idBuscado>0)
         {
             return;
         }
