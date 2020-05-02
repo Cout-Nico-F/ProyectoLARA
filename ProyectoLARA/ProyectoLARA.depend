@@ -10,8 +10,6 @@
 
 1587683645 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\prototipos.h
 
-1587741605 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\funciones.h
-
 1587597973 source:c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\recurso.rc
 
 1585512445 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\rlutil.h
@@ -27,4 +25,6 @@
 	<sys/ioctl.h>
 	<sys/types.h>
 	<sys/time.h>
+
+1588440487 c:\users\nferr\documents\facu\labo2\tpdelivery\proyectolara\proyectolara\funciones.h
 
