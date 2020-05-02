@@ -232,8 +232,8 @@ void nuevoPlato()
         //
         platoEntrante.estado = true;
 
-        // IMPORTANTE
-        if(guardarRegistro(platoEntrante)) //esto condiciona a guardarregistro a devolver bool. capas lo cambio
+        //
+        if(guardarRegistro(platoEntrante))
         {
             cout<<"\nRegistro agregado con exito"<<endl;
             Sleep(700);
@@ -485,7 +485,7 @@ void logo()
     setColor(GREY);
 }
 
-void adios()//no me termina de gustar.. tal vez una animacion usando Sleep() ?
+void adios()
 {
     cls();
 //cout<<"///////////////////////////////////////////s:--/s/++++/////::://////////////////////////////////////"<<endl;
@@ -625,7 +625,7 @@ void borrarTodo()
 
 }
 
-void modificarPlato() //convertida a void
+void modificarPlato()
 {
     cls();
     logo();
@@ -880,7 +880,7 @@ void mostrarLista()
         anykey();
 }
 
-void listarPlatosporID() //(se puede mejorar)
+void listarPlatosporID()
 {
         cls();
         logo();
