@@ -10,7 +10,7 @@ void nuevoPlato()
 
     while(true)
     {
-        cout<<"&---Comenzar a cargar un nuevo plato?---&"<<endl;
+        cout<<"&--- Comenzar a cargar un nuevo plato?--&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
         cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
         cout<<"       ";
@@ -244,7 +244,7 @@ void nuevoPlato()
             return;
         }
         cls();
-        cout<<"&--------Cargar otro registro ? --------&"<<endl;
+        cout<<"&----Cargar otro registro ? ------------&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
         cout<<"&--- [ 0 ] No --------------------------&"<<endl;
         cout<<"      ";
@@ -488,68 +488,7 @@ void logo()
 void adios()
 {
     cls();
-//cout<<"///////////////////////////////////////////s:--/s/++++/////::://////////////////////////////////////"<<endl;
-//cout<<"////////////////////////////////////////++oo....oy---++////::.-/////////////////////////////////////"<<endl;
-//cout<<"//////////////////////////////////////s+:-/s.....y....s:::::/:`-////////////////////////////////////"<<endl;
-//cout<<"///////////////////////////////////::o+....+/....o:.../+..----- :///////////////////////////////////"<<endl;
-//cout<<"////////////////////////////////::--.+/....-s....-o....y....... .-::////////////////////////////////"<<endl;
-//cout<<"/////////////////////////////::---/+/+s.....s-....y....o:..........--:`:////////////////////////////"<<endl;
-//cout<<"///////////////////////////::..../+...s...../+....+:...:o.............`::///////////////////////////"<<endl;
-//cout<<"/////////////////////////::-.....o:...//.....y....-s....y-............`.-:://///////////////////////"<<endl; Intento1
-//cout<<"///////////////////////`:-......./o....s.....s-....s....+/................-:////////////////////////"<<endl;
-//cout<<"////////////////////// ..........-y....o-....:o....//...-y.....:/+/-........:://////////////////////"<<endl;
-//cout<<"/////////////////////-............s-...:+.....y.----y---.s:.../o-.:s-........-://///////////////////"<<endl;
-//cout<<"/////////////////////-............/+....s.-:/+s+/////:::.-s...y-...o:.........-/////////////////////"<<endl;
-//cout<<"////////////////////-.............-y...:s//:-.............s:..y....y-..........-////////////////////"<<endl;
-//cout<<"///////////////////:...............o:..-..................-s.:o...-s............:///////////////////"<<endl;
-//cout<<"///////////////////-...............-s......................s:s-...o:............-///////////////////"<<endl;
-//cout<<"//////////////////:.................s-.....................-yo....y..............://////////////////"<<endl;
-//cout<<"//////////////////-.................:o......................-....++..............-//////////////////"<<endl;
-//cout<<"//////////////////-..................y...........................y-..............-//////////////////"<<endl;
-//cout<<"//////////////////-................../o........................./+...............-//////////////////"<<endl;
-//cout<<"//////////////////-...................y.........................y-...............-//////////////////"<<endl;
-//cout<<"//////////////////-...................:o.......................+/................-//////////////////"<<endl;
-//cout<<"//////////////////:..................../o...................../o.................://////////////////"<<endl;
-//cout<<"///////////////////-....................:o-..................++-................-///////////////////"<<endl;
-//cout<<"///////////////////:.....................-++-............../o:..................:///////////////////"<<endl;
-//cout<<"////////////////////-......................-/+//:-....-:/++:-..................-////////////////////"<<endl;
-//cout<<"////////////////////:-.......................---://////:--....................-/////////////////////"<<endl;
-//cout<<"///////////////////oyhy+-....:++/-....-:-....-:-........---.....-...--....----:/ymy/////////////////"<<endl;
-//cout<<"/////////////////+dmmhmmd:.-ymmmmy-.-odddy:.odddy/-.../hddds:.-yd:.+dd/.+hdddo//dNd/////////////////"<<endl;
-//cout<<"/////////////////dmd+/+mmy.hmmoommy.ymmymNd-hmmdmmh/..hmmoymm++mmo-oNmy-mNmys///mNm/////////////////"<<endl;
-//cout<<"////////////////oNms///oho/mmd--dmm-mmd-smm+yNNo+mmm/.mNN:-hmd:dNmdmNm/-mmd/////mmm/////////////////"<<endl;
-//cout<<"////////////////sNmo/yddds+Nmh..dmm:mmd./mmssmNo.+NNh.mmN--ymm-:smNNy/-:mmmo+///mmm/////////////////"<<endl;
-//cout<<"////////////////oNNs/symmd+mmd:-dNm-mmm-:mmyoNNs.:mmd.mmmydmd/...hNm/::+Nmmmd///mNN/////////////////"<<endl;
-//cout<<"/////////////////dNd///dNd/dmm+/mNd-yNm+/mNs+mmy-yNmo-mNNdmm/...-hmm+//+Nmdo+///ydh/////////////////"<<endl;
-//cout<<"/////////////////+dmdosmms/smmhyNNy:+mNdyNm/+NNddNmy--NNm+dmo-:::hmNo//oNNdyhy///so/////////////////"<<endl;
-//cout<<"//////////////////+ydmmds///sdmmdy///odmmmy:/dmmmh+---dmmmds/////smd+//+dmmmdd+/ommo////////////////"<<endl;
-//cout<<"/////////////////////++///////++///////++/////++///////++/////////+//////+++/////++/////////////////"<<endl;
 
-
-//cout<<"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssssssss.  `ss+   /sso`   :sss/.    `-+.       .s/    osssssssssssssssssssssssss"<<endl;
-//cout<<"sssssssssssssssssssssss+--:s`  `ss+   /ss-     os/   :+/.-://-   -//s`    .sssssssssssssssssssssssss"<<endl;
-//cout<<"sssssssssssssssssssssss:  `s`   ..`   /s+  :.  .s+     `.:+ss+   +ss-  +   /ssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssss--+s`   --.   /s`  :-   /so/-.`    /s+   +s+  `:`  `osssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssso  :s`  `ss+   /:  `..`  `.` `//:   :s+   +s`  ...   -sssssssssssssssssssssss"<<endl;
-//cout<<"sssssssssssssssssssssss/  .s.  `ss+   :  .ssso   -:.    `./ss+   +:  :sss/   +ssssssssssssssssssssss"<<endl;
-//cout<<"sssssssssssssssssssssss.   sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl; intento2
-//cout<<"sssssssssssssssssssssss+///sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss++++sssss+++osss++os++++++++osss++/+osssssso+//+ssss++++ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss`  `ssss+   :ss+  -+        .s-      `:ss/`      .+s`  `ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss`  `ssss+   :ss+  -+   /ooooo.  `os+``./:   :ss.   +-  .ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss`  `ssss+   :ss+  -+       -+   -s:----/`   oss/   :/  /ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss`  `ssss+   :ss+  -+   :+++oo   .s:-`  --   +ss:   /o--ossssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss`   ....:`   --`  /+   `....:/   `-.   -o.  `--   :s-``-ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssss:-------/s/-...-:oso--------:so/-..-/+-/ss+:-..-:oss/--:ssssssssssssssssssssss"<<endl;
-//cout<<"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"<<endl;
-
-
-//cout<<"/////////////////////////////////////////////////////////////////////////-`-:///////////////////////"<<endl;
-//cout<<"//////////////////////////////////////////////ssso/////////////////////////. .://///////////////////"<<endl;
     cout<<"////////////////////////////////////////////yo-../y+//+oo////////:::////////- `:////////////////////"<<endl;
     cout<<"///////////////////////:://////////////////os.....-hss:-:os///////:..:///////: `:///////////////////"<<endl;
     cout<<"/////////////////////:.-//////////////ossoshs......:h...../y////////:`.://////- .///////////////////"<<endl;
@@ -839,9 +778,10 @@ void mostrarLista()
     plato reg;
 
 
-
+    int cuenta_vueltas = 0;
     while(fread(&reg,sizeof (plato),1,p))
     {
+        cuenta_vueltas++;
         char traduce_bool[3];
         if(reg.estado==true)
         {
@@ -873,6 +813,10 @@ void mostrarLista()
             cout<<traduce_bool<<endl;
             setColor(GREY);
         }
+    }
+    if(cuenta_vueltas == 0)
+    {
+        cout<<"No hay ningun registro cargado"<<endl;
     }
         cout<<"=============================="<<endl;
         cout<<"FIN DEL ARCHIVO"<<endl;
@@ -1061,7 +1005,7 @@ void eliminarPlato()
 {
         cls();
         logo();
-        cout<<"&--------Eliminar plato por id?---------&"<<endl;
+        cout<<"&----Eliminar plato por id?-------------&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
         cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
         cout<<"       ";
@@ -1162,7 +1106,7 @@ void listarPlatosPorRestaurant ()
 {
         cls();
         logo();
-        cout<<"&----Listar plato por Restaurant?---------&"<<endl;
+        cout<<"&----Listar plato por Restaurant?--------&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
         cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
         cout<<"       ";
@@ -1243,7 +1187,7 @@ void listarPlatosPorRestaurant ()
             {
                 cls();
                 logo();
-                cout<<"&--------Intentar nuevamente ?----------&"<<endl;
+                cout<<"&----Intentar nuevamente ?--------------&"<<endl;
                 cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
                 cout<<"&--- [ 0 ] No --------------------------&"<<endl;
                 cout<<"      ";
