@@ -816,168 +816,168 @@ void mostrarLista()
     }
     if(cuenta_vueltas == 0)
     {
-       cout<<"=============================="<<endl;
-       setColor(LIGHTRED);
-       cout<<"No hay ningun registro cargado"<<endl;
-       setColor(GREY);
-    }
         cout<<"=============================="<<endl;
-        cout<<"FIN DEL ARCHIVO"<<endl;
-        cout<<"Presione una tecla para volver al menu"<<endl;
-        anykey();
+        setColor(LIGHTRED);
+        cout<<"No hay ningun plato cargado"<<endl;
+        setColor(GREY);
+    }
+    cout<<"=============================="<<endl;
+    cout<<"FIN DEL ARCHIVO"<<endl;
+    cout<<"Presione una tecla para volver al menu"<<endl;
+    anykey();
 }
 
 void listarPlatosporID()
 {
+    cls();
+    logo();
+    cout<<"&----------Listar plato por id?---------&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
+    //
+    int busqueda;
+    while(true)
+    {
         cls();
         logo();
-        cout<<"&----------Listar plato por id?---------&"<<endl;
-        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-        cout<<"       ";
-        bool op;
-        while(!(cin>>op))
+        cout<<"\nIngrese el ID del plato buscado: ";
+        while(!(cin>>busqueda))
         {
-            cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
+            cout<<"Error: Debe ingresar un numero de ID.\nIngrese el ID del plato buscado: ";
             cin.clear();
             cin.ignore(123,'\n');
         }
-        if(op==0)
+        int existe = iD_Existente(busqueda);
+        if(existe==1)
         {
-            return;
-        }
-        //
-        int busqueda;
-        while(true)
-        {
-            cls();
-            logo();
-            cout<<"\nIngrese el ID del plato buscado: ";
-            while(!(cin>>busqueda))
+            int retorno = mostrarID(busqueda);
+            if(retorno==2)
             {
-                cout<<"Error: Debe ingresar un numero de ID.\nIngrese el ID del plato buscado: ";
-                cin.clear();
-                cin.ignore(123,'\n');
+                cout<<"Error en la lectura del archivo."<<endl;
+                cout<<"Presione una tecla cualquiera para volver al menu"<<endl;
+                anykey();
+                return;
             }
-            int existe = iD_Existente(busqueda);
-            if(existe==1)
+            if(retorno==0)
             {
-                int retorno = mostrarID(busqueda);
-                if(retorno==2)
-                {
-                    cout<<"Error en la lectura del archivo."<<endl;
-                    cout<<"Presione una tecla cualquiera para volver al menu"<<endl;
-                    anykey();
-                    return;
-                }
-                if(retorno==0)
-                {
-                    cout<<"Error: No se encontro el ID buscado"<<endl;
-                    Sleep(1400);
-                }
-                if(retorno==1 || retorno == 0)
-                {
-
-                    cout<<"\n"<<endl;
-                    cout<<"&------------Listar otro plato por id?-----------&"<<endl;
-                    cout<<"&------------ [ 1 ] Si --------------------------&"<<endl;
-                    cout<<"&------------ [ 0 ] No (Volver al Menu)----------&"<<endl;
-                    cout<<"                ";
-                    bool op;
-                    while(!(cin>>op))
-                    {
-                        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
-                        cin.clear();
-                        cin.ignore(123,'\n');
-                    }
-                    if(op==0)
-                    {
-                        return; //salida exitosa
-                    }
-                }
-
-            }
-            else if (existe == 0)
-            {
-                cout<<"El ID buscado no existe"<<endl;
+                cout<<"Error: No se encontro el ID buscado"<<endl;
                 Sleep(1400);
             }
-            else if ( existe == 2)
+            if(retorno==1 || retorno == 0)
             {
-                cout<<"No se puede leer el archivo         (SoloLectura)"<<endl;
-                cout<<"Presione una tecla cualquiera pra continuar"<<endl;
-                continue;
-            }
-            if(op!=1)
-            {
-                cls();
-                logo();
-                cout<<"&--------Intentar nuevamente ?----------&"<<endl;
-                cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-                cout<<"&--- [ 0 ] No --------------------------&"<<endl;
-                cout<<"      ";
+
+                cout<<"\n"<<endl;
+                cout<<"&------------Listar otro plato por id?-----------&"<<endl;
+                cout<<"&------------ [ 1 ] Si --------------------------&"<<endl;
+                cout<<"&------------ [ 0 ] No (Volver al Menu)----------&"<<endl;
+                cout<<"                ";
                 bool op;
                 while(!(cin>>op))
                 {
-                    cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para intentar de nuevo, o 0 para volver al menu : ";
+                    cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
                     cin.clear();
                     cin.ignore(123,'\n');
                 }
                 if(op==0)
                 {
-                    return;
-                }
-                if(op==1)
-                {
-                    continue;
-                }
-                else
-                {
-                    cout<<"Opcion incorrecta!"<<endl;
-                    Sleep(1200);
+                    return; //salida exitosa
                 }
             }
-        }
 
+        }
+        else if (existe == 0)
+        {
+            cout<<"El ID buscado no existe"<<endl;
+            Sleep(1400);
+        }
+        else if ( existe == 2)
+        {
+            cout<<"No se puede leer el archivo         (SoloLectura)"<<endl;
+            cout<<"Presione una tecla cualquiera pra continuar"<<endl;
+            continue;
+        }
+        if(op!=1)
+        {
+            cls();
+            logo();
+            cout<<"&--------Intentar nuevamente ?----------&"<<endl;
+            cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+            cout<<"&--- [ 0 ] No --------------------------&"<<endl;
+            cout<<"      ";
+            bool op;
+            while(!(cin>>op))
+            {
+                cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para intentar de nuevo, o 0 para volver al menu : ";
+                cin.clear();
+                cin.ignore(123,'\n');
+            }
+            if(op==0)
+            {
+                return;
+            }
+            if(op==1)
+            {
+                continue;
+            }
+            else
+            {
+                cout<<"Opcion incorrecta!"<<endl;
+                Sleep(1200);
+            }
+        }
     }
+
+}
 
 int mostrarID(int id)
 {
-        plato reg;
-        FILE *p;
-        p = fopen("platos.dat","rb");
-        if(p==NULL)
+    plato reg;
+    FILE *p;
+    p = fopen("platos.dat","rb");
+    if(p==NULL)
+    {
+        return 2;//el archivo no pudo abrirse o no existe
+    }
+    while(fread(&reg,sizeof (plato),1,p))
+    {
+        if(reg.id == id)
         {
-            return 2;//el archivo no pudo abrirse o no existe
-        }
-        while(fread(&reg,sizeof (plato),1,p))
-        {
-            if(reg.id == id)
+            if(reg.estado==true)
             {
-                if(reg.estado==true)
-                {
-                    cout<<"=============================="<<endl;
-                    cout<<"ID del plato:_________________"<<reg.id<<endl;
-                    cout<<"Nombre:_______________________"<<reg.nombre<<endl;
-                    cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
-                    cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
-                    cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
-                    cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
-                    cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
-                    cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
-                    cout<<"=============================="<<endl;
-                    return 1;
-                }
-                else
-                {
-                    cout<<"El registro al que intentas acceder fue dado de baja"<<endl;
-                    Sleep(2000);
-                    return 1;
-                }
+                cout<<"=============================="<<endl;
+                cout<<"ID del plato:_________________"<<reg.id<<endl;
+                cout<<"Nombre:_______________________"<<reg.nombre<<endl;
+                cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
+                cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
+                cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
+                cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
+                cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
+                cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
+                cout<<"=============================="<<endl;
+                return 1;
+            }
+            else
+            {
+                cout<<"El registro al que intentas acceder fue dado de baja"<<endl;
+                Sleep(2000);
+                return 1;
             }
         }
+    }
 
-        //            char traduce_bool[3];
+    //            char traduce_bool[3];
 //            if(reg.estado==true)
 //            {
 //                strcpy(traduce_bool,"Si");
@@ -1000,204 +1000,171 @@ int mostrarID(int id)
 //            return 1;//exitoso
 
 
-        return 0; //el id ingresado no existe
+    return 0; //el id ingresado no existe
 
-    }
+}
 
 void eliminarPlato()
 {
-        cls();
-        logo();
-        cout<<"&----Eliminar plato por id?-------------&"<<endl;
-        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-        cout<<"       ";
-        bool op;
-        while(!(cin>>op))
-        {
-            cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
-            cin.clear();
-            cin.ignore(123,'\n');
-        }
-        if(op==0)
-        {
-            return;
-        }
+    cls();
+    logo();
+    cout<<"&----Eliminar plato por id?-------------&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
 
 //        if(idBuscado>0)  como llego esto aca ? Error del github?
 //        {
 //            return;
 //        }
-        //
+    //
 
-        int idBuscado;
-        while(true)
+    int idBuscado;
+    while(true)
+    {
+        cout<<"\nIngrese el ID del plato a dar de baja: ";
+        while(!(cin>>idBuscado))
         {
-            cout<<"\nIngrese el ID del plato a dar de baja: ";
-            while(!(cin>>idBuscado))
-            {
-                cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
-                cin.clear();
-                cin.ignore(123,'\n');
-            }
-            if(idBuscado>=0)
-            {
-                break; //idBuscado validado
-            }
-        }
-        plato reg = buscarRegistro(idBuscado);
-        switch(reg.id)
-        {
-        case -2:
-        {
-            cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-            Sleep(1400);
-            return;
-        }
-        break;
-        case -1:
-        {
-            cout<<"El id ingresado no existe."<<endl;
-            Sleep(1200);
-            return ;
-        }
-        break;
-        default:
-
-            break;
-        }
-
-        int indice = indice_ID(idBuscado);
-
-        switch(indice)
-        {
-        case -2:
-        {
-            cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-            Sleep(1200);
-            return ;
-        }
-        break;
-        case -1:
-        {
-            cout<<"El id ingresado no existe."<<endl;
-            Sleep(1200);
-            return ;
-        }
-        break;
-        default:
-
-            break;
-        }
-        reg.estado = false; //baja logica.
-
-        if(modificarRegistro(indice,reg)==0)
-        {
-            cout<<"Registro dado de baja con exito"<<endl;
-            Sleep(1400);
-            return ;
-        }
-        else
-        {
-            cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
-            Sleep(1400);
-            return ;
-        }
-    }
-
-void listarPlatosPorRestaurant ()
-{
-        cls();
-        logo();
-        cout<<"&----Listar plato por Restaurant?--------&"<<endl;
-        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-        cout<<"       ";
-        bool op;
-        while(!(cin>>op))
-        {
-            cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar y 0 para volver al menu: ";
+            cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
             cin.clear();
             cin.ignore(123,'\n');
         }
-        if(op==0)
+        if(idBuscado>=0)
         {
-            return;
+            break; //idBuscado validado
         }
-        //
-        int busqueda;
-        while(true)
+    }
+    plato reg = buscarRegistro(idBuscado);
+    switch(reg.id)
+    {
+    case -2:
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1400);
+        return;
+    }
+    break;
+    case -1:
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    default:
+
+        break;
+    }
+
+    int indice = indice_ID(idBuscado);
+
+    switch(indice)
+    {
+    case -2:
+    {
+        cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    case -1:
+    {
+        cout<<"El id ingresado no existe."<<endl;
+        Sleep(1200);
+        return ;
+    }
+    break;
+    default:
+
+        break;
+    }
+    reg.estado = false; //baja logica.
+
+    if(modificarRegistro(indice,reg)==0)
+    {
+        cout<<"Registro dado de baja con exito"<<endl;
+        Sleep(1400);
+        return ;
+    }
+    else
+    {
+        cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
+        Sleep(1400);
+        return ;
+    }
+}
+
+void listarPlatosPorRestaurant ()
+{
+    cls();
+    logo();
+    cout<<"&----Listar plato por Restaurant?--------&"<<endl;
+    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
+    cout<<"       ";
+    bool op;
+    while(!(cin>>op))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar y 0 para volver al menu: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    if(op==0)
+    {
+        return;
+    }
+    //
+    int busqueda;
+    while(true)
+    {
+        cls();
+        logo();
+        cout<<"\nIngrese el ID del Restaurant a listar: ";
+        while(!(cin>>busqueda))
         {
-            cls();
-            logo();
-            cout<<"\nIngrese el ID del Restaurant a listar: ";
-            while(!(cin>>busqueda))
+            cout<<"Error: Debe ingresar un numero de ID.\nIngrese el ID del Restaurant buscado: ";
+            cin.clear();
+            cin.ignore(123,'\n');
+        }
+        int existe = iD_RestaurantExistente(busqueda);
+        if(existe==1)
+        {
+            int retorno = mostrarIDrestaurant(busqueda);
+            if(retorno==2)
             {
-                cout<<"Error: Debe ingresar un numero de ID.\nIngrese el ID del Restaurant buscado: ";
-                cin.clear();
-                cin.ignore(123,'\n');
+                cout<<"Error en la lectura del archivo."<<endl;
+                cout<<"Presione una tecla cualquiera para volver al menu"<<endl;
+                anykey();
+                return;
             }
-            int existe = iD_RestaurantExistente(busqueda);
-            if(existe==1)
+            if(retorno==0)
             {
-                int retorno = mostrarIDrestaurant(busqueda);
-                if(retorno==2)
-                {
-                    cout<<"Error en la lectura del archivo."<<endl;
-                    cout<<"Presione una tecla cualquiera para volver al menu"<<endl;
-                    anykey();
-                    return;
-                }
-                if(retorno==0)
-                {
-                    cout<<"Error: No se encontro el ID buscado"<<endl;
-                    Sleep(1400);
-                }
-                if(retorno==1 || retorno == 0)
-                {
-
-                    cout<<"\n"<<endl;
-                    cout<<"&------------Listar otro plato por id?-----------&"<<endl;
-                    cout<<"&------------ [ 1 ] Si --------------------------&"<<endl;
-                    cout<<"&------------ [ 0 ] No (Volver al Menu)----------&"<<endl;
-                    cout<<"                ";
-                    bool op;
-                    while(!(cin>>op))
-                    {
-                        cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
-                        cin.clear();
-                        cin.ignore(123,'\n');
-                    }
-                    if(op==0)
-                    {
-                        return;
-                    }
-                }
-
-            }
-            else if (existe == 0)
-            {
-                cout<<"El ID buscado no existe"<<endl;
+                cout<<"Error: No se encontro el ID buscado"<<endl;
                 Sleep(1400);
             }
-            else if ( existe == 2)
+            if(retorno==1 || retorno == 0)
             {
-                cout<<"No se puede leer el archivo         (SoloLectura)"<<endl;
-                cout<<"Presione una tecla cualquiera pra continuar"<<endl;
-                continue;
-            }
-            if(op!=1)
-            {
-                cls();
-                logo();
-                cout<<"&----Intentar nuevamente ?--------------&"<<endl;
-                cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-                cout<<"&--- [ 0 ] No --------------------------&"<<endl;
-                cout<<"      ";
+
+                cout<<"\n"<<endl;
+                cout<<"&------------Listar otro plato por id?-----------&"<<endl;
+                cout<<"&------------ [ 1 ] Si --------------------------&"<<endl;
+                cout<<"&------------ [ 0 ] No (Volver al Menu)----------&"<<endl;
+                cout<<"                ";
                 bool op;
                 while(!(cin>>op))
                 {
-                    cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para intentar de nuevo, o 0 para volver al menu : ";
+                    cout<<"\nError en el tipo de dato ingresado.\n Ingrese 1 para listar un plato y 0 para volver al menu: ";
                     cin.clear();
                     cin.ignore(123,'\n');
                 }
@@ -1205,31 +1172,64 @@ void listarPlatosPorRestaurant ()
                 {
                     return;
                 }
-                if(op==1)
-                {
-                    continue;
-                }
-                else
-                {
-                    cout<<"Opcion incorrecta!"<<endl;
-                    Sleep(1200);
-                }
+            }
+
+        }
+        else if (existe == 0)
+        {
+            cout<<"El ID buscado no existe"<<endl;
+            Sleep(1400);
+        }
+        else if ( existe == 2)
+        {
+            cout<<"No se puede leer el archivo         (SoloLectura)"<<endl;
+            cout<<"Presione una tecla cualquiera pra continuar"<<endl;
+            continue;
+        }
+        if(op!=1)
+        {
+            cls();
+            logo();
+            cout<<"&----Intentar nuevamente ?--------------&"<<endl;
+            cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
+            cout<<"&--- [ 0 ] No --------------------------&"<<endl;
+            cout<<"      ";
+            bool op;
+            while(!(cin>>op))
+            {
+                cout<<"\nError en el tipo de dato ingresado.\nIngrese 1 para intentar de nuevo, o 0 para volver al menu : ";
+                cin.clear();
+                cin.ignore(123,'\n');
+            }
+            if(op==0)
+            {
+                return;
+            }
+            if(op==1)
+            {
+                continue;
+            }
+            else
+            {
+                cout<<"Opcion incorrecta!"<<endl;
+                Sleep(1200);
             }
         }
-
     }
+
+}
 
 int mostrarIDrestaurant(int id)
 {
-        int con=0;
-        plato reg;
-        FILE *p;
-        p = fopen("platos.dat","rb");
-        if(p==NULL)
-        {
-            return 2;//el archivo no pudo abrirse o no existe
-        }
-        cout<<"=============================="<<endl;
+    int con=0;
+    plato reg;
+    FILE *p;
+    p = fopen("platos.dat","rb");
+    if(p==NULL)
+    {
+        return 2;//el archivo no pudo abrirse o no existe
+    }
+    cout<<"=============================="<<endl;
 //    while(fread(&reg,sizeof (plato),1,p))
 //    {
 //        if(reg.id_restaurante == id)
@@ -1256,56 +1256,56 @@ int mostrarIDrestaurant(int id)
 //            cout<<"=============================="<<endl;
 //            con++;//exitoso
 
-        while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (plato),1,p))
+    {
+        if(reg.id_restaurante == id)
         {
-            if(reg.id_restaurante == id)
+
+            if(reg.estado==true)
             {
-
-                if(reg.estado==true)
-                {
-                    cout<<"ID del plato:_________________"<<reg.id<<endl;
-                    cout<<"Nombre:_______________________"<<reg.nombre<<endl;
-                    cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
-                    cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
-                    cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
-                    cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
-                    cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
-                    cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
-                    cout<<"=============================="<<endl;
-                    con++;
-                }
-
+                cout<<"ID del plato:_________________"<<reg.id<<endl;
+                cout<<"Nombre:_______________________"<<reg.nombre<<endl;
+                cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
+                cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
+                cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
+                cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
+                cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
+                cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
+                cout<<"=============================="<<endl;
+                con++;
             }
 
         }
-        if(con==0)
-        {
-            return 0; //el id ingresado no existe
-        }
-        else
-            return 1;
-
 
     }
+    if(con==0)
+    {
+        return 0; //el id ingresado no existe
+    }
+    else
+        return 1;
+
+
+}
 
 int iD_RestaurantExistente(int id)
 {
-        plato reg;
-        FILE *p;
-        p = fopen("platos.dat","ab+");
-        if(p==NULL)
-        {
-            return 2;//el archivo no pudo abrirse o no existe
-        }
-        while(fread(&reg,sizeof (plato),1,p))
-        {
-            if(reg.id_restaurante == id)
-            {
-                return 1;//el id ingresado es igual a uno existente
-            }
-        }
-        return 0; //el id ingresado es unico
-
+    plato reg;
+    FILE *p;
+    p = fopen("platos.dat","ab+");
+    if(p==NULL)
+    {
+        return 2;//el archivo no pudo abrirse o no existe
     }
+    while(fread(&reg,sizeof (plato),1,p))
+    {
+        if(reg.id_restaurante == id)
+        {
+            return 1;//el id ingresado es igual a uno existente
+        }
+    }
+    return 0; //el id ingresado es unico
+
+}
 
 #endif // FUNCIONES_H_INCLUDED
