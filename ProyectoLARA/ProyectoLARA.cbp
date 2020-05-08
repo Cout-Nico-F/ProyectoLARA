@@ -33,12 +33,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="funciones.h" />
+		<Unit filename="funciones_clientes.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="prototipos.h" />
 		<Unit filename="recurso.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
 		<Unit filename="tipos_de_dato.h" />
+		<Unit filename="validaciones_clientes.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

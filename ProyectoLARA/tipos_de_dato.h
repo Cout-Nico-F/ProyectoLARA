@@ -1,6 +1,8 @@
 #ifndef TIPOS_DE_DATO_H_INCLUDED
 #define TIPOS_DE_DATO_H_INCLUDED
 
+const char* ARCHIVO_CLIENTES = "clientes.dat";
+
 struct Fecha
 {
     int dia;

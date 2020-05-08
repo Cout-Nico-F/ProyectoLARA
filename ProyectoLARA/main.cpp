@@ -5,9 +5,11 @@ using namespace rlutil;
 #include "tipos_de_dato.h"
 #include "prototipos.h"
 #include "funciones.h"
+#include "funciones_clientes.h"
+#include "validaciones_clientes.h"
+
 int main()
 {
-
 //setBackgroundColor(8);
 
     while(true) //Menu principal
@@ -50,14 +52,7 @@ int main()
         break;
         case 2:
         {
-            cls();
-            logo();
-
-            gotoxy(35,15);
-            cout<<"Opcion no disponible en la version DEMO"<<endl;
-            gotoxy(45,19.5);
-            cout<<"Volviendo al menu"<<endl;
-            Sleep(2000);
+            submenuClientes();
 
         }
         break;
