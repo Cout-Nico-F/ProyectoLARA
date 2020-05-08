@@ -5,7 +5,7 @@ void nuevoPlato()
 {
     cls();
     logo();
-    plato platoEntrante;
+    Plato platoEntrante;
     //pido un registro completo con comprobacion de tipo de dato evitando el error del ciclo en la carga.
 
     while(true)
@@ -266,14 +266,14 @@ void nuevoPlato()
 
 int iD_Existente(int id)
 {
-    plato reg;
+    Plato reg;
     FILE *p;
     p = fopen("platos.dat","ab+");
     if(p==NULL)
     {
         return 2;//el archivo no pudo abrirse o no existe
     }
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(reg.id == id)
         {
@@ -284,7 +284,7 @@ int iD_Existente(int id)
 
 }
 
-bool guardarRegistro (plato reg)
+bool guardarRegistro (Plato reg)
 {
     FILE *file;
     file = fopen("platos.dat","ab");
@@ -293,7 +293,7 @@ bool guardarRegistro (plato reg)
     {
         return 0;
     }
-    if(fwrite(&reg,sizeof (plato),1,file))
+    if(fwrite(&reg,sizeof (Plato),1,file))
     {
         fclose(file);
         return 1;
@@ -599,7 +599,7 @@ void modificarPlato()
             break; //idBuscado validado
         }
     }
-    plato reg = buscarRegistro(idBuscado);
+    Plato reg = buscarRegistro(idBuscado);
     switch(reg.id)
     {
     case -2:
@@ -702,7 +702,7 @@ void modificarPlato()
 
 int indice_ID (int id_buscado)
 {
-    plato reg;
+    Plato reg;
     FILE *p;
     p= fopen("platos.dat","rb");
     if(p==NULL)
@@ -710,7 +710,7 @@ int indice_ID (int id_buscado)
         return -2;
     }
     int pos=0;
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(id_buscado== reg.id)
         {
@@ -723,9 +723,9 @@ int indice_ID (int id_buscado)
     return -1;
 }
 
-plato buscarRegistro (int id_buscado)
+Plato buscarRegistro (int id_buscado)
 {
-    plato reg;
+    Plato reg;
     FILE *p;
     p= fopen("platos.dat","rb");
     if(p==NULL)
@@ -734,7 +734,7 @@ plato buscarRegistro (int id_buscado)
         return reg;
     }
     int pos=0;
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(id_buscado== reg.id)
         {
@@ -748,7 +748,7 @@ plato buscarRegistro (int id_buscado)
     return reg;
 }
 
-int modificarRegistro(int indice,plato reg_modificado)
+int modificarRegistro(int indice,Plato reg_modificado)
 {
     FILE *p;
     p= fopen("platos.dat","rb+");
@@ -756,8 +756,8 @@ int modificarRegistro(int indice,plato reg_modificado)
     {
         return -2;
     }
-    fseek(p,sizeof (plato)*indice,0);
-    fwrite(&reg_modificado,sizeof (plato),1,p);
+    fseek(p,sizeof (Plato)*indice,0);
+    fwrite(&reg_modificado,sizeof (Plato),1,p);
     fclose(p);
     return 0;
 }
@@ -775,11 +775,11 @@ void mostrarLista()
         anykey();
         return;
     }
-    plato reg;
+    Plato reg;
 
 
     int cuenta_vueltas = 0;
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         cuenta_vueltas++;
         char traduce_bool[3];
@@ -943,14 +943,14 @@ void listarPlatosporID()
 
 int mostrarID(int id)
 {
-    plato reg;
+    Plato reg;
     FILE *p;
     p = fopen("platos.dat","rb");
     if(p==NULL)
     {
         return 2;//el archivo no pudo abrirse o no existe
     }
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(reg.id == id)
         {
@@ -1045,7 +1045,7 @@ void eliminarPlato()
             break; //idBuscado validado
         }
     }
-    plato reg = buscarRegistro(idBuscado);
+    Plato reg = buscarRegistro(idBuscado);
     switch(reg.id)
     {
     case -2:
@@ -1222,7 +1222,7 @@ void listarPlatosPorRestaurant ()
 int mostrarIDrestaurant(int id)
 {
     int con=0;
-    plato reg;
+    Plato reg;
     FILE *p;
     p = fopen("platos.dat","rb");
     if(p==NULL)
@@ -1256,7 +1256,7 @@ int mostrarIDrestaurant(int id)
 //            cout<<"=============================="<<endl;
 //            con++;//exitoso
 
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(reg.id_restaurante == id)
         {
@@ -1290,14 +1290,14 @@ int mostrarIDrestaurant(int id)
 
 int iD_RestaurantExistente(int id)
 {
-    plato reg;
+    Plato reg;
     FILE *p;
     p = fopen("platos.dat","ab+");
     if(p==NULL)
     {
         return 2;//el archivo no pudo abrirse o no existe
     }
-    while(fread(&reg,sizeof (plato),1,p))
+    while(fread(&reg,sizeof (Plato),1,p))
     {
         if(reg.id_restaurante == id)
         {

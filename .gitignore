@@ -4,3 +4,5 @@
 bin/
 obj/
 ProyectoLARA/ProyectoLARA.depend
+*.exe
+ProyectoLARA/obj/Debug/main.o
