@@ -6,8 +6,8 @@
 //validaciones generales
 int pedirEnteroValido();
 bool esPositivo(int);
-bool existeDia(int,int);
-bool es_bisiesto(int);
+bool existeDia(Fecha);
+bool esBisiesto(int);
 //
 void nuevoPlato();
 bool guardarRegistro(Plato);
@@ -36,7 +36,7 @@ int cantidadClientes();
 int validado_IdClienteAutonumerico();
 char *validado_EmailCliente();
 int validado_CpCliente();
-int validado_Dia(int);
+int validado_Dia(Fecha);
 int validado_Mes();
 int validado_Anio();
 

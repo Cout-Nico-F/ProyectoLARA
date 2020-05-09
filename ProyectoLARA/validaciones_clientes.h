@@ -54,7 +54,7 @@ int validado_CpCliente()
     return cp;
 }
 
-int validado_Dia (int mes_ingresado)
+int validado_Dia (Fecha fe)
 {
     while(true)
     {
@@ -66,7 +66,7 @@ int validado_Dia (int mes_ingresado)
             Sleep(1200);
             continue;
         }
-        if(!existeDia(dia,mes_ingresado))
+        if( !existeDia(fe) )
         {
             cout<<"El dia ingresado no existe en el calendario"<<endl;
             Sleep(1200);
@@ -96,12 +96,56 @@ int validado_Mes()
     return mes;
 }
 
-bool existeDia(int dia,int mes)//debo pasarle la estructura completa (Fecha fec)
+int validado_Anio()
+{
+    int anio;
+    while(true)
+    {
+        cout<<"Año:";
+        anio = pedirEnteroValido();
+        if (anio>1900)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"El año ingresado no es valido    (Fuera de rango)"<<endl;
+            Sleep(1200);
+            continue;
+        }
+    }
+}
+
+bool existeDia(Fecha fe)
 {
 //segun el mes indicado comprueba si existe
-if(esBiciesto(año))
-{
-
+    if(esBisiesto(fe.anio))
+    {
+        int cant_dias [12] = {31,29,31,30,31,30,31,31,30,31,30,31};
+        if(fe.dia>cant_dias[fe.mes]) return 0;
+        else return 1;
+    }
+    else
+    {
+        int cant_dias [12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+        if(fe.dia>cant_dias[fe.mes]) return 0;
+    }
+    return 1;
 }
+
+bool esBisiesto(int anio)
+{
+    if (anio % 4 == 0)
+    {
+        if ( anio % 100 != 0)
+        {
+            return true;
+        }
+        else if (anio % 400 == 0)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 #endif // VALIDACIONES_CLIENTES_H_INCLUDED

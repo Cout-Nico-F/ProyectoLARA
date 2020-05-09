@@ -134,9 +134,9 @@ Cliente pedirCliente()
     //strcpy(cli.mail,validado_EmailCliente());//
     cin.getline(cli.domicilio,100);
     cli.cp = validado_CpCliente();
+    cli.fecha_nacimiento.anio = validado_Anio();
     cli.fecha_nacimiento.mes = validado_Mes();
-    cli.fecha_nacimiento.dia = validado_Dia(cli.fecha_nacimiento.mes);///
-    //cli.fecha_nacimiento.anio = validado_Anio();//
+    cli.fecha_nacimiento.dia = validado_Dia(cli.fecha_nacimiento);
     cli.estado = true;
     return cli;
 }
