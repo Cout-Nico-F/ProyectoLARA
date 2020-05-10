@@ -8,6 +8,7 @@ int pedirEnteroValido();
 bool esPositivo(int);
 bool existeDia(Fecha,int);
 bool esBisiesto(int);
+bool confirmarOpcion(char *);//
 //
 void nuevoPlato();
 bool guardarRegistro(Plato);
@@ -35,6 +36,7 @@ int cantidadClientes();
 struct Cliente pedirCliente();
 void mostrarCliente(Cliente);//
 void mostrarFecha(Fecha);//
+bool agregarCliente(Cliente);
 
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
@@ -44,6 +46,7 @@ int validado_Dia(Fecha);
 int validado_Mes();
 int validado_Anio();
 void validado_EmailCliente(char*);
+void asignarIdAutonumerico(int*);
 
 
 #endif // PROTOTIPOS_H_INCLUDED

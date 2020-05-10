@@ -3,14 +3,9 @@
 
 int validado_IdClienteAutonumerico()//devuelve un numero entero positivo AUTONUMERICO
 {
-    int id,cant;
-    cant = cantidadClientes();
-    if(cant == -1)
-    {
-        return -1;
-    }
-    id = cant+1;
-    return id;
+    int cant;
+    cant = cantidadClientes()+1;
+    return cant;
 }
 
 int pedirEnteroValido()//validacion del tipo de dato entero
