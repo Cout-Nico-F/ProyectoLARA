@@ -137,8 +137,7 @@ Cliente pedirCliente()
     validado_EmailCliente(mail);
     strcpy(cli.mail,mail);
 
-    //strcpy(cli.mail,validado_EmailCliente());//cadena a debe ser mayor a cadena b
-    //cout<<validado_EmailCliente();
+    //strcpy(cli.mail,validado2_EmailCliente());//no funciona en codeblocks. Escribe en memoria incorrecta.
 
     cout<<"\Domicilio:";
     cin.getline(cli.domicilio,100);
@@ -175,7 +174,7 @@ void mostrarCliente(Cliente cli)
     cout<<"Domicilio: . . . .  "<<cli.domicilio<<endl;
     cout<<"Cp: . . . . . . . . "<<cli.cp<<endl;
     cout<<"Fecha Nacimiento: . "<<cli.fecha_nacimiento.dia<<"/"<<cli.fecha_nacimiento.mes<<"/"<<cli.fecha_nacimiento.anio;
-    cout<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
+    cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
 }
 
 #endif // FUNCIONES_CLIENTES_H_INCLUDED
