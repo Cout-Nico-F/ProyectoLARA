@@ -6,7 +6,7 @@
 //validaciones generales
 int pedirEnteroValido();
 bool esPositivo(int);
-bool existeDia(Fecha);
+bool existeDia(Fecha,int);
 bool esBisiesto(int);
 //
 void nuevoPlato();
@@ -18,7 +18,7 @@ int iD_Existente(int);
 void borrarTodo();
 void adios();
 int indice_ID(int);
-Plato buscarRegistro(int);
+struct Plato buscarRegistro(int);
 void modificarPlato();
 int modificarRegistro(int,Plato);
 void mostrarLista();
@@ -32,13 +32,18 @@ int mostrarIDrestaurant(int);
 void submenuClientes();
 void nuevoCliente();
 int cantidadClientes();
+struct Cliente pedirCliente();
+void mostrarCliente(Cliente);//
+void mostrarFecha(Fecha);//
+
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
-char *validado_EmailCliente();
+char *validado2_EmailCliente();
 int validado_CpCliente();
 int validado_Dia(Fecha);
 int validado_Mes();
 int validado_Anio();
+void validado_EmailCliente(char*);
 
 
 #endif // PROTOTIPOS_H_INCLUDED

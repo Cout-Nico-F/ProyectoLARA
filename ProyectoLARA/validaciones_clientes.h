@@ -62,11 +62,11 @@ int validado_Dia (Fecha fe)
         int dia = pedirEnteroValido();
         if( !esPositivo(dia) )
         {
-            cout<<"El dia no puede ser un numero negativo"<<endl;
+            cout<<"El dia debe ser un numero mayor a cero"<<endl;
             Sleep(1200);
             continue;
         }
-        if( !existeDia(fe) )
+        if( !existeDia(fe,dia) )
         {
             cout<<"El dia ingresado no existe en el calendario"<<endl;
             Sleep(1200);
@@ -74,7 +74,6 @@ int validado_Dia (Fecha fe)
         }
         return dia;
     }
-
 }
 
 int validado_Mes()
@@ -116,19 +115,22 @@ int validado_Anio()
     }
 }
 
-bool existeDia(Fecha fe)
+bool existeDia(Fecha fe,int dia)
 {
 //segun el mes indicado comprueba si existe
     if(esBisiesto(fe.anio))
     {
         int cant_dias [12] = {31,29,31,30,31,30,31,31,30,31,30,31};
-        if(fe.dia>cant_dias[fe.mes]) return 0;
-        else return 1;
+        if(dia>cant_dias[fe.mes])
+            return 0;
+        else
+            return 1;
     }
     else
     {
         int cant_dias [12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-        if(fe.dia>cant_dias[fe.mes]) return 0;
+        if(dia>cant_dias[fe.mes])
+            return 0;
     }
     return 1;
 }
@@ -148,4 +150,51 @@ bool esBisiesto(int anio)
     }
     return false;
 }
+
+char* validado2_EmailCliente()//la dejo para averiguar porque no anda
+{
+    char mail[50];
+    while(true)
+    {
+        cout<<"Email:";
+        cin.getline(mail,50);
+        ///estandard RFC2822 regex obtenida de: https://regexr.com/2rhq7
+        const regex expresion ("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+
+        if( regex_match(mail,expresion) ) //devuelve 1 si es valida o 0 si no lo es.
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Mail invalido, intente nuevamente"<<endl;
+            Sleep(1200);
+        }
+    }
+    return mail;
+}
+
+void validado_EmailCliente(char *cad)
+{
+
+    while(true)
+    {
+        cout<<"Email:";
+        cin.getline(cad,50);
+        ///estandard RFC2822 regex obtenida de: https://regexr.com/2rhq7
+        const regex expresion ("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+
+        if( regex_match(cad,expresion) ) //devuelve 1 si es valida o 0 si no lo es.
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Mail invalido, intente nuevamente"<<endl;
+            Sleep(1200);
+        }
+    }
+    return;
+}
+
 #endif // VALIDACIONES_CLIENTES_H_INCLUDED

@@ -1,7 +1,10 @@
 #include <iostream>
-using namespace std;
+#include <regex>
 #include "rlutil.h"
 using namespace rlutil;
+using namespace std;
+
+
 #include "tipos_de_dato.h"
 #include "prototipos.h"
 #include "funciones.h"
