@@ -1,7 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
-void ingresoNuevoPlato() //funcion refactorizada!
+void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
 {
     cls();
     logo();
@@ -573,7 +573,7 @@ void borrarTodo()
 
 }
 
-void modificarPlato()
+void modificarPlato()//proxima a refactorizar
 {
     cls();
     logo();
@@ -985,30 +985,6 @@ int mostrarID(int id)
             }
         }
     }
-
-    //            char traduce_bool[3];
-//            if(reg.estado==true)
-//            {
-//                strcpy(traduce_bool,"Si");
-//            }
-//            else
-//            {
-//                strcpy(traduce_bool,"No");
-//            }
-//            cout<<"=============================="<<endl;
-//            cout<<"ID del plato:_________________"<<reg.id<<endl;
-//            cout<<"Nombre:_______________________"<<reg.nombre<<endl;
-//            cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
-//            cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
-//            cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
-//            cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
-//            cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
-//            cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
-//            cout<<"Habilitado:___________________"<<traduce_bool<<endl;
-//            cout<<"=============================="<<endl;
-//            return 1;//exitoso
-
-
     return 0; //el id ingresado no existe
 
 }
@@ -1239,32 +1215,6 @@ int mostrarIDrestaurant(int id)
         return 2;//el archivo no pudo abrirse o no existe
     }
     cout<<"=============================="<<endl;
-//    while(fread(&reg,sizeof (plato),1,p))
-//    {
-//        if(reg.id_restaurante == id)
-//        {
-//            char traduce_bool[3];
-//            if(reg.estado==true)
-//            {
-//                strcpy(traduce_bool,"Si");
-//            }
-//            else
-//            {
-//                strcpy(traduce_bool,"No");
-//            }
-//
-//            cout<<"ID del plato:_________________"<<reg.id<<endl;
-//            cout<<"Nombre:_______________________"<<reg.nombre<<endl;
-//            cout<<"Costo de Preparacion:_________"<<reg.costo_preparacion<<endl;
-//            cout<<"Valor de Venta:_______________"<<reg.valor_venta<<endl;
-//            cout<<"Tiempo de Preparacion:________"<<reg.tiempo_preparacion<<endl;
-//            cout<<"ID del Restaurante:___________"<<reg.id_restaurante<<endl;
-//            cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
-//            cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
-//            cout<<"Habilitado:___________________"<<traduce_bool<<endl;
-//            cout<<"=============================="<<endl;
-//            con++;//exitoso
-
     while(fread(&reg,sizeof (Plato),1,p))
     {
         if(reg.id_restaurante == id)

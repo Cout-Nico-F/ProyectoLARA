@@ -38,7 +38,6 @@ void ingresoPlatoNuevo()
     return;
 }
 
-
 struct Plato pedirPlato()
 {
     Plato pl;
