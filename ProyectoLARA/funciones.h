@@ -1,14 +1,19 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
-void nuevoPlato()
+void ingresoNuevoPlato() //funcion refactorizada!
 {
     cls();
     logo();
     Plato platoEntrante;
     //pido un registro completo con comprobacion de tipo de dato evitando el error del ciclo en la carga.
 
-    while(true)
+    if( preguntar("Comenzar a cargar un nuevo plato?") == false )
+    {
+        return;
+    }
+
+    while(true)  ///Codigo entregado en tp1 (lo comentado es lo viejo y arriba lo mejorado)
     {
         cout<<"&--- Comenzar a cargar un nuevo plato?--&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
@@ -77,6 +82,7 @@ void nuevoPlato()
 
         }
 
+
         cin.ignore();//el ignore fuera del ciclo para que no ignore parte de la cadena ingresada al iterar por el false del if
         while(true)// validacion de campo NOMBRE
         {
@@ -95,6 +101,7 @@ void nuevoPlato()
 
 
         }
+
 
 
         while(true) //validacion del costo de preparacion
@@ -185,7 +192,7 @@ void nuevoPlato()
             }
         }
 
-        //
+        ////---------------------------------------------------
         while(true)
         {
             cout<<"\nComision del restaurante: ";
@@ -233,7 +240,7 @@ void nuevoPlato()
         platoEntrante.estado = true;
 
         //
-        if(guardarRegistro(platoEntrante))
+        if(guardarPlato(platoEntrante))
         {
             cout<<"\nRegistro agregado con exito"<<endl;
             Sleep(700);
@@ -260,18 +267,20 @@ void nuevoPlato()
             return;
         }
     }
-
-
 }
 
-int iD_Existente(int id)
+bool iD_Existente(int id)
 {
     Plato reg;
     FILE *p;
-    p = fopen("platos.dat","ab+");
+    p = fopen(ARCHIVO_PLATOS,"ab+");
     if(p==NULL)
     {
-        return 2;//el archivo no pudo abrirse o no existe
+        cout<<"Error grave!"<<endl;
+        cout<<"No se puede acceder al archivo"<<ARCHIVO_PLATOS<<endl;
+        cout<<"Presione una tecla para salir"<<endl;
+        anykey();
+        exit(403);//faltan permisos de escritura?
     }
     while(fread(&reg,sizeof (Plato),1,p))
     {
@@ -284,7 +293,7 @@ int iD_Existente(int id)
 
 }
 
-bool guardarRegistro (Plato reg)
+bool guardarPlato (Plato reg)
 {
     FILE *file;
     file = fopen("platos.dat","ab");
@@ -342,7 +351,7 @@ void submenuPlatos()
         {
         case 1:
         {
-            nuevoPlato();
+            ingresoPlatoNuevo();//nueva funcion.
         }
         break;
         case 2:
@@ -599,7 +608,7 @@ void modificarPlato()
             break; //idBuscado validado
         }
     }
-    Plato reg = buscarRegistro(idBuscado);
+    Plato reg = buscarPlato(idBuscado);
     switch(reg.id)
     {
     case -2:
@@ -685,7 +694,7 @@ void modificarPlato()
     }
     reg.valor_venta = nuevo_valor_venta;
     reg.tiempo_preparacion = nuevo_tiempo_preparacion;
-    if(modificarRegistro(indice,reg))
+    if(modificarRegistroPlatos(indice,reg))
     {
         cout<<"Registro modificado con exito"<<endl;
         Sleep(1400);
@@ -723,7 +732,7 @@ int indice_ID (int id_buscado)
     return -1;
 }
 
-Plato buscarRegistro (int id_buscado)
+Plato buscarPlato (int id_buscado)
 {
     Plato reg;
     FILE *p;
@@ -748,7 +757,7 @@ Plato buscarRegistro (int id_buscado)
     return reg;
 }
 
-int modificarRegistro(int indice,Plato reg_modificado)
+int modificarRegistroPlatos(int indice,Plato reg_modificado)
 {
     FILE *p;
     p= fopen("platos.dat","rb+");
@@ -1045,7 +1054,7 @@ void eliminarPlato()
             break; //idBuscado validado
         }
     }
-    Plato reg = buscarRegistro(idBuscado);
+    Plato reg = buscarPlato(idBuscado);
     switch(reg.id)
     {
     case -2:
@@ -1091,7 +1100,7 @@ void eliminarPlato()
     }
     reg.estado = false; //baja logica.
 
-    if(modificarRegistro(indice,reg)==0)
+    if(modificarRegistroPlatos(indice,reg)==0)
     {
         cout<<"Registro dado de baja con exito"<<endl;
         Sleep(1400);

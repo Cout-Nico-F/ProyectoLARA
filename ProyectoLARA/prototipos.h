@@ -3,32 +3,48 @@
 
 
 
+void logo();
+void menuPrincipal();
+void borrarTodo();
+void adios();
 //validaciones generales
 int pedirEnteroValido();
+float pedirFloatValido();
 bool esPositivo(int);
 bool existeDia(Fecha,int);
 bool esBisiesto(int);
-bool confirmarOpcion(char *);//
-//
-void nuevoPlato();
-bool guardarRegistro(Plato);
+bool preguntar(const char *);///
+//platos
 void submenuPlatos();
-void logo();
-void menuPrincipal();
-int iD_Existente(int);
-void borrarTodo();
-void adios();
+void ingresoNuevoPlato();
+bool guardarPlato(Plato);
+bool iD_Existente(int);
 int indice_ID(int);
-struct Plato buscarRegistro(int);
+struct Plato buscarPlato(int);
 void modificarPlato();
-int modificarRegistro(int,Plato);
+int modificarRegistroPlatos(int,Plato);
 void mostrarLista();
 int mostrarID(int);
 void listarPlatosporID();
 void eliminarPlato();
-int iD_RestaurantExistente(int);
 void listarPlatosPorRestaurant();
 int mostrarIDrestaurant(int);
+int iD_RestaurantExistente(int);
+//platosNuevas
+void ingresoPlatoNuevo();
+struct Plato pedirPlato();
+int pedirIDvalidado();
+char* pedirNombreValido();
+float pedirCostoPrepValido();
+float pedirValorVentaValido(int);
+int pedirTiempoPrepValido();
+int pedirIdRestauranteValido();
+int pedirComisionRestValido();
+int pedirIdCategoria();
+
+
+
+
 //clientes
 void submenuClientes();
 void nuevoCliente();
@@ -37,7 +53,6 @@ struct Cliente pedirCliente();
 void mostrarCliente(Cliente);//
 void mostrarFecha(Fecha);//
 bool agregarCliente(Cliente);
-
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
 char *validado2_EmailCliente();

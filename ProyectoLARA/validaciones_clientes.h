@@ -20,6 +20,18 @@ int pedirEnteroValido()//validacion del tipo de dato entero
     return entero;
 }
 
+float pedirFloatValido()
+{
+    float f;
+    while(!(cin>>f))
+    {
+        cout<<"\nError en el tipo de dato ingresado.\nIngrese un numero: ";
+        cin.clear();
+        cin.ignore(123,'\n');
+    }
+    return f;
+}
+
 bool esPositivo(int numero)
 {
     if( numero > 0)

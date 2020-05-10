@@ -10,6 +10,7 @@ using namespace std;
 #include "funciones.h"
 #include "funciones_clientes.h"
 #include "validaciones_clientes.h"
+#include "funciones_platosNuevas.h"
 
 int main()
 {

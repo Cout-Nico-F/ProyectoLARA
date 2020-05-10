@@ -90,27 +90,11 @@ void submenuClientes()
 
 void nuevoCliente()
 {
-
-    while(true)
+    if( preguntar("Desea cargar un nuevo cliente ?") == false )
     {
-        cls();
-        logo();
-        cout<<"&--- Comenzar a cargar un nuevo cliente?--&"<<endl;
-        cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-        cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-        cout<<"       ";
-        int op = pedirEnteroValido();
-        if(op==0)
-        {
-            return;
-        }
-        if(op==1)
-        {
-            break;
-        }
-        cout<<"Opcion incorrecta"<<endl;
-        Sleep(1300);
+        return;
     }
+
     Cliente nuevoReg = pedirCliente();
     if(agregarCliente(nuevoReg))//devuelve 1 si pudo agregarlo o 0 si no pudo
     {
@@ -122,9 +106,6 @@ void nuevoCliente()
 
 Cliente pedirCliente()
 {
-    char* pregunta = "Desea cargar un nuevo cliente ?";
-    confirmarOpcion(pregunta);
-
     Cliente cli;
     asignarIdAutonumerico(&cli.id);
 
@@ -199,7 +180,7 @@ bool agregarCliente(Cliente cli)
     return 0;
 }
 
-bool confirmarOpcion(char *pregunta)
+bool preguntar(const char *pregunta)
 {
    while (true)
     {
