@@ -35,7 +35,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             break;
         }
         cout<<"Opcion incorrecta"<<endl;
-        Sleep(1300);
+        msleep(1300);
     }
 
 
@@ -55,7 +55,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             if(platoEntrante.id <= 0)
             {
                 cout<<"El ID debe ser un numero positivo."<<endl;
-                Sleep(1300);
+                msleep(1300);
                 continue;
             }
 
@@ -96,7 +96,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Error: Debe ingresar un nombre. El primer caracter no puede ser un espacio en blanco"<<endl;
-                Sleep(1200);
+                msleep(1200);
             }
 
 
@@ -116,7 +116,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             if(platoEntrante.costo_preparacion <= 0)
             {
                 cout<<"El costo de preparacion no puede ser negativo!"<<endl;
-                Sleep(1000);
+                msleep(1000);
                 continue;
             }
             else
@@ -142,7 +142,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Valor de venta incorrecto. Debe ser mayor al costo de preparacion";
-                Sleep(1200);
+                msleep(1200);
                 continue;
             }
         }
@@ -164,7 +164,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Error: Ingrese los minutos que toma preparar el plato, no puede ser menor a 1"<<endl;
-                Sleep(1200);
+                msleep(1200);
                 continue;
             }
 
@@ -187,7 +187,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Error: el id debe ser un numero entero positivo"<<endl;
-                Sleep(1200);
+                msleep(1200);
                 continue;
             }
         }
@@ -209,7 +209,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Error: La comision debe ser entre 0 y 100"<<endl;
-                Sleep(1200);
+                msleep(1200);
                 continue;
             }
         }
@@ -231,7 +231,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
             else
             {
                 cout<<"Error: el id debe ser un numero entero positivo"<<endl;
-                Sleep(1200);
+                msleep(1200);
                 continue;
             }
         }
@@ -243,7 +243,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
         if(guardarPlato(platoEntrante))
         {
             cout<<"\nRegistro agregado con exito"<<endl;
-            Sleep(700);
+            msleep(700);
         }
         else
         {
@@ -393,7 +393,7 @@ void submenuPlatos()
         default:
         {
             cout<<"Error, debe elegir una opcion del menu"<<endl;
-            Sleep(600);
+            msleep(600);
         }
         break;
         }
@@ -569,7 +569,7 @@ void borrarTodo()
         return;
     }
     cout<<"Operacion cancelada, volviendo al menu."<<endl;
-    Sleep(1400);
+    msleep(1400);
 
 }
 
@@ -614,14 +614,14 @@ void modificarPlato()//proxima a refactorizar
     case -2:
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-        Sleep(1200);
+        msleep(1200);
         return;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
-        Sleep(1200);
+        msleep(1200);
         return;
     }
     break;
@@ -648,7 +648,7 @@ void modificarPlato()//proxima a refactorizar
         else
         {
             cout<<"Valor de venta incorrecto. Debe ser mayor al costo de preparacion";
-            Sleep(1200);
+            msleep(1200);
             continue;
         }
     }
@@ -677,14 +677,14 @@ void modificarPlato()//proxima a refactorizar
     case -2:
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-        Sleep(1200);
+        msleep(1200);
         return ;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
-        Sleep(1200);
+        msleep(1200);
         return ;
     }
     break;
@@ -697,13 +697,13 @@ void modificarPlato()//proxima a refactorizar
     if(modificarRegistroPlatos(indice,reg))
     {
         cout<<"Registro modificado con exito"<<endl;
-        Sleep(1400);
+        msleep(1400);
         return ;
     }
     else
     {
         cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
-        Sleep(1400);
+        msleep(1400);
         return ;
     }
 
@@ -882,7 +882,7 @@ void listarPlatosporID()
             if(retorno==0)
             {
                 cout<<"Error: No se encontro el ID buscado"<<endl;
-                Sleep(1400);
+                msleep(1400);
             }
             if(retorno==1 || retorno == 0)
             {
@@ -909,7 +909,7 @@ void listarPlatosporID()
         else if (existe == 0)
         {
             cout<<"El ID buscado no existe"<<endl;
-            Sleep(1400);
+            msleep(1400);
         }
         else if ( existe == 2)
         {
@@ -943,7 +943,7 @@ void listarPlatosporID()
             else
             {
                 cout<<"Opcion incorrecta!"<<endl;
-                Sleep(1200);
+                msleep(1200);
             }
         }
     }
@@ -980,7 +980,7 @@ int mostrarID(int id)
             else
             {
                 cout<<"El registro al que intentas acceder fue dado de baja"<<endl;
-                Sleep(2000);
+                msleep(2000);
                 return 1;
             }
         }
@@ -1009,12 +1009,6 @@ void eliminarPlato()
         return;
     }
 
-//        if(idBuscado>0)  como llego esto aca ? Error del github?
-//        {
-//            return;
-//        }
-    //
-
     int idBuscado;
     while(true)
     {
@@ -1036,14 +1030,14 @@ void eliminarPlato()
     case -2:
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-        Sleep(1400);
+        msleep(1400);
         return;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
-        Sleep(1200);
+        msleep(1200);
         return ;
     }
     break;
@@ -1059,14 +1053,14 @@ void eliminarPlato()
     case -2:
     {
         cout<<"Error en la apertura del archivo.  (soloLectura)"<<endl;
-        Sleep(1200);
+        msleep(1200);
         return ;
     }
     break;
     case -1:
     {
         cout<<"El id ingresado no existe."<<endl;
-        Sleep(1200);
+        msleep(1200);
         return ;
     }
     break;
@@ -1079,13 +1073,13 @@ void eliminarPlato()
     if(modificarRegistroPlatos(indice,reg)==0)
     {
         cout<<"Registro dado de baja con exito"<<endl;
-        Sleep(1400);
+        msleep(1400);
         return ;
     }
     else
     {
         cout<<"No se pudo modificar el registro. Error en la escritura del archivo"<<endl;
-        Sleep(1400);
+        msleep(1400);
         return ;
     }
 }
@@ -1136,7 +1130,7 @@ void listarPlatosPorRestaurant ()
             if(retorno==0)
             {
                 cout<<"Error: No se encontro el ID buscado"<<endl;
-                Sleep(1400);
+                msleep(1400);
             }
             if(retorno==1 || retorno == 0)
             {
@@ -1163,7 +1157,7 @@ void listarPlatosPorRestaurant ()
         else if (existe == 0)
         {
             cout<<"El ID buscado no existe"<<endl;
-            Sleep(1400);
+            msleep(1400);
         }
         else if ( existe == 2)
         {
@@ -1197,7 +1191,7 @@ void listarPlatosPorRestaurant ()
             else
             {
                 cout<<"Opcion incorrecta!"<<endl;
-                Sleep(1200);
+                msleep(1200);
             }
         }
     }

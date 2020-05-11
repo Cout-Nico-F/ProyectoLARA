@@ -69,7 +69,7 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            Sleep(2000);
+            msleep(2000);
         }
         break;
         case 4:
@@ -81,7 +81,7 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            Sleep(2000);
+            msleep(2000);
         }
         break;
         case 5:
@@ -93,21 +93,21 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            Sleep(2000);
+            msleep(2000);
 
         }
         break;
         case 0:
         {
             adios();
-            Sleep(2500);
+            msleep(2500);
             exit(0);
         }
         break;
         default:
         {
             cout<<"Error, debe elegir una opcion del menu"<<endl;
-            Sleep(600);
+            msleep(600);
         }
         break;
         }

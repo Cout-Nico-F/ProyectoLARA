@@ -80,7 +80,7 @@ void submenuClientes()
         default:
         {
             cout<<"Error, debe elegir una opcion del menu"<<endl;
-            Sleep(600);
+            msleep(600);
         }
         break;
         }
@@ -200,7 +200,7 @@ bool preguntar(const char *pregunta)
             return 1;
         }
         cout<<"Opcion incorrecta"<<endl;
-        Sleep(1300);
+        msleep(1300);
     }
 }
 

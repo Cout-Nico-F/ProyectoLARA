@@ -19,7 +19,7 @@ void ingresoPlatoNuevo()
         if(guardarPlato(platoEntrante))
         {
             cout<<"\nPlato agregado con exito"<<endl;
-            Sleep(1000);
+            msleep(1000);
         }
         else
         {
@@ -43,7 +43,9 @@ struct Plato pedirPlato()
     Plato pl;
     pl.id = pedirIDvalidado();//ID
     cin.ignore();//el ignore fuera del ciclo para que no ignore parte de la cadena ingresada al iterar por el false del if
-    strcpy(pl.nombre,pedirNombreValido());
+    char nom[49];
+    pedirNombreValido(nom);
+    strcpy(pl.nombre,nom);
     pl.costo_preparacion = pedirCostoPrepValido();
     pl.valor_venta = pedirValorVentaValido(pl.costo_preparacion);
     pl.tiempo_preparacion = pedirTiempoPrepValido();
@@ -90,21 +92,21 @@ int pedirIDvalidado()
     return id;
 }
 
-char* pedirNombreValido()
+void pedirNombreValido(char *cad)
 {
-    char nombre[49];
     while(true)
     {
         cout<<"\nNombre: ";
 
-        cin.getline(nombre,49);
-        if( nombre[0]!='\0' && nombre[0]!=32 )
+        cin.getline(cad,49);
+        if( cad[0]!='\0' && cad[0]!=32 )
         {
             break;//validada
         }
         else
         {
             cout<<"Error: Debe ingresar un nombre. El primer caracter no puede ser un espacio en blanco"<<endl;
+            msleep(1200);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -113,7 +115,6 @@ char* pedirNombreValido()
                 continue;
         }
     }
-    return nombre;
 }
 
 float pedirCostoPrepValido()
@@ -126,7 +127,7 @@ float pedirCostoPrepValido()
         if(costo <= 0)
         {
             cout<<"El costo de preparacion no puede ser negativo!"<<endl;
-            Sleep(1000);
+            msleep(1000);
             continue;
         }
         else

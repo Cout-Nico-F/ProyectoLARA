@@ -34,17 +34,13 @@ int iD_RestaurantExistente(int);
 void ingresoPlatoNuevo();
 struct Plato pedirPlato();
 int pedirIDvalidado();
-char* pedirNombreValido();
+void pedirNombreValido(char *);
 float pedirCostoPrepValido();
 float pedirValorVentaValido(int);
 int pedirTiempoPrepValido();
 int pedirIdRestauranteValido();
 int pedirComisionRestValido();
 int pedirIdCategoria();
-
-
-
-
 //clientes
 void submenuClientes();
 void nuevoCliente();
@@ -55,7 +51,6 @@ void mostrarFecha(Fecha);//
 bool agregarCliente(Cliente);
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
-char *validado2_EmailCliente();
 int validado_CpCliente();
 int validado_Dia(Fecha);
 int validado_Mes();
