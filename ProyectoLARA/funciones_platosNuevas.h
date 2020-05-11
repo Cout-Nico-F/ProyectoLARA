@@ -19,7 +19,7 @@ void ingresoPlatoNuevo()
         if(guardarPlato(platoEntrante))
         {
             cout<<"\nPlato agregado con exito"<<endl;
-            msleep(1000);
+            msleep(1200);
         }
         else
         {
@@ -69,6 +69,7 @@ int pedirIDvalidado()
         if( !esPositivo(id) )        //valida positivo
         {
             cout<<"El ID debe ser un numero positivo."<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -80,6 +81,7 @@ int pedirIDvalidado()
         if( existe )  //valida no existente
         {
             cout<<"\nError(Ya existe el ID). El ID debe ser unico!"<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -97,7 +99,7 @@ void pedirNombreValido(char *cad)
     while(true)
     {
         cout<<"\nNombre: ";
-
+        fflush(stdin);
         cin.getline(cad,49);
         if( cad[0]!='\0' && cad[0]!=32 )
         {
@@ -109,6 +111,7 @@ void pedirNombreValido(char *cad)
             msleep(1200);
             if( preguntar("Desea volver a intentar?")== false )
             {
+
                 submenuPlatos();
             }
             else
@@ -152,6 +155,7 @@ float pedirValorVentaValido(int costo)
         else
         {
             cout<<"Valor de venta incorrecto. Debe ser mayor al costo de preparacion";
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -177,6 +181,7 @@ int pedirTiempoPrepValido()
         else
         {
             cout<<"Error: Ingrese los minutos que toma preparar el plato, no puede ser menor a 1"<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -204,6 +209,7 @@ int pedirIdRestauranteValido()
         else
         {
             cout<<"Error: el id debe ser un numero entero positivo"<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -230,6 +236,7 @@ int pedirComisionRestValido()
         else
         {
             cout<<"Error: La comision debe ser entre 0 y 100"<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();
@@ -256,6 +263,7 @@ int pedirIdCategoria()
         else
         {
             cout<<"Error: el id debe ser un numero entero positivo"<<endl;
+            msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
                 submenuPlatos();

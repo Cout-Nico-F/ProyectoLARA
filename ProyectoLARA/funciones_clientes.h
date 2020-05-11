@@ -186,6 +186,7 @@ bool preguntar(const char *pregunta)
     {
         cls();
         logo();
+        fflush(stdin);
         cout<<"&--- "<<pregunta<<"--&"<<endl;
         cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
         cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
