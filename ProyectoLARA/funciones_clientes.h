@@ -219,4 +219,13 @@ void asignarIdAutonumerico(int* x)
     else *x = auxId;
 }
 
+//La opción Modificar Cliente deberá solicitar el ID de un cliente
+//y permitir modificar el domicilio del mismo.
+
+void modificarCliente()
+{
+    cout<<"Ingrese el ID del cliente a modificar: ";
+    int id = pedirEnteroValido();
+
+}
 #endif // FUNCIONES_CLIENTES_H_INCLUDED

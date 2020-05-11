@@ -575,37 +575,24 @@ void borrarTodo()
 
 void modificarPlato()//proxima a refactorizar
 {
-    cls();
-    logo();
-    cout<<"&----Desea modificar un plato ?---------&"<<endl;
-    cout<<"&--- [ 1 ] Si --------------------------&"<<endl;
-    cout<<"&--- [ 0 ] No (Volver al Menu)----------&"<<endl;
-    cout<<"       ";
-    bool op;
-    while(!(cin>>op))
-    {
-        cout<<"\nError en la opcion ingresada.\n Ingrese 1 para modificar y 0 para volver al menu: ";
-        cin.clear();
-        cin.ignore(123,'\n');
-    }
-    if(op==0)
+
+    if(preguntar("Desea modificar un Plato?  ")==0)
     {
         return;
     }
-    //
     int idBuscado;
     while(true)
     {
         cout<<"\nIngrese el ID del plato a modificar";
-        while(!(cin>>idBuscado))
-        {
-            cout<<"Error: el ID debe ser de tipo numerico entero y positivo"<<endl;
-            cin.clear();
-            cin.ignore(123,'\n');
-        }
+        idBuscado = pedirEnteroValido();
         if(idBuscado>0)
         {
             break; //idBuscado validado
+        }
+        else
+        {
+            cout<<"El id debe ser un numero positivo"<<endl;
+            msleep(1300);
         }
     }
     Plato reg = buscarPlato(idBuscado);
