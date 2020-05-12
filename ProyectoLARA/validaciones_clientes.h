@@ -54,8 +54,8 @@ int validado_CpCliente()
         }
         else
         {
-            cout<<"Codigo Postal no valido. (Debe ser un entero entre 1000 y 9999)";
-            msleep(1300);
+            cout<<"Codigo Postal no valido. (Debe ser un entero entre 1000 y 9999)"<<endl;
+
         }
     }
     return cp;
@@ -93,7 +93,6 @@ int validado_Mes()
         if(mes>12 || !esPositivo(mes))
         {
             cout<<"El mes no puede ser un numero negativo"<<endl;
-            msleep(1200);
             continue;
         }
         else

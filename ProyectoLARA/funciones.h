@@ -59,7 +59,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
                 continue;
             }
 
-            int retorno = iD_Existente(platoEntrante.id);
+            int retorno = iD_PlatoExistente(platoEntrante.id);
             if(retorno==0)
             {
                 break; //ID validado.
@@ -269,7 +269,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
     }
 }
 
-bool iD_Existente(int id)
+bool iD_PlatoExistente(int id)
 {
     Plato reg;
     FILE *p;
@@ -583,7 +583,7 @@ void modificarPlato()//proxima a refactorizar
     int idBuscado;
     while(true)
     {
-        cout<<"\nIngrese el ID del plato a modificar";
+        cout<<"\nIngrese el ID del plato a modificar: ";
         idBuscado = pedirEnteroValido();
         if(idBuscado>0)
         {
@@ -620,7 +620,7 @@ void modificarPlato()//proxima a refactorizar
 
     while(true)//validacion del valor de venta
     {
-        cout<<"Valor de venta actual: "<<reg.valor_venta<<endl;
+        cout<<"\nValor de venta actual: "<<reg.valor_venta<<endl;
         cout<<"\nIngrese el nuevo valor de venta: ";
         while(!(cin>>nuevo_valor_venta))
         {
@@ -657,7 +657,7 @@ void modificarPlato()//proxima a refactorizar
         else
             break;
     }
-    int indice = indice_ID(idBuscado);
+    int indice = indiceIDPlatos(idBuscado);
 
     switch(indice)
     {
@@ -696,7 +696,7 @@ void modificarPlato()//proxima a refactorizar
 
 }
 
-int indice_ID (int id_buscado)
+int indiceIDPlatos (int id_buscado)
 {
     Plato reg;
     FILE *p;
@@ -747,7 +747,7 @@ Plato buscarPlato (int id_buscado)
 int modificarRegistroPlatos(int indice,Plato reg_modificado)
 {
     FILE *p;
-    p= fopen("platos.dat","rb+");
+    p= fopen(ARCHIVO_PLATOS,"rb+");
     if(p==NULL)
     {
         return -2;
@@ -755,7 +755,7 @@ int modificarRegistroPlatos(int indice,Plato reg_modificado)
     fseek(p,sizeof (Plato)*indice,0);
     fwrite(&reg_modificado,sizeof (Plato),1,p);
     fclose(p);
-    return 0;
+    return 1;
 }
 
 void mostrarLista()
@@ -855,7 +855,7 @@ void listarPlatosporID()
             cin.clear();
             cin.ignore(123,'\n');
         }
-        int existe = iD_Existente(busqueda);
+        int existe = iD_PlatoExistente(busqueda);
         if(existe==1)
         {
             int retorno = mostrarID(busqueda);
@@ -1033,7 +1033,7 @@ void eliminarPlato()
         break;
     }
 
-    int indice = indice_ID(idBuscado);
+    int indice = indiceIDPlatos(idBuscado);
 
     switch(indice)
     {

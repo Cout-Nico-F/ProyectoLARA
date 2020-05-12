@@ -18,8 +18,8 @@ bool preguntar(const char *);///
 void submenuPlatos();
 void ingresoNuevoPlato();
 bool guardarPlato(Plato);
-bool iD_Existente(int);
-int indice_ID(int);
+bool iD_PlatoExistente(int);
+int indiceIDPlatos(int);
 struct Plato buscarPlato(int);
 void modificarPlato();
 int modificarRegistroPlatos(int,Plato);

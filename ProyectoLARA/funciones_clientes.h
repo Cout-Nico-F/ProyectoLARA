@@ -131,7 +131,7 @@ Cliente pedirCliente()
     cli.fecha_nacimiento.anio = validado_Anio();
     cli.fecha_nacimiento.mes = validado_Mes();
     cli.fecha_nacimiento.dia = validado_Dia(cli.fecha_nacimiento);
-
+    //falta mostrar cartel de EXITO
     cli.estado = true;
     return cli;
 }
@@ -205,7 +205,7 @@ bool preguntar(const char *pregunta)
     }
 }
 
-void asignarIdAutonumerico(int* x)
+void asignarIdAutonumerico(int* x)//practica de punteros
 {
     int auxId = validado_IdClienteAutonumerico();
     if(auxId<1)

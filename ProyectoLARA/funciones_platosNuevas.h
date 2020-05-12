@@ -77,7 +77,7 @@ int pedirIDvalidado()
             else
                 continue;
         }
-        int existe = iD_Existente(id);
+        int existe = iD_PlatoExistente(id);
         if( existe )  //valida no existente
         {
             cout<<"\nError(Ya existe el ID). El ID debe ser unico!"<<endl;
