@@ -157,8 +157,6 @@ bool esBisiesto(int anio)
     return false;
 }
 
-//char* validado2_EmailCliente()//la dejo para averiguar porque no anda
-//{
 //    char mail[50];
 //    while(true)
 //    {
@@ -179,7 +177,6 @@ bool esBisiesto(int anio)
 //    }
 //    return mail;
 //}
-
 void validado_EmailCliente(char *cad)
 {
 

@@ -8,7 +8,6 @@ void submenuClientes()
         cls();
         logo();
 
-
         gotoxy(16,15);
         cout<<" |1|-Nuevo cliente              "<<endl;
         gotoxy(16,16.5);
@@ -43,7 +42,7 @@ void submenuClientes()
         break;
         case 2:
         {
-
+            modificarCliente();
         }
         break;
         case 3:
@@ -98,7 +97,11 @@ void nuevoCliente()
     Cliente nuevoReg = pedirCliente();
     if(agregarCliente(nuevoReg))//devuelve 1 si pudo agregarlo o 0 si no pudo
     {
+        setColor(GREEN);
         cout<<"Registro añadido correctamente"<<endl;
+        setColor(GREY);
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
     }
     else
         cout<<"Error en el archivo "<<ARCHIVO_CLIENTES<<endl;
@@ -182,7 +185,7 @@ bool agregarCliente(Cliente cli)
 
 bool preguntar(const char *pregunta)
 {
-   while (true)
+    while (true)
     {
         cls();
         logo();
@@ -224,8 +227,102 @@ void asignarIdAutonumerico(int* x)//practica de punteros
 
 void modificarCliente()
 {
+    cls();
+    logo();
     cout<<"Ingrese el ID del cliente a modificar: ";
-    int id = pedirEnteroValido();
+// modificarRegistroCliente(crearRegModificadoClientes(encontrarCliente(pedirEnteroValido())));
 
+    int id = pedirEnteroValido();
+    int pos = encontrarPosicionCliente(id);
+
+
+    switch(pos)
+    {
+    case -1:
+        cout<<"El archivo no existe o no es posible acceder a el"<<endl;
+        msleep(1000);
+        return;
+
+
+    case -2:
+        cout<<"No se encuentra el id de cliente buscado"<<endl;
+        msleep(1000);
+        return;
+
+
+    default:
+        modificarRegistroCliente(crearRegModificadoClientes(pos),pos);
+
+        cout<<"Registro modificado con exito"<<endl;
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+        break;
+    }
 }
+
+int encontrarPosicionCliente(int id)
+{
+    Cliente reg;
+    int pos=0;
+    FILE *p;
+    p=fopen(ARCHIVO_CLIENTES,"rb");
+    if(p==NULL)
+    {
+        return -1;
+    }
+    while(fread(&reg,sizeof(Cliente),1,p))
+    {
+        if (id == reg.id)
+        {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+    fclose(p);
+    return -2;
+}
+
+Cliente crearRegModificadoClientes(int pos)
+{
+    Cliente regModificado;
+    FILE*p;
+    p=fopen(ARCHIVO_CLIENTES,"rb+");
+    if(p==NULL)
+    {
+        cout<<"Error Grave!\nNo se puede leer el archivo "<<ARCHIVO_CLIENTES<<endl;
+        cout<<"Presione una tecla para salir"<<endl;
+        anykey();
+        exit(404);
+    }
+    fseek(p,sizeof(Cliente)*pos,SEEK_SET);
+    if(fread(&regModificado,sizeof(Cliente),1,p))
+    {
+        fflush(stdin);
+        cout<<"Ingrese el nuevo Domicilio: ";
+        cin.getline(regModificado.apellido,50);
+        fclose(p);
+        return regModificado;
+    }
+    fclose(p);
+}
+
+bool modificarRegistroCliente (Cliente reg,int pos)
+{
+    FILE*p;
+    p=fopen(ARCHIVO_CLIENTES,"rb+");
+    if(p==NULL)
+    {
+        return 0;
+    }
+    fseek(p,sizeof(Cliente) * pos,SEEK_SET);
+    if (fwrite(&reg,sizeof(Cliente),1,p))
+    {
+        fclose(p);
+        return 1;
+    }
+    fclose(p);
+}
+
+
 #endif // FUNCIONES_CLIENTES_H_INCLUDED

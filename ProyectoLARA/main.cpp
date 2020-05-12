@@ -26,7 +26,7 @@ int main()
         gotoxy(16,16.5);
         cout<<" |2|-Clientes                 "<<endl;
         gotoxy(16,17.5);
-        cout<<" |3|-Pedidos                  "<<endl; //gotoxy experimentales. nose si puedo mantenerlos en todo el programa.
+        cout<<" |3|-Pedidos                  "<<endl;
         gotoxy(16,18);
         cout<<" |4|-Reportes                 "<<endl;
         gotoxy(16,19.5);
@@ -69,7 +69,7 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            msleep(2000);
+            msleep(1500);
         }
         break;
         case 4:
@@ -81,7 +81,7 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            msleep(2000);
+            msleep(1500);
         }
         break;
         case 5:
@@ -93,14 +93,14 @@ int main()
             cout<<"Opcion no disponible en la version DEMO"<<endl;
             gotoxy(45,19.5);
             cout<<"Volviendo al menu"<<endl;
-            msleep(2000);
+            msleep(1500);
 
         }
         break;
         case 0:
         {
             adios();
-            msleep(2500);
+            msleep(800);
             exit(0);
         }
         break;
@@ -112,11 +112,6 @@ int main()
         break;
         }
     }
-
-
-
-
-
 //setColor(GREY);
 
     return 0;

@@ -55,6 +55,7 @@ struct Plato pedirPlato()
     pl.estado = true;
     return pl;
 };
+
 int pedirIDvalidado()
 {
     //cls();

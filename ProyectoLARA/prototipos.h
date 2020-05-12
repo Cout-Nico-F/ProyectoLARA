@@ -49,6 +49,11 @@ struct Cliente pedirCliente();
 void mostrarCliente(Cliente);//
 void mostrarFecha(Fecha);//
 bool agregarCliente(Cliente);
+bool modificarRegistroCliente(Cliente,int);
+int encontrarPosicionCliente(int);
+void modificarCliente();
+struct Cliente crearRegModificadoClientes(int);
+
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
 int validado_CpCliente();
