@@ -240,7 +240,7 @@ void ingresoNuevoPlato() //funcion rehecha en funciones_platosNuevas.h
         platoEntrante.estado = true;
 
         //
-        if(guardarPlato(platoEntrante))
+        if(agregarPlato(platoEntrante))
         {
             cout<<"\nRegistro agregado con exito"<<endl;
             msleep(700);
@@ -293,7 +293,7 @@ bool iD_PlatoExistente(int id)
 
 }
 
-bool guardarPlato (Plato reg)
+bool agregarPlato (Plato reg)
 {
     FILE *file;
     file = fopen("platos.dat","ab");
@@ -371,7 +371,7 @@ void submenuPlatos()
         break;
         case 5:
         {
-            mostrarLista();
+            mostrarListaPlatos();
 
         }
         break;
@@ -387,7 +387,7 @@ void submenuPlatos()
         break;
         case 101:
         {
-            borrarTodo();
+            borrarTodo(ARCHIVO_PLATOS);
         }
         break;
         default:
@@ -534,11 +534,11 @@ void adios()
 
 }
 
-void borrarTodo()
+void borrarTodo(const char*ARCH)
 {
     setColor(RED);
     cls();
-    cout<<"Esta seguro que desea reestablecer el archivo de datos completo?\nEsto borrara toda la informacion definitivamente. "<<endl;
+    cout<<"Esta seguro que desea reestablecer el archivo de datos completo?\nEsto borrara toda la informacion definitivamente en "<<ARCH<<endl;
     cout<<"----[9]-Borrar todo."<<endl;
     cout<<"----[0]-Volver al menu sin hacer cambios."<<endl;
     cout<<"--->[";
@@ -556,7 +556,7 @@ void borrarTodo()
     if(op==9)
     {
         FILE *p;
-        p=fopen("platos.dat","wb");
+        p=fopen(ARCH,"wb");
         if(p==NULL)
         {
             cout<<"Error: no pudo realizarse la operacion sobre el archivo.\nNo hay permisos de escritura?"<<endl;
@@ -565,6 +565,7 @@ void borrarTodo()
             return;
 
         }
+        cout<<"ARCHIVO "<<ARCH<<" REESTABLECIDO"<<endl;
         fclose(p);
         return;
     }
@@ -758,7 +759,7 @@ int modificarRegistroPlatos(int indice,Plato reg_modificado)
     return 1;
 }
 
-void mostrarLista()
+void mostrarListaPlatos()
 {
     cls();
     logo();

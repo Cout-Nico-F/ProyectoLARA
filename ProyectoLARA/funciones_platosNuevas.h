@@ -16,7 +16,7 @@ void ingresoPlatoNuevo()
         cls();
         logo();
         Plato platoEntrante = pedirPlato();
-        if(guardarPlato(platoEntrante))
+        if(agregarPlato(platoEntrante))
         {
             cout<<"\nPlato agregado con exito"<<endl;
             msleep(1200);

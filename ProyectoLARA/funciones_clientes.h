@@ -52,13 +52,12 @@ void submenuClientes()
         break;
         case 4:
         {
-
+            listarTodosLosClientes();
         }
         break;
         case 5:
         {
-
-
+            darDeBajaCliente();
         }
         break;
         case 6:
@@ -73,7 +72,7 @@ void submenuClientes()
         break;
         case 101:
         {
-
+            borrarTodo(ARCHIVO_CLIENTES);
         }
         break;
         default:
@@ -300,7 +299,7 @@ Cliente crearRegModificadoClientes(int pos)
     {
         fflush(stdin);
         cout<<"Ingrese el nuevo Domicilio: ";
-        cin.getline(regModificado.apellido,50);
+        cin.getline(regModificado.domicilio,50);
         fclose(p);
         return regModificado;
     }
@@ -364,5 +363,183 @@ bool mostrarCliente_porPosicion(int pos)
     }
     fclose(p);
     return false;
+}
+
+void listarTodosLosClientes()
+{
+    cls();
+    logo();
+    struct Cliente* listaClientes;
+    int cantidad_clientes = cantidadClientes();
+    listaClientes = (Cliente*) malloc (cantidad_clientes * sizeof(Cliente));
+    if (listaClientes==NULL)
+        return;
+
+    int     resultado = cargarListaClientes(listaClientes,cantidad_clientes);
+    switch (resultado)
+    {
+    case 1:
+        break;
+    case 0:
+        cout<<"ERROR, no se pudo leer el archivo en la posicion indicada  (Archivo vacio?)"<<endl;
+        cout<<"Presione una tecla cualquiera para continuar"<<endl;
+        anykey();
+        return;
+    case -1:
+        cout<<"ERROR, no se pudo abrir el archivo "<<ARCHIVO_CLIENTES<<endl;
+        cout<<"Presione una tecla cualquiera para continuar"<<endl;
+        anykey();
+        return;
+
+    default:
+        exit(999999);
+
+    }
+    ordenarListaClientes(listaClientes,cantidad_clientes);
+
+    mostrarListaClientes(listaClientes,cantidad_clientes);
+    free(listaClientes);
+}
+
+int cargarListaClientes(Cliente *lista,int cantidad_clientes)
+{
+    FILE*p;
+    p=fopen(ARCHIVO_CLIENTES,"rb");
+    if(p==NULL)
+    {
+        return -1;
+    }
+    if(fread(lista,sizeof (Cliente),cantidad_clientes,p))
+    {
+        fclose(p);
+        return 1;
+    }
+    else
+    {
+        fclose(p);
+        return 0;
+    }
+}
+
+void ordenarListaClientes(Cliente *lista,int cant_Cli)
+{
+    //ordenamiento por seleccion
+    char *aux;
+    int posMin;
+
+    for(int i=0 ; i<cant_Cli-1 ; i++)
+    {
+        posMin=i;
+        //strcpy(men,lista[i].apellido);
+
+        for(int j=i+1; j<cant_Cli; j++)
+        {
+            if(strcmp(lista[j].apellido,lista[posMin].apellido) < 0)
+            {
+                posMin=j;
+            }
+        }
+        strcpy(aux,lista[i].apellido);
+        strcpy(lista[i].apellido,lista[posMin].apellido);
+        strcpy(lista[posMin].apellido,aux);
+    }
+}
+
+void mostrarListaClientes (Cliente *lista,int cant_Cli)
+{
+    int contador_mostrados=0,contador_clientes=0;
+    cout<<"LISTA DE CLIENTES"<<endl;
+    cout<<"-------------------------------------"<<endl;
+    for(int i=0; i<cant_Cli; i++)
+    {
+        contador_clientes++;
+        if(lista[i].estado)
+        {
+            mostrarCliente(lista[i]);
+            cout<<"-------------------------------------"<<endl;
+            contador_mostrados++;
+        }
+
+    }
+    if(contador_mostrados)
+    {
+      cout<<"FIN DE LISTA CLIENTES"<<endl;
+    }
+    else
+    {
+        cout<<"NO HAY CLIENTES CARGADOS\n"<<endl;
+    }
+    if(contador_mostrados!=contador_clientes)
+    {
+        cout<<"(Algunos registros no se muestran en la lista porque fueron dados de baja)"<<endl;
+    }
+    cout<<"Presione una tecla cualquiera para continuar"<<endl;
+    anykey();
+}
+
+void darDeBajaCliente()
+{
+    cls();
+    logo();
+    cout<<"Ingrese el ID de cliente a dar de baja: ";
+    int id = pedirEnteroValido();
+    cout<<endl;
+    if(preguntar("Esta seguro que desea dar de baja al cliente?\n     Esta accion borrara el registro"))
+    {
+        int pos = encontrarPosicionCliente(id);
+        switch (pos)
+        {
+        case -1:
+            cout<<"ERROR, no se pudo abrir el archivo "<<ARCHIVO_CLIENTES<<endl;
+            cout<<"Presione una tecla cualquiera para continuar"<<endl;
+            anykey();
+            return;
+        case -2:
+            cout<<"ERROR, el id ingresado no se encuentra en el archivo "<<ARCHIVO_CLIENTES<<endl;
+            cout<<"Presione una tecla cualquiera para continuar"<<endl;
+            anykey();
+            return;
+        default:
+            break;
+        }
+        if(bajaLogica(pos))
+        {
+            cout<<"CLIENTE DADO DE BAJA"<<endl;
+            cout<<"Presione una tecla cualquiera para continuar"<<endl;
+            anykey();
+        }
+        else
+        {
+            cout<<"NO SE REALIZARON CAMBIOS. Error en el archivo clientes.dat"<<endl;
+            cout<<"Presione una tecla cualquiera para continuar"<<endl;
+            anykey();
+        }
+    }
+
+
+}
+
+bool bajaLogica(int pos)
+{
+    Cliente reg;
+    FILE*p;
+    p=fopen(ARCHIVO_CLIENTES,"rb+");
+    if(p==NULL)
+    {
+        return 0;
+    }
+    fseek(p,sizeof(Cliente) * pos,SEEK_SET);
+
+    if(fread(&reg,sizeof(Cliente),1,p)==0)
+        return 0;
+    reg.estado = false;
+
+    fseek(p,sizeof(Cliente) * pos,SEEK_SET);
+    if (fwrite(&reg,sizeof(Cliente),1,p))
+    {
+        fclose(p);
+        return 1;
+    }
+    fclose(p);
 }
 #endif // FUNCIONES_CLIENTES_H_INCLUDED

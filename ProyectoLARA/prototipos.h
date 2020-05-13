@@ -5,7 +5,7 @@
 
 void logo();
 void menuPrincipal();
-void borrarTodo();
+void borrarTodo(const char*);
 void adios();
 //validaciones generales
 int pedirEnteroValido();
@@ -17,13 +17,13 @@ bool preguntar(const char *);///
 //platos
 void submenuPlatos();
 void ingresoNuevoPlato();
-bool guardarPlato(Plato);
+bool agregarPlato(Plato);
 bool iD_PlatoExistente(int);
 int indiceIDPlatos(int);
 struct Plato buscarPlato(int);
 void modificarPlato();
 int modificarRegistroPlatos(int,Plato);
-void mostrarLista();
+void mostrarListaPlatos();
 int mostrarID(int);
 void listarPlatosporID();
 void eliminarPlato();
@@ -55,8 +55,12 @@ void modificarCliente();
 struct Cliente crearRegModificadoClientes(int);
 void listarCliente_porID();
 bool mostrarCliente_porPosicion(int pos);
-
-
+void listarTodosLosClientes();
+int cargarListaClientes(Cliente *,int);
+void ordenarListaClientes(Cliente*,int);
+void mostrarListaClientes(Cliente*,int);
+bool bajaLogica(int);
+void darDeBajaCliente();
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
 int validado_CpCliente();
