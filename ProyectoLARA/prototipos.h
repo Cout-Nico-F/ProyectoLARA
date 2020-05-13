@@ -53,6 +53,9 @@ bool modificarRegistroCliente(Cliente,int);
 int encontrarPosicionCliente(int);
 void modificarCliente();
 struct Cliente crearRegModificadoClientes(int);
+void listarCliente_porID();
+bool mostrarCliente_porPosicion(int pos);
+
 
 //validaciones en clientes
 int validado_IdClienteAutonumerico();

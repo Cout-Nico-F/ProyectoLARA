@@ -47,7 +47,7 @@ void submenuClientes()
         break;
         case 3:
         {
-
+            listarCliente_porID();
         }
         break;
         case 4:
@@ -324,5 +324,45 @@ bool modificarRegistroCliente (Cliente reg,int pos)
     fclose(p);
 }
 
+void listarCliente_porID()
+{
+    cls();
+    logo();
+    cout<<"BUSCAR CLIENTE POR ID"<<endl;
+    cout<<"Ingrese el ID: ";
+    int id = pedirEnteroValido();
+    int pos = encontrarPosicionCliente(id);
+    if(mostrarCliente_porPosicion(pos))
+    {
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+    }
+    else
+    {
+        cout<<"No se pudo leer el archivo "<<ARCHIVO_CLIENTES<<endl;
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+    }
+}
 
+bool mostrarCliente_porPosicion(int pos)
+{
+
+    Cliente reg;
+    FILE *p;
+    p=fopen(ARCHIVO_CLIENTES,"rb");
+    if(p==NULL)
+    {
+        return false;
+    }
+    fseek(p,sizeof(Cliente)*pos,SEEK_SET);
+    if(fread(&reg,sizeof(Cliente),1,p))
+    {
+        mostrarCliente(reg);
+        fclose(p);
+        return true;
+    }
+    fclose(p);
+    return false;
+}
 #endif // FUNCIONES_CLIENTES_H_INCLUDED
