@@ -18,8 +18,14 @@ void submenuClientes()
         cout<<" |4|-Listar todos los cliente      "<<endl;
         gotoxy(16,19.5);
         cout<<" |5|-Eliminar cliente"<<endl;
-        gotoxy(16,20.5);
-        cout<<" |0|-Volver al menu principal         "<<endl;
+        gotoxy(17,21);
+        cout<<"- - - - - - - - - - - - - - -     "<<endl;
+        gotoxy(16,22);
+        cout<<" |0|-Volver al menu principal       "<<endl;
+
+
+//        gotoxy(16,20.5);
+//        cout<<" |0|-Volver al menu principal         "<<endl;
 
         gotoxy(48,16);
         cout<<"    Ingrese la opcion deseada: ";

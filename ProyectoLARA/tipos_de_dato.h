@@ -2,6 +2,7 @@
 #define TIPOS_DE_DATO_H_INCLUDED
 const char* ARCHIVO_PLATOS = "platos.dat";
 const char* ARCHIVO_CLIENTES = "clientes.dat";
+const char* ARCHIVO_PEDIDOS = "pedidos.dat";
 
 struct Fecha
 {
@@ -33,6 +34,18 @@ struct Cliente
     int cp;
     Fecha fecha_nacimiento;
     bool estado;
+};
+
+struct Pedido
+{
+    int ID;
+    int ID_cliente;
+    int ID_plato;
+    int Cantidad;
+    float pre;
+    Fecha fecha_pedido;
+    float valoracion;
+    int estado;
 };
 
 

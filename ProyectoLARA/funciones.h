@@ -332,10 +332,12 @@ void submenuPlatos()
         cout<<" |5|-Listar todos los platos  "<<endl;
         gotoxy(16,20.5);
         cout<<" |6|-Eliminar plato          "<<endl;
-        gotoxy(16,22.5);
+        gotoxy(17,22.5);
+        cout<<"- - - - - - - - - - - - - - -     "<<endl;
+        gotoxy(16,23.5);
         cout<<" |0|-Volver al menu principal "<<endl;
-        gotoxy(48,16);
 
+        gotoxy(49,16);
         cout<<"    Ingrese la opcion deseada: ";
         int op;
         while(!(cin>>op))

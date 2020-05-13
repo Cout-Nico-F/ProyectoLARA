@@ -11,6 +11,7 @@ using namespace std;
 #include "funciones_clientes.h"
 #include "validaciones_clientes.h"
 #include "funciones_platosNuevas.h"
+#include "funciones_pedidos.h"
 
 int main()
 {
@@ -20,7 +21,7 @@ int main()
     {
         cls();
         logo();
-        gotoxy(16,15);
+
         gotoxy(16,15);
         cout<<" |1|-Platos                   "<<endl;
         gotoxy(16,16.5);
@@ -62,14 +63,7 @@ int main()
         break;
         case 3:
         {
-            cls();
-            logo();
-
-            gotoxy(35,15);
-            cout<<"Opcion no disponible en la version DEMO"<<endl;
-            gotoxy(45,19.5);
-            cout<<"Volviendo al menu"<<endl;
-            msleep(1500);
+            submenuPedidos();
         }
         break;
         case 4:

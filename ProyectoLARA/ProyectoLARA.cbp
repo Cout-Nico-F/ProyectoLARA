@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="funciones.h" />
 		<Unit filename="funciones_clientes.h" />
+		<Unit filename="funciones_pedidos.h" />
 		<Unit filename="funciones_platosNuevas.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="prototipos.h" />

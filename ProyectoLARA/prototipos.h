@@ -41,6 +41,7 @@ int pedirTiempoPrepValido();
 int pedirIdRestauranteValido();
 int pedirComisionRestValido();
 int pedirIdCategoria();
+
 //clientes
 void submenuClientes();
 void nuevoCliente();
@@ -61,6 +62,7 @@ void ordenarListaClientes(Cliente*,int);
 void mostrarListaClientes(Cliente*,int);
 bool bajaLogica(int);
 void darDeBajaCliente();
+
 //validaciones en clientes
 int validado_IdClienteAutonumerico();
 int validado_CpCliente();
@@ -69,6 +71,8 @@ int validado_Mes();
 int validado_Anio();
 void validado_EmailCliente(char*);
 void asignarIdAutonumerico(int*);
+//Pedidos
+void submenuPedidos();
 
 
 #endif // PROTOTIPOS_H_INCLUDED
