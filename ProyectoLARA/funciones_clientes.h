@@ -115,7 +115,7 @@ void nuevoCliente()
 Cliente pedirCliente()
 {
     Cliente cli;
-    asignarIdAutonumerico(&cli.id);
+    asignarIdAutonumerico(&cli.id,1);
 
     cout<<"Nombre:";
     cin.ignore();
@@ -144,19 +144,39 @@ Cliente pedirCliente()
     return cli;
 }
 
-int cantidadClientes()
+int cantidadRegistros(int num_archivo)
 {
-    int cant;
-    FILE *p;
-    p=fopen(ARCHIVO_CLIENTES,"ab+");
-    if(p==NULL)
+    if(num_archivo==1)
     {
-        return -1;
+        int cant;
+        FILE *p;
+        p=fopen(ARCHIVO_CLIENTES,"ab+");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Cliente);
+        fclose(p);
+        return cant;
     }
-    fseek(p,0,SEEK_END);
-    cant = ftell(p)/sizeof(Cliente);
-    fclose(p);
-    return cant;
+    if(num_archivo == 2)
+    {
+        int cant;
+        FILE *p;
+        p=fopen(ARCHIVO_PEDIDOS,"ab+");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Pedido);
+        fclose(p);
+        return cant;
+    }
+    else
+        cout<<"HAY UN ERROR EN EL NUMERO DE ARCHIVO PASADO A CANTIDADREGISTROS()"<<endl;
+
 }
 
 void mostrarCliente(Cliente cli)
@@ -213,16 +233,16 @@ bool preguntar(const char *pregunta)
     }
 }
 
-void asignarIdAutonumerico(int* x)//practica de punteros
+void asignarIdAutonumerico(int* x,int archivo)//practica de punteros
 {
-    int auxId = validado_IdClienteAutonumerico();
+    int auxId = validado_IdAutonumerico(archivo);
     if(auxId<1)
     {
         cout<<"Error grave! No se puede asignar el nuevo ID"<<endl;
         cout<<"No se puede acceder al archivo "<<ARCHIVO_CLIENTES<<endl;
         cout<<"Presione una tecla para salir"<<endl;
         anykey();
-        exit(404); //deberia salir o volver al menu?
+        exit(404);
     }
     else *x = auxId;
 }
@@ -376,7 +396,7 @@ void listarTodosLosClientes()
     cls();
     logo();
     struct Cliente* listaClientes;
-    int cantidad_clientes = cantidadClientes();
+    int cantidad_clientes = cantidadRegistros(1);
     listaClientes = (Cliente*) malloc (cantidad_clientes * sizeof(Cliente));
     if (listaClientes==NULL)
         return;
@@ -469,7 +489,7 @@ void mostrarListaClientes (Cliente *lista,int cant_Cli)
     }
     if(contador_mostrados)
     {
-      cout<<"FIN DE LISTA CLIENTES"<<endl;
+        cout<<"FIN DE LISTA CLIENTES"<<endl;
     }
     else
     {

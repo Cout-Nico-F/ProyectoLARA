@@ -45,7 +45,7 @@ int pedirIdCategoria();
 //clientes
 void submenuClientes();
 void nuevoCliente();
-int cantidadClientes();
+int cantidadRegistros();
 struct Cliente pedirCliente();
 void mostrarCliente(Cliente);//
 void mostrarFecha(Fecha);//
@@ -64,15 +64,16 @@ bool bajaLogica(int);
 void darDeBajaCliente();
 
 //validaciones en clientes
-int validado_IdClienteAutonumerico();
+int validado_IdAutonumerico(int);
 int validado_CpCliente();
 int validado_Dia(Fecha);
 int validado_Mes();
 int validado_Anio();
 void validado_EmailCliente(char*);
-void asignarIdAutonumerico(int*);
+void asignarIdAutonumerico(int*,int);
 //Pedidos
 void submenuPedidos();
-
+void nuevoPedido();
+Pedido pedirPedido();
 
 #endif // PROTOTIPOS_H_INCLUDED

@@ -1,10 +1,10 @@
 #ifndef VALIDACIONES_CLIENTES_H_INCLUDED
 #define VALIDACIONES_CLIENTES_H_INCLUDED
 
-int validado_IdClienteAutonumerico()//devuelve un numero entero positivo AUTONUMERICO
+int validado_IdAutonumerico(int archivo)//devuelve un numero entero positivo AUTONUMERICO segun el archivo indicado
 {
     int cant;
-    cant = cantidadClientes()+1;
+    cant = cantidadRegistros(archivo)+1;
     return cant;
 }
 

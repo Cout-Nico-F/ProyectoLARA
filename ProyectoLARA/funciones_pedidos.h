@@ -87,4 +87,20 @@ void submenuPedidos()
     }
 }
 
+void nuevoPedido()
+{
+    if( preguntar("Desea cargar un nuevo pedido ?") == false )
+    {
+        return;
+    }
+    Pedido nuevoPed = pedirPedido();
+
+}
+
+Pedido pedirPedido()
+{
+    Pedido ped;
+    asignarIdAutonumerico(&ped.ID,2);
+}
+
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED
