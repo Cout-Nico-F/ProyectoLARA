@@ -109,7 +109,11 @@ void nuevoCliente()
         anykey();
     }
     else
+        setColor(LIGHTRED);
         cout<<"Error en el archivo "<<ARCHIVO_CLIENTES<<endl;
+        setColor(GREY);
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
 }
 
 Cliente pedirCliente()
@@ -128,7 +132,7 @@ Cliente pedirCliente()
     validado_EmailCliente(mail);
     strcpy(cli.mail,mail);
 
-    //strcpy(cli.mail,validado2_EmailCliente());//no funciona en codeblocks. Escribe en memoria incorrecta.
+    //strcpy(cli.mail,validado2_EmailCliente());//no funciona en codeblocks(pero si en vs). Escribe en memoria incorrecta.
 
     cout<<"\Domicilio:";
     cin.getline(cli.domicilio,100);
@@ -139,7 +143,6 @@ Cliente pedirCliente()
     cli.fecha_nacimiento.anio = validado_Anio();
     cli.fecha_nacimiento.mes = validado_Mes();
     cli.fecha_nacimiento.dia = validado_Dia(cli.fecha_nacimiento);
-    //falta mostrar cartel de EXITO
     cli.estado = true;
     return cli;
 }

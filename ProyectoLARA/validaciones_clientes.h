@@ -158,26 +158,6 @@ bool esBisiesto(int anio) //revisar
     return false;
 }
 
-//    char mail[50];
-//    while(true)
-//    {
-//        cout<<"Email:";
-//        cin.getline(mail,50);
-//        ///estandard RFC2822 regex obtenida de: https://regexr.com/2rhq7
-//        const regex expresion ("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-//
-//        if( regex_match(mail,expresion) ) //devuelve 1 si es valida o 0 si no lo es.
-//        {
-//            break;
-//        }
-//        else
-//        {
-//            cout<<"Mail invalido, intente nuevamente"<<endl;
-//            Sleep(1200);
-//        }
-//    }
-//    return mail;
-//}
 void validado_EmailCliente(char *cad)
 {
 
