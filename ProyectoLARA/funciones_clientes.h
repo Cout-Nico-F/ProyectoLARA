@@ -150,7 +150,7 @@ int cantidadRegistros(int num_archivo)
     {
         int cant;
         FILE *p;
-        p=fopen(ARCHIVO_CLIENTES,"ab+");
+        p=fopen(ARCHIVO_CLIENTES,"rb");
         if(p==NULL)
         {
             return -1;
@@ -164,7 +164,7 @@ int cantidadRegistros(int num_archivo)
     {
         int cant;
         FILE *p;
-        p=fopen(ARCHIVO_PEDIDOS,"ab+");
+        p=fopen(ARCHIVO_PEDIDOS,"rb");
         if(p==NULL)
         {
             return -1;
@@ -176,6 +176,7 @@ int cantidadRegistros(int num_archivo)
     }
     else
         cout<<"HAY UN ERROR EN EL NUMERO DE ARCHIVO PASADO A CANTIDADREGISTROS()"<<endl;
+        exit(888);
 
 }
 

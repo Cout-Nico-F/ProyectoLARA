@@ -71,9 +71,15 @@ int validado_Mes();
 int validado_Anio();
 void validado_EmailCliente(char*);
 void asignarIdAutonumerico(int*,int);
+bool iD_clienteExistente(int);
 //Pedidos
 void submenuPedidos();
 void nuevoPedido();
 Pedido pedirPedido();
+int validado_IdClienteExistente();
+int validado_IdPlatoExistente(float);
+int validado_Cantidad();
+float devolverPrecio(int);
+
 
 #endif // PROTOTIPOS_H_INCLUDED

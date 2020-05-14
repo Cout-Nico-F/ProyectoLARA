@@ -92,7 +92,7 @@ int validado_Mes()
         mes = pedirEnteroValido();
         if(mes>12 || !esPositivo(mes))
         {
-            cout<<"El mes no puede ser un numero negativo"<<endl;
+            cout<<"El mes no puede ser un numero negativo ni mayor a 12"<<endl;
             continue;
         }
         else
@@ -123,11 +123,11 @@ int validado_Anio()
 
 bool existeDia(Fecha fe,int dia)
 {
-//segun el mes indicado comprueba si existe
+//segun el mes y año indicado comprueba si existe
     if(esBisiesto(fe.anio))
     {
-        int cant_dias [12] = {31,29,31,30,31,30,31,31,30,31,30,31};
-        if(dia>cant_dias[fe.mes])
+        int cant_dias_bisiesto [12] = {31,29,31,30,31,30,31,31,30,31,30,31};
+        if(dia>cant_dias_bisiesto[fe.mes-1])
             return 0;
         else
             return 1;
@@ -135,13 +135,13 @@ bool existeDia(Fecha fe,int dia)
     else
     {
         int cant_dias [12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-        if(dia>cant_dias[fe.mes])
+        if(dia>cant_dias[fe.mes-1])
             return 0;
     }
     return 1;
 }
 
-bool esBisiesto(int anio)
+bool esBisiesto(int anio) //revisar
 {
     if (anio % 4 == 0)
     {

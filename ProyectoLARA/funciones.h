@@ -280,7 +280,7 @@ bool iD_PlatoExistente(int id)
         cout<<"No se puede acceder al archivo"<<ARCHIVO_PLATOS<<endl;
         cout<<"Presione una tecla para salir"<<endl;
         anykey();
-        exit(403);//faltan permisos de escritura?
+        exit(403);///faltan permisos de escritura?
     }
     while(fread(&reg,sizeof (Plato),1,p))
     {
