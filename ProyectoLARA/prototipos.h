@@ -88,5 +88,11 @@ int validado_valoracion();
 bool agregarPedido(Pedido);
 void listarTodosLosPedidos();
 void mostrarPedido(Pedido);
+void modificarPedido();
+int encontrarPosicionPedido(int);
+bool modificarRegistroPedido(Pedido,int);
+Pedido crearRegModificadoPedidos(int);
+int validado_estado();
+
 
 #endif // PROTOTIPOS_H_INCLUDED

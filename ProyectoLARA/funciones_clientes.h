@@ -109,7 +109,7 @@ void nuevoCliente()
         anykey();
     }
     else
-        setColor(LIGHTRED);
+        setColor(GREEN);
         cout<<"Error en el archivo "<<ARCHIVO_CLIENTES<<endl;
         setColor(GREY);
         cout<<"Presione una tecla para continuar"<<endl;
@@ -263,7 +263,6 @@ void modificarCliente()
 
     int id = pedirEnteroValido();
     int pos = encontrarPosicionCliente(id);
-
 
     switch(pos)
     {

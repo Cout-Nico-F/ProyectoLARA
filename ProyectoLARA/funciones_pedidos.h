@@ -43,7 +43,7 @@ void submenuPedidos()
         break;
         case 2:
         {
-            // modificarCliente();
+            modificarPedido();
         }
         break;
         case 3:
@@ -368,4 +368,122 @@ void mostrarPedido(Pedido pe)
     }
     cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
 }
+
+void modificarPedido()
+{
+    cls();
+    logo();
+    cout<<"Ingrese el ID del Pedido a modificar: ";
+    int id = pedirEnteroValido();
+    int pos = encontrarPosicionPedido(id);
+
+    switch(pos)
+    {
+    case -1:
+        cout<<"El archivo no existe o no es posible acceder a el"<<endl;
+        msleep(1000);
+        return;
+
+
+    case -2:
+        cout<<"No se encuentra el id de Pedido buscado"<<endl;
+        msleep(1000);
+        return;
+
+
+    default:
+        modificarRegistroPedido(crearRegModificadoPedidos(pos),pos);
+
+        cout<<"Pedido modificado con exito"<<endl;
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+        break;
+    }
+}
+
+int encontrarPosicionPedido(int id)
+{
+    Pedido reg;
+    int pos=0;
+    FILE *p;
+    p=fopen(ARCHIVO_PEDIDOS,"rb");
+    if(p==NULL)
+    {
+        return -1;
+    }
+    while(fread(&reg,sizeof(Pedido),1,p))
+    {
+        if (id == reg.ID)
+        {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+    fclose(p);
+    return -2;
+}
+
+bool modificarRegistroPedido (Pedido reg,int pos)
+{
+    FILE*p;
+    p=fopen(ARCHIVO_PEDIDOS,"rb+");
+    if(p==NULL)
+    {
+        return 0;
+    }
+    fseek(p,sizeof(Pedido) * pos,SEEK_SET);
+    if (fwrite(&reg,sizeof(Pedido),1,p))
+    {
+        fclose(p);
+        return 1;
+    }
+    return 0;
+    fclose(p);
+}
+
+Pedido crearRegModificadoPedidos(int pos)
+{
+    Pedido regModificado;
+    FILE*p;
+    p=fopen(ARCHIVO_PEDIDOS,"rb+");
+    if(p==NULL)
+    {
+        cout<<"Error Grave!\nNo se puede leer el archivo "<<ARCHIVO_PEDIDOS<<endl;
+        cout<<"Presione una tecla para salir"<<endl;
+        anykey();
+        exit(410);
+    }
+    fseek(p,sizeof(Pedido)*pos,SEEK_SET);
+    if(fread(&regModificado,sizeof(Pedido),1,p))
+    {
+        fflush(stdin);
+
+        regModificado.estado = validado_estado();
+        fclose(p);
+        return regModificado;
+    }
+    fclose(p);
+}
+
+int validado_estado()
+{
+    while(true)
+    {
+    cout<<"1-En Curso | 2-Completado | 3-Cancelado"<<endl;
+    int est = pedirEnteroValido();
+    if(est >= 1 && est <=3)
+    {
+        break;
+    }
+    else
+    {
+
+        cout<<"Presione una tecla para salir"<<endl;
+        anykey();
+    }
+    }
+
+}
+
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED
