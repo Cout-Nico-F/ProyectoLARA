@@ -150,7 +150,7 @@ int cantidadRegistros(int num_archivo)
     {
         int cant;
         FILE *p;
-        p=fopen(ARCHIVO_CLIENTES,"rb");
+        p=fopen(ARCHIVO_CLIENTES,"ab+");
         if(p==NULL)
         {
             return -1;
@@ -164,7 +164,7 @@ int cantidadRegistros(int num_archivo)
     {
         int cant;
         FILE *p;
-        p=fopen(ARCHIVO_PEDIDOS,"rb");
+        p=fopen(ARCHIVO_PEDIDOS,"ab+");
         if(p==NULL)
         {
             return -1;
@@ -319,7 +319,7 @@ Cliente crearRegModificadoClientes(int pos)
         cout<<"Error Grave!\nNo se puede leer el archivo "<<ARCHIVO_CLIENTES<<endl;
         cout<<"Presione una tecla para salir"<<endl;
         anykey();
-        exit(404);
+        exit(407);
     }
     fseek(p,sizeof(Cliente)*pos,SEEK_SET);
     if(fread(&regModificado,sizeof(Cliente),1,p))

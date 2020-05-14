@@ -3,9 +3,9 @@
 
 int validado_IdAutonumerico(int archivo)//devuelve un numero entero positivo AUTONUMERICO segun el archivo indicado
 {
-    int cant;
-    cant = cantidadRegistros(archivo)+1;
-    return cant;
+    int id;
+    id = cantidadRegistros(archivo) +1;
+    return id;
 }
 
 int pedirEnteroValido()//validacion del tipo de dato entero

@@ -87,5 +87,6 @@ float devolverPrecio(int);
 int validado_valoracion();
 bool agregarPedido(Pedido);
 void listarTodosLosPedidos();
+void mostrarPedido(Pedido);
 
 #endif // PROTOTIPOS_H_INCLUDED

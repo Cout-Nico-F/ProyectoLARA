@@ -53,7 +53,7 @@ void submenuPedidos()
         break;
         case 4:
         {
-            // listarTodosLosClientes();
+            listarTodosLosPedidos();
         }
         break;
         case 5:
@@ -251,6 +251,7 @@ int validado_valoracion ()
     int val;
     while (true)
     {
+        cout<<"Valoracion:";
         val = pedirEnteroValido();
         if(val>=0 && val <=10)
         {
@@ -281,5 +282,90 @@ bool agregarPedido (Pedido reg)
     }
     fclose(file);
     return 0;
+}
+
+void listarTodosLosPedidos()
+{
+    int cant_pedidos = cantidadRegistros(2);
+    cls();
+    logo();
+    int contador_mostrados=0;
+    cout<<"LISTA DE PEDIDOS";
+    cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
+    Pedido ped;
+    FILE*p;
+    p=fopen(ARCHIVO_PEDIDOS,"rb");
+    if(p==NULL)
+    {
+
+        setColor(LIGHTRED);
+        cout<<"Error en la lectura del archivo"<<ARCHIVO_PEDIDOS<<endl;
+        setColor(GREY);
+        cout<<"Presione una tecla cualquiera para continuar"<<endl;
+        anykey();
+        return;
+    }
+    while(fread(&ped,sizeof(Pedido),1,p))
+    {
+        mostrarPedido(ped);
+        cout<<"-------------------------------------"<<endl;
+        contador_mostrados++;
+    }
+    fclose(p);
+    if(contador_mostrados)
+    {
+        cout<<"FIN DE LISTA PEDIDOS"<<endl;
+    }
+    else
+    {
+        cout<<"NO HAY PEDIDOS CARGADOS\n"<<endl;
+    }
+    cout<<"Presione una tecla cualquiera para continuar"<<endl;
+    anykey();
+}
+
+void mostrarPedido(Pedido pe)
+{
+    char traduce_int[10];
+    if(pe.estado == 1)
+    {
+        strcpy(traduce_int,"En Curso");
+    }
+    else if( pe.estado == 2)
+    {
+        strcpy(traduce_int,"Completado");
+    }
+    else if(pe.estado == 3)
+    {
+        strcpy(traduce_int,"Cancelado");
+    }
+
+    cout<<"ID: . . . . . . . . "<<pe.ID<<endl;
+    cout<<"ID Cliente: . . . . "<<pe.ID_cliente<<endl;
+    cout<<"ID Plato: . . . . . "<<pe.ID_plato<<endl;
+    cout<<"Cantidad: . . . . . "<<pe.Cantidad<<endl;
+    cout<<"Precio Unit: . . . ."<<pe.pre<<endl;
+    cout<<"Fecha:. . . . . . . "<<pe.fecha_pedido.dia<<"/"<<pe.fecha_pedido.mes<<"/"<<pe.fecha_pedido.anio<<endl;
+    cout<<"Valoracion:. . . . ."<<pe.valoracion<<endl;
+    cout<<"Estado:. . . . . . .";
+    if(pe.estado ==1 )
+    {
+        setColor(YELLOW);
+        cout<<traduce_int<<endl;
+        setColor(GREY);
+    }
+    else if(pe.estado == 2)
+    {
+        setColor(GREEN);
+        cout<<traduce_int<<endl;
+        setColor(GREY);
+    }
+    else if(pe.estado == 3)
+    {
+        setColor(LIGHTRED);
+        cout<<traduce_int<<endl;
+        setColor(GREY);
+    }
+    cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
 }
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED
