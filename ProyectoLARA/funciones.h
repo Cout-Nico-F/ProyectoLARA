@@ -296,7 +296,7 @@ bool iD_PlatoExistente(int id)
 bool agregarPlato (Plato reg)
 {
     FILE *file;
-    file = fopen("platos.dat","ab");
+    file = fopen(ARCHIVO_PLATOS,"ab");
 
     if(file==NULL)
     {

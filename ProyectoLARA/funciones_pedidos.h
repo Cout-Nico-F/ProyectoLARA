@@ -38,7 +38,7 @@ void submenuPedidos()
         {
         case 1:
         {
-            // nuevoCliente();
+            nuevoPedido();
         }
         break;
         case 2:
@@ -93,8 +93,27 @@ void nuevoPedido()
     {
         return;
     }
-    Pedido nuevoPed = pedirPedido();
-
+    while(true)
+    {
+        Pedido nuevoPed = pedirPedido();
+        if(agregarPedido(nuevoPed))
+        {
+            cout<<"Pedido agregado con exito"<<endl;
+            cout<<"Presione una tecla para continuar"<<endl;
+            anykey();
+        }
+        else
+        {
+            cout<<"Error en la escritura.\nNo se pudo agregar el registro nuevo."<<endl;
+            cout<<"Presione una tecla para continuar"<<endl;
+            anykey();
+        }
+        if( preguntar("Cargar otro pedido?") == false )
+        {
+            break;
+        }
+    }
+    return;
 }
 
 Pedido pedirPedido()
@@ -110,6 +129,7 @@ Pedido pedirPedido()
     ped.fecha_pedido.dia = validado_Dia(ped.fecha_pedido);
     ped.valoracion = validado_valoracion();
     ped.estado = 1;
+    return ped;
 }
 
 bool iD_clienteExistente(int id)
@@ -245,4 +265,21 @@ int validado_valoracion ()
     return val;
 }
 
+bool agregarPedido (Pedido reg)
+{
+    FILE *file;
+    file = fopen(ARCHIVO_PEDIDOS,"ab");
+
+    if(file==NULL)
+    {
+        return 0;
+    }
+    if(fwrite(&reg,sizeof (Pedido),1,file))
+    {
+        fclose(file);
+        return 1;
+    }
+    fclose(file);
+    return 0;
+}
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED

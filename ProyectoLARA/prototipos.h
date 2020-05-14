@@ -7,6 +7,7 @@ void logo();
 void menuPrincipal();
 void borrarTodo(const char*);
 void adios();
+
 //validaciones generales
 int pedirEnteroValido();
 float pedirFloatValido();
@@ -14,6 +15,7 @@ bool esPositivo(int);
 bool existeDia(Fecha,int);
 bool esBisiesto(int);
 bool preguntar(const char *);///
+
 //platos
 void submenuPlatos();
 void ingresoNuevoPlato();
@@ -30,6 +32,7 @@ void eliminarPlato();
 void listarPlatosPorRestaurant();
 int mostrarIDrestaurant(int);
 int iD_RestaurantExistente(int);
+
 //platosNuevas
 void ingresoPlatoNuevo();
 Plato pedirPlato();
@@ -72,6 +75,7 @@ int validado_Anio();
 void validado_EmailCliente(char*);
 void asignarIdAutonumerico(int*,int);
 bool iD_clienteExistente(int);
+
 //Pedidos
 void submenuPedidos();
 void nuevoPedido();
@@ -81,6 +85,7 @@ int validado_IdPlatoExistente();
 int validado_Cantidad();
 float devolverPrecio(int);
 int validado_valoracion();
-
+bool agregarPedido(Pedido);
+void listarTodosLosPedidos();
 
 #endif // PROTOTIPOS_H_INCLUDED

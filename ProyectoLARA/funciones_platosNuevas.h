@@ -29,7 +29,6 @@ void ingresoPlatoNuevo()
             anykey();
             exit(402);
         }
-
         if( preguntar("Cargar otro plato?") == false )
         {
             break;
