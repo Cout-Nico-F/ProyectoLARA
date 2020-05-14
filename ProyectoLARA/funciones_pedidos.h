@@ -48,22 +48,12 @@ void submenuPedidos()
         break;
         case 3:
         {
-            // listarCliente_porID();
+            listarPedido_porID();
         }
         break;
         case 4:
         {
             listarTodosLosPedidos();
-        }
-        break;
-        case 5:
-        {
-            //darDeBajaCliente();
-        }
-        break;
-        case 6:
-        {
-
         }
         break;
         case 0:
@@ -470,7 +460,9 @@ int validado_estado()
 {
     while(true)
     {
+
     cout<<"1-En Curso | 2-Completado | 3-Cancelado"<<endl;
+    cout<<"Nuevo estado: ";
     int est = pedirEnteroValido();
     if(est >= 1 && est <=3)
     {
@@ -479,11 +471,52 @@ int validado_estado()
     else
     {
 
-        cout<<"Presione una tecla para salir"<<endl;
+        cout<<"\nPresione una tecla para salir"<<endl;
         anykey();
     }
     }
+    cout<<endl;
+}
 
+void listarPedido_porID()
+{
+    cls();
+    logo();
+    cout<<"BUSCAR PEDIDO POR ID"<<endl;
+    cout<<"Ingrese el ID: ";
+    int id = pedirEnteroValido();
+    int pos = encontrarPosicionPedido(id);
+    if(mostrarPedido_porPosicion(pos))
+    {
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+    }
+    else
+    {
+        cout<<"No se pudo leer el archivo "<<ARCHIVO_PEDIDOS<<endl;
+        cout<<"Presione una tecla para continuar"<<endl;
+        anykey();
+    }
+}
+
+bool mostrarPedido_porPosicion(int pos)
+{
+    Pedido reg;
+    FILE *p;
+    p=fopen(ARCHIVO_PEDIDOS,"rb");
+    if(p==NULL)
+    {
+        return false;
+    }
+    fseek(p,sizeof(Pedido)*pos,SEEK_SET);
+    if(fread(&reg,sizeof(Pedido),1,p))
+    {
+        mostrarPedido(reg);
+        fclose(p);
+        return true;
+    }
+    fclose(p);
+    return false;
 }
 
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED

@@ -93,6 +93,12 @@ int encontrarPosicionPedido(int);
 bool modificarRegistroPedido(Pedido,int);
 Pedido crearRegModificadoPedidos(int);
 int validado_estado();
+bool mostrarPedido_porPosicion(int);
+void listarPedido_porID();
+
+
+
+
 
 
 #endif // PROTOTIPOS_H_INCLUDED
