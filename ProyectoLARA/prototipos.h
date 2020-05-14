@@ -20,7 +20,7 @@ void ingresoNuevoPlato();
 bool agregarPlato(Plato);
 bool iD_PlatoExistente(int);
 int indiceIDPlatos(int);
-struct Plato buscarPlato(int);
+Plato buscarPlato(int);
 void modificarPlato();
 int modificarRegistroPlatos(int,Plato);
 void mostrarListaPlatos();
@@ -32,7 +32,7 @@ int mostrarIDrestaurant(int);
 int iD_RestaurantExistente(int);
 //platosNuevas
 void ingresoPlatoNuevo();
-struct Plato pedirPlato();
+Plato pedirPlato();
 int pedirIDvalidado();
 void pedirNombreValido(char *);
 float pedirCostoPrepValido();
@@ -45,15 +45,15 @@ int pedirIdCategoria();
 //clientes
 void submenuClientes();
 void nuevoCliente();
-int cantidadRegistros();
-struct Cliente pedirCliente();
+int cantidadRegistros(int);
+Cliente pedirCliente();
 void mostrarCliente(Cliente);//
 void mostrarFecha(Fecha);//
 bool agregarCliente(Cliente);
 bool modificarRegistroCliente(Cliente,int);
 int encontrarPosicionCliente(int);
 void modificarCliente();
-struct Cliente crearRegModificadoClientes(int);
+Cliente crearRegModificadoClientes(int);
 void listarCliente_porID();
 bool mostrarCliente_porPosicion(int pos);
 void listarTodosLosClientes();
@@ -77,9 +77,10 @@ void submenuPedidos();
 void nuevoPedido();
 Pedido pedirPedido();
 int validado_IdClienteExistente();
-int validado_IdPlatoExistente(float);
+int validado_IdPlatoExistente();
 int validado_Cantidad();
 float devolverPrecio(int);
+int validado_valoracion();
 
 
 #endif // PROTOTIPOS_H_INCLUDED

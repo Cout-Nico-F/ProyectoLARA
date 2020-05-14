@@ -101,16 +101,15 @@ Pedido pedirPedido()
 {
     Pedido ped;
     asignarIdAutonumerico(&ped.ID,2);
-
     ped.ID_cliente = validado_IdClienteExistente();
-    float aux;
-    ped.ID_plato = validado_IdPlatoExistente(aux);
+    ped.ID_plato = validado_IdPlatoExistente();
     ped.Cantidad = validado_Cantidad();
     ped.pre = devolverPrecio(ped.ID_plato);
     ped.fecha_pedido.anio = validado_Anio();
     ped.fecha_pedido.mes = validado_Mes();
     ped.fecha_pedido.dia = validado_Dia(ped.fecha_pedido);
     ped.valoracion = validado_valoracion();
+    ped.estado = 1;
 }
 
 bool iD_clienteExistente(int id)
@@ -159,7 +158,7 @@ int validado_IdClienteExistente()
     return num;
 }
 
-int validado_IdPlatoExistente(float aux_precio)
+int validado_IdPlatoExistente()
 {
     int num;
     while(true)
@@ -181,10 +180,12 @@ int validado_IdPlatoExistente(float aux_precio)
 
 int validado_Cantidad()
 {
+    int ente;
     while(true)
     {
         cout<<"Cantidad: ";
-        if(esPositivo(pedirEnteroValido()))
+        ente = pedirEnteroValido();
+        if(esPositivo(ente))
         {
             break;
         }
@@ -194,6 +195,7 @@ int validado_Cantidad()
             msleep(1200);
         }
     }
+    return ente;
 }
 
 float devolverPrecio (int id)
@@ -224,6 +226,23 @@ float devolverPrecio (int id)
     exit(2020);///si el id esta bien corroborado nunca deberia salir por aca el programa
 }
 
-
+int validado_valoracion ()
+{
+    int val;
+    while (true)
+    {
+        val = pedirEnteroValido();
+        if(val>=0 && val <=10)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Valoracion invalida. Debe ser un entero entre 0 y 10 inclusive."<<endl;
+            msleep(1200);
+        }
+    }
+    return val;
+}
 
 #endif // FUNCIONES_PEDIDOS_H_INCLUDED

@@ -347,6 +347,7 @@ bool modificarRegistroCliente (Cliente reg,int pos)
         fclose(p);
         return 1;
     }
+    return 0;
     fclose(p);
 }
 
@@ -451,7 +452,7 @@ int cargarListaClientes(Cliente *lista,int cantidad_clientes)
 void ordenarListaClientes(Cliente *lista,int cant_Cli)
 {
     //ordenamiento por seleccion
-    char *aux;
+    Cliente aux;
     int posMin;
 
     for(int i=0 ; i<cant_Cli-1 ; i++)
@@ -466,9 +467,9 @@ void ordenarListaClientes(Cliente *lista,int cant_Cli)
                 posMin=j;
             }
         }
-        strcpy(aux,lista[i].apellido);
-        strcpy(lista[i].apellido,lista[posMin].apellido);
-        strcpy(lista[posMin].apellido,aux);
+        aux = lista[i];
+        lista[i] = lista[posMin];
+        lista[posMin] = aux;
     }
 }
 
@@ -567,6 +568,7 @@ bool bajaLogica(int pos)
         fclose(p);
         return 1;
     }
+    return 0;
     fclose(p);
 }
 #endif // FUNCIONES_CLIENTES_H_INCLUDED

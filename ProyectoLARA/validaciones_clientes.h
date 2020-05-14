@@ -119,6 +119,7 @@ int validado_Anio()
             continue;
         }
     }
+    return anio;
 }
 
 bool existeDia(Fecha fe,int dia)
