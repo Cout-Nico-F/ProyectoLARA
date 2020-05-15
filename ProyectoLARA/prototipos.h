@@ -46,6 +46,7 @@ int pedirComisionRestValido();
 int pedirIdCategoria();
 
 //clientes
+bool mallocClientes(Cliente*,int);
 void submenuClientes();
 void nuevoCliente();
 int cantidadRegistros(int);
@@ -95,6 +96,35 @@ Pedido crearRegModificadoPedidos(int);
 int validado_estado();
 bool mostrarPedido_porPosicion(int);
 void listarPedido_porID();
+
+//configuracion
+void submenuConfig();
+void copiaSeguridad();
+void restaurarCopiaSeguridad();
+bool bkp_Clientes();
+bool escribirBackupClientes(Cliente*,int);
+bool bkp_Pedidos();
+bool mallocPedidos(Pedido *,int);
+bool escribirBackupPedidos(Pedido *,int);
+bool escribirBackupPlatos(Plato*,int);
+bool mallocPlatos(Plato*,int);
+bool bkp_Platos();
+int cargarListaPlatos(Plato*,int);
+int cargarListaPedidos(Pedido*,int);
+bool restaurar_bkp_Clientes();
+bool cargarBackupClientes(Cliente*,int);
+int cargarListaBKPClientes(Cliente*,int);
+bool sobreescribirClientes(Cliente*,int);
+bool restaurar_bkp_Pedidos();
+bool cargarBackupPedidos(Pedido*,int);
+int cargarListaBKPPedidos(Pedido*,int);
+bool sobreescribirPedidos(Pedido*,int);
+bool restaurar_bkp_Platos();
+bool cargarBackupPlatos(Plato*,int);
+int cargarListaBKPPlatos(Plato*,int);
+bool sobreescribirPlatos(Plato*,int);
+
+
 
 
 

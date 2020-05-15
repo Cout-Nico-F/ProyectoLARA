@@ -134,7 +134,7 @@ Cliente pedirCliente()
 
     //strcpy(cli.mail,validado2_EmailCliente());//no funciona en codeblocks(pero si en vs). Escribe en memoria incorrecta.
 
-    cout<<"\Domicilio:";
+    cout<<"\nDomicilio:";
     cin.getline(cli.domicilio,100);
 
     cout<<"\n";
@@ -147,7 +147,7 @@ Cliente pedirCliente()
     return cli;
 }
 
-int cantidadRegistros(int num_archivo)
+int cantidadRegistros(int num_archivo)//podria cambiar a switch recibiendo cadena nombre
 {
     if(num_archivo==1)
     {
@@ -177,6 +177,63 @@ int cantidadRegistros(int num_archivo)
         fclose(p);
         return cant;
     }
+    if(num_archivo == 3)
+    {
+        int cant;
+        FILE *p;
+        p=fopen(ARCHIVO_PLATOS,"ab+");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Plato);
+        fclose(p);
+        return cant;
+    }
+    if(num_archivo == 4)
+        {
+        int cant;
+        FILE *p;
+        p=fopen(BKP_CLIENTES,"rb");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Cliente);
+        fclose(p);
+        return cant;
+    }
+    if(num_archivo == 5)
+        {
+        int cant;
+        FILE *p;
+        p=fopen(BKP_PEDIDOS,"rb");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Pedido);
+        fclose(p);
+        return cant;
+    }
+    if(num_archivo == 6)
+        {
+        int cant;
+        FILE *p;
+        p=fopen(BKP_PLATOS,"rb");
+        if(p==NULL)
+        {
+            return -1;
+        }
+        fseek(p,0,SEEK_END);
+        cant = ftell(p)/sizeof(Plato);
+        fclose(p);
+        return cant;
+    }
+
     else
         cout<<"HAY UN ERROR EN EL NUMERO DE ARCHIVO PASADO A CANTIDADREGISTROS()"<<endl;
         exit(888);
@@ -401,30 +458,9 @@ void listarTodosLosClientes()
     logo();
     struct Cliente* listaClientes;
     int cantidad_clientes = cantidadRegistros(1);
-    listaClientes = (Cliente*) malloc (cantidad_clientes * sizeof(Cliente));
-    if (listaClientes==NULL)
-        return;
+    listaClientes = (Cliente*) malloc (cantidad_clientes*sizeof(Cliente));
+    mallocClientes(listaClientes,cantidad_clientes);
 
-    int     resultado = cargarListaClientes(listaClientes,cantidad_clientes);
-    switch (resultado)
-    {
-    case 1:
-        break;
-    case 0:
-        cout<<"ERROR, no se pudo leer el archivo en la posicion indicada  (Archivo vacio?)"<<endl;
-        cout<<"Presione una tecla cualquiera para continuar"<<endl;
-        anykey();
-        return;
-    case -1:
-        cout<<"ERROR, no se pudo abrir el archivo "<<ARCHIVO_CLIENTES<<endl;
-        cout<<"Presione una tecla cualquiera para continuar"<<endl;
-        anykey();
-        return;
-
-    default:
-        exit(999999);
-
-    }
     ordenarListaClientes(listaClientes,cantidad_clientes);
 
     mostrarListaClientes(listaClientes,cantidad_clientes);

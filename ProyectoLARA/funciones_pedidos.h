@@ -21,7 +21,6 @@ void submenuPedidos()
         gotoxy(16,21);
         cout<<" |0|-Volver al menu principal       "<<endl;
 
-
         gotoxy(48,16);
         cout<<"    Ingrese la opcion deseada: ";
         int op;
@@ -276,7 +275,6 @@ bool agregarPedido (Pedido reg)
 
 void listarTodosLosPedidos()
 {
-    int cant_pedidos = cantidadRegistros(2);
     cls();
     logo();
     int contador_mostrados=0;
@@ -287,7 +285,6 @@ void listarTodosLosPedidos()
     p=fopen(ARCHIVO_PEDIDOS,"rb");
     if(p==NULL)
     {
-
         setColor(LIGHTRED);
         cout<<"Error en la lectura del archivo"<<ARCHIVO_PEDIDOS<<endl;
         setColor(GREY);
@@ -458,24 +455,27 @@ Pedido crearRegModificadoPedidos(int pos)
 
 int validado_estado()
 {
+    int est;
     while(true)
     {
 
-    cout<<"1-En Curso | 2-Completado | 3-Cancelado"<<endl;
-    cout<<"Nuevo estado: ";
-    int est = pedirEnteroValido();
-    if(est >= 1 && est <=3)
-    {
-        break;
-    }
-    else
-    {
+        cout<<"1-En Curso | 2-Completado | 3-Cancelado"<<endl;
+        cout<<"Nuevo estado: ";
+        est = pedirEnteroValido();
+        if(est >= 1 && est <=3)
+        {
+            break;
+        }
+        else
+        {
 
-        cout<<"\nPresione una tecla para salir"<<endl;
-        anykey();
-    }
+            cout<<"\nPresione una tecla para salir"<<endl;
+            anykey();
+        }
     }
     cout<<endl;
+    return est;
+
 }
 
 void listarPedido_porID()

@@ -4,6 +4,10 @@ const char* ARCHIVO_PLATOS = "platos.dat";
 const char* ARCHIVO_CLIENTES = "clientes.dat";
 const char* ARCHIVO_PEDIDOS = "pedidos.dat";
 
+const char* BKP_PLATOS = "platos.bkp";
+const char* BKP_CLIENTES = "clientes.bkp";
+const char* BKP_PEDIDOS = "pedidos.bkp";
+
 struct Fecha
 {
     int dia;
