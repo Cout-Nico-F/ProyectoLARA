@@ -112,11 +112,11 @@ bool mallocClientes(Cliente *todosLosClientes,int cant)
     //todosLosClientes = (Cliente*) malloc (cant*sizeof(Cliente)); tuve que sacarla afuera de la funcion (0x000005)
     if (todosLosClientes==NULL)
     {
-        //este if sera el problema?
+        //este if sera el problema? no deberia porque clientes parece hacerce bien el backup
         cout<<"ERROR No alcanza la memoria ram para cargar el archivo "<<ARCHIVO_CLIENTES<<endl;
         cout<<"Presione una tecla cualquiera para continuar"<<endl;
         anykey();
-        return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
+        return false;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
     int resultado = cargarListaClientes(todosLosClientes,cant);
     switch (resultado)
@@ -138,7 +138,7 @@ bool mallocClientes(Cliente *todosLosClientes,int cant)
         exit(8888);
 
     }
-    return 1;
+    return true;
 }
 
 bool escribirBackupClientes(Cliente *lista,int cant)
@@ -152,7 +152,7 @@ bool escribirBackupClientes(Cliente *lista,int cant)
         exit(3333);
 
     }
-    if(fwrite(lista,sizeof(Cliente),cant,p)==cant)
+    if((fwrite(lista,sizeof(Cliente),cant,p))==cant)
     {
         fclose(p);
         return true;
@@ -231,7 +231,7 @@ bool escribirBackupPedidos(Pedido *lista,int cant)
         msleep(1200);
         exit(3333);
     }
-    if(fwrite(lista,sizeof(Pedido),cant,p)==cant)
+    if(fwrite(lista,sizeof(Pedido),cant,p)==cant)//este fwrite escribe basura en los primeros 2 campos del primer archivo? o es el restaurar?
     {
         fclose(p);
         return true;
@@ -326,9 +326,16 @@ int cargarListaPedidos(Pedido *lista,int cant)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Pedido),cant,p))
+    if(fread(lista,sizeof (Pedido),cant,p)==cant)
     {
         fclose(p);
+        //
+        for(int i=0; i<cant; i++)
+        {
+            mostrarPedido(lista[i]);
+            anykey();
+        }
+        // ya muestra basura en los primeros 2 campos solo del primer registro.
         return 1;
     }
     else
@@ -346,9 +353,8 @@ int cargarListaPlatos(Plato *lista,int cant)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Plato),cant,p))
+    if(fread(lista,sizeof (Plato),cant,p)==cant)
     {
-        fclose(p);
         return 1;
     }
     else
@@ -484,7 +490,7 @@ bool restaurar_bkp_Pedidos()
 {
     //preguntar si esta seguro avisando del efecto sobrescritura
     struct Pedido* todosLosPedidos;
-    int cant = cantidadRegistros(4);
+    int cant = cantidadRegistros(5);
     if(cant<=0)
         return false;
     todosLosPedidos = (Pedido*) malloc (cant*sizeof(Pedido));
@@ -585,7 +591,7 @@ bool restaurar_bkp_Platos()
 {
     //preguntar si esta seguro avisando del efecto sobrescritura
     struct Plato* todosLosPlatos;
-    int cant = cantidadRegistros(4);
+    int cant = cantidadRegistros(6);
     if(cant<=0)
         return false;
     todosLosPlatos = (Plato*) malloc (cant*sizeof(Plato));
@@ -681,4 +687,9 @@ bool sobreescribirPlatos(Plato *lista,int cant)
     fclose(p);
     return false;
 }
+
+
+
+
+
 #endif // FUNCIONES_CONFIGURACION_H_INCLUDED

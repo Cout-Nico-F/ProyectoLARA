@@ -173,7 +173,7 @@ int pedirTiempoPrepValido()
     {
         cout<<"\nTiempo de preparacion: ";
         tiempo = pedirEnteroValido();
-        if(tiempo > 1)
+        if(tiempo >= 1)
         {
             break; // validado.
         }
@@ -183,7 +183,7 @@ int pedirTiempoPrepValido()
             msleep(1300);
             if( preguntar("Desea volver a intentar?")== false )
             {
-                submenuPlatos();
+                submenuPlatos();//esto funciona bien o puede traer problemas? ( puede intentar volver a esta funcion al terminar la funcion submenu? )
             }
             else
                 continue;

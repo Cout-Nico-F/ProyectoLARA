@@ -768,7 +768,7 @@ void mostrarListaPlatos()
     cls();
     logo();
     FILE *p;
-    p=fopen("platos.dat","rb");
+    p=fopen(ARCHIVO_PLATOS,"rb");
     if(p==NULL)
     {
         cout<<"Error en la apertura del archivo.     (soloLectura)"<<endl;

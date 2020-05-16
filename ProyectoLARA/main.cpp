@@ -16,6 +16,19 @@ using namespace std;
 
 int main()
 {
+    FILE *p;
+    p=fopen(BKP_PEDIDOS,"rb");
+    if(p==NULL) return 1009;
+    Pedido pe;
+    if(fread(&pe,sizeof(Pedido),1,p))
+    {
+        mostrarPedido(pe);
+        anykey();
+    }
+    return 1000;
+
+
+
 //setBackgroundColor(8);
 
     while(true) //Menu principal

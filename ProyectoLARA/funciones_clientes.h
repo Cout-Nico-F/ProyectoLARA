@@ -478,7 +478,7 @@ int cargarListaClientes(Cliente *lista,int cantidad_clientes)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Cliente),cantidad_clientes,p))
+    if(fread(lista,sizeof (Cliente),cantidad_clientes,p) == cantidad_clientes)
     {
         fclose(p);
         return 1;
