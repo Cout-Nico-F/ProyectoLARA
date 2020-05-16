@@ -109,11 +109,13 @@ void nuevoCliente()
         anykey();
     }
     else
-        setColor(GREEN);
+    {
+        setColor(RED);
         cout<<"Error en el archivo "<<ARCHIVO_CLIENTES<<endl;
         setColor(GREY);
         cout<<"Presione una tecla para continuar"<<endl;
         anykey();
+    }
 }
 
 Cliente pedirCliente()
@@ -121,7 +123,7 @@ Cliente pedirCliente()
     Cliente cli;
     asignarIdAutonumerico(&cli.id,1);
 
-    cout<<"Nombre:";
+    cout<<"Nombre:";//agregar validaciones
     cin.ignore();
     cin.getline(cli.nombre,50);
 
