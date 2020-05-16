@@ -66,6 +66,8 @@ void ordenarListaClientes(Cliente*,int);
 void mostrarListaClientes(Cliente*,int);
 bool bajaLogica(int);
 void darDeBajaCliente();
+void pedirApellidoValido(char*);
+void pedirDomicilioValido(char*);
 
 //validaciones en clientes
 int validado_IdAutonumerico(int);

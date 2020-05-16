@@ -98,7 +98,6 @@ void nuevoCliente()
     {
         return;
     }
-
     Cliente nuevoReg = pedirCliente();
     if(agregarCliente(nuevoReg))//devuelve 1 si pudo agregarlo o 0 si no pudo
     {
@@ -123,21 +122,21 @@ Cliente pedirCliente()
     Cliente cli;
     asignarIdAutonumerico(&cli.id,1);
 
-    cout<<"Nombre:";//agregar validaciones
-    cin.ignore();
-    cin.getline(cli.nombre,50);
+    char nom[49];
+    pedirNombreValido(nom);
+    strcpy(cli.nombre,nom);
 
-    cout<<"\nApellido:";
-    cin.getline(cli.apellido,50);
+    char ape[49];
+    pedirApellidoValido(ape);
+    strcpy(cli.apellido,ape);
 
     char mail[49];
     validado_EmailCliente(mail);
     strcpy(cli.mail,mail);
 
-    //strcpy(cli.mail,validado2_EmailCliente());//no funciona en codeblocks(pero si en vs). Escribe en memoria incorrecta.
-
-    cout<<"\nDomicilio:";
-    cin.getline(cli.domicilio,100);
+    char domi[49];
+    pedirDomicilioValido(domi);
+    strcpy(cli.domicilio,domi);
 
     cout<<"\n";
     cli.cp = validado_CpCliente();

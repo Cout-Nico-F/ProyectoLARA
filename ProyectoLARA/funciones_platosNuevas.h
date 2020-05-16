@@ -119,6 +119,58 @@ void pedirNombreValido(char *cad)
     }
 }
 
+void pedirApellidoValido(char *cad)
+{
+    while(true)
+    {
+        cout<<"\nApellido:";
+        fflush(stdin);
+        cin.getline(cad,49);
+        if( cad[0]!='\0' && cad[0]!=32 )
+        {
+            break;//validada
+        }
+        else
+        {
+            cout<<"Error: Debe ingresar un apellido. El primer caracter no puede ser un espacio en blanco"<<endl;
+            msleep(1200);
+            if( preguntar("Desea volver a intentar?")== false )
+            {
+
+                submenuPlatos();
+            }
+            else
+                continue;
+        }
+    }
+}
+
+void pedirDomicilioValido(char *cad)
+{
+    while(true)
+    {
+        cout<<"\nDomicilio:";
+        fflush(stdin);
+        cin.getline(cad,49);
+        if( cad[0]!='\0' && cad[0]!=32 )
+        {
+            break;//validada
+        }
+        else
+        {
+            cout<<"Error: Debe ingresar un apellido. El primer caracter no puede ser un espacio en blanco"<<endl;
+            msleep(1200);
+            if( preguntar("Desea volver a intentar?")== false )
+            {
+
+                submenuPlatos();
+            }
+            else
+                continue;
+        }
+    }
+}
+
 float pedirCostoPrepValido()
 {
     int costo;
