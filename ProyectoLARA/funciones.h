@@ -286,9 +286,11 @@ bool iD_PlatoExistente(int id)
     {
         if(reg.id == id)
         {
+            fclose(p);
             return 1;//el id ingresado es igual a uno existente
         }
     }
+    fclose(p);
     return 0; //el id ingresado es unico
 
 }
@@ -823,6 +825,7 @@ void mostrarListaPlatos()
     cout<<"=============================="<<endl;
     cout<<"FIN DEL ARCHIVO"<<endl;
     cout<<"Presione una tecla para volver al menu"<<endl;
+    fclose(p);
     anykey();
 }
 
@@ -965,16 +968,19 @@ int mostrarID(int id)
                 cout<<"Comision del Restaurante:_____"<<reg.comision_restaurante<<endl;
                 cout<<"ID de Categoria:______________"<<reg.id_categoria<<endl;
                 cout<<"=============================="<<endl;
+                fclose(p);
                 return 1;
             }
             else
             {
                 cout<<"El registro al que intentas acceder fue dado de baja"<<endl;
                 msleep(2000);
+                fclose(p);
                 return 1;
             }
         }
     }
+    fclose(p);
     return 0; //el id ingresado no existe
 
 }
@@ -1223,19 +1229,21 @@ int mostrarIDrestaurant(int id)
     }
     if(con==0)
     {
+        fclose(p);
         return 0; //el id ingresado no existe
     }
     else
+    {
+        fclose(p);
         return 1;
-
-
+    }
 }
 
 int iD_RestaurantExistente(int id)
 {
     Plato reg;
     FILE *p;
-    p = fopen("platos.dat","ab+");
+    p = fopen(ARCHIVO_PLATOS,"ab+");
     if(p==NULL)
     {
         return 2;//el archivo no pudo abrirse o no existe
@@ -1244,9 +1252,11 @@ int iD_RestaurantExistente(int id)
     {
         if(reg.id_restaurante == id)
         {
+            fclose(p);
             return 1;//el id ingresado es igual a uno existente
         }
     }
+    fclose(p);
     return 0; //el id ingresado es unico
 
 }

@@ -425,8 +425,8 @@ bool modificarRegistroPedido (Pedido reg,int pos)
         fclose(p);
         return 1;
     }
-    return 0;
     fclose(p);
+    return 0;
 }
 
 Pedido crearRegModificadoPedidos(int pos)
@@ -451,6 +451,7 @@ Pedido crearRegModificadoPedidos(int pos)
         return regModificado;
     }
     fclose(p);
+    //?
 }
 
 int validado_estado()

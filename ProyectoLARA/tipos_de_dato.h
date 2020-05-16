@@ -1,12 +1,14 @@
 #ifndef TIPOS_DE_DATO_H_INCLUDED
 #define TIPOS_DE_DATO_H_INCLUDED
-const char* ARCHIVO_PLATOS = "platos.dat";
-const char* ARCHIVO_CLIENTES = "clientes.dat";
-const char* ARCHIVO_PEDIDOS = "pedidos.dat";
 
-const char* BKP_PLATOS = "platos.bkp";
-const char* BKP_CLIENTES = "clientes.bkp";
-const char* BKP_PEDIDOS = "pedidos.bkp";
+const char* ARCHIVO_CLIENTES = "clientes.dat";//Archivo#1
+const char* ARCHIVO_PEDIDOS = "pedidos.dat";//Archivo#2
+const char* ARCHIVO_PLATOS = "platos.dat"; //Archivo#3
+
+const char* BKP_CLIENTES = "clientes.bkp";//Archivo#4
+const char* BKP_PEDIDOS = "pedidos.bkp";//Archivo#5
+const char* BKP_PLATOS = "platos.bkp";//Archivo#6
+
 
 struct Fecha
 {

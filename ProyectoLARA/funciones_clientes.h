@@ -389,7 +389,11 @@ Cliente crearRegModificadoClientes(int pos)
         fclose(p);
         return regModificado;
     }
-    fclose(p);
+    else
+    {
+        fclose(p);
+        exit(9898);
+    }
 }
 
 bool modificarRegistroCliente (Cliente reg,int pos)
@@ -406,8 +410,8 @@ bool modificarRegistroCliente (Cliente reg,int pos)
         fclose(p);
         return 1;
     }
-    return 0;
     fclose(p);
+    return 0;
 }
 
 void listarCliente_porID()
@@ -433,7 +437,6 @@ void listarCliente_porID()
 
 bool mostrarCliente_porPosicion(int pos)
 {
-
     Cliente reg;
     FILE *p;
     p=fopen(ARCHIVO_CLIENTES,"rb");
@@ -597,7 +600,10 @@ bool bajaLogica(int pos)
     fseek(p,sizeof(Cliente) * pos,SEEK_SET);
 
     if(fread(&reg,sizeof(Cliente),1,p)==0)
+    {
+        fclose(p);
         return 0;
+    }
     reg.estado = false;
 
     fseek(p,sizeof(Cliente) * pos,SEEK_SET);
@@ -606,7 +612,7 @@ bool bajaLogica(int pos)
         fclose(p);
         return 1;
     }
-    return 0;
     fclose(p);
+    return 0;
 }
 #endif // FUNCIONES_CLIENTES_H_INCLUDED

@@ -3,7 +3,6 @@
 
 void ingresoPlatoNuevo()
 {
-
     cls();
     logo();
 

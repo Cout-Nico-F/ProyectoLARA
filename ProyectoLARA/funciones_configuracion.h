@@ -85,7 +85,8 @@ bool bkp_Clientes()
     struct Cliente* todosLosClientes;
     int cant = cantidadRegistros(1);
     todosLosClientes = (Cliente*) malloc (cant*sizeof(Cliente));
-    if(mallocClientes(todosLosClientes,cant)<1)return false;
+    if(mallocClientes(todosLosClientes,cant)<1)
+        return false;
     if(escribirBackupClientes(todosLosClientes,cant))
     {
         setColor(GREEN);
@@ -111,6 +112,7 @@ bool mallocClientes(Cliente *todosLosClientes,int cant)
     //todosLosClientes = (Cliente*) malloc (cant*sizeof(Cliente)); tuve que sacarla afuera de la funcion (0x000005)
     if (todosLosClientes==NULL)
     {
+        //este if sera el problema?
         cout<<"ERROR No alcanza la memoria ram para cargar el archivo "<<ARCHIVO_CLIENTES<<endl;
         cout<<"Presione una tecla cualquiera para continuar"<<endl;
         anykey();
@@ -148,11 +150,14 @@ bool escribirBackupClientes(Cliente *lista,int cant)
         cout<<"Error! ¿no hay permisos de escritura en disco? "<<endl;
         msleep(1200);
         exit(3333);
+
     }
     if(fwrite(lista,sizeof(Cliente),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 
@@ -161,7 +166,8 @@ bool bkp_Pedidos()
     struct Pedido* todosLosPedidos;
     int cant = cantidadRegistros(2);
     todosLosPedidos = (Pedido*) malloc (cant*sizeof(Pedido));
-    if(mallocPedidos(todosLosPedidos,cant)<1)return false;
+    if(mallocPedidos(todosLosPedidos,cant)<1)
+        return false;
     if(escribirBackupPedidos(todosLosPedidos,cant))
     {
         setColor(GREEN);
@@ -227,8 +233,10 @@ bool escribirBackupPedidos(Pedido *lista,int cant)
     }
     if(fwrite(lista,sizeof(Pedido),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 
@@ -244,8 +252,10 @@ bool escribirBackupPlatos(Plato *lista,int cant)
     }
     if(fwrite(lista,sizeof(Plato),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 
@@ -278,7 +288,6 @@ bool mallocPlatos(Plato *todosLosPlatos,int cant)
 
     default:
         exit(9991);
-
     }
     return 1;
 }
@@ -288,7 +297,8 @@ bool bkp_Platos()
     struct Plato* todosLosPlatos;
     int cant = cantidadRegistros(3);
     todosLosPlatos = (Plato*) malloc (cant*sizeof(Plato));
-    if(mallocPlatos(todosLosPlatos,cant)<1)return false;
+    if(mallocPlatos(todosLosPlatos,cant)<1)
+        return false;
     if(escribirBackupPlatos(todosLosPlatos,cant))
     {
         setColor(GREEN);
@@ -374,17 +384,19 @@ bool restaurar_bkp_Clientes()
     //preguntar si esta seguro avisando del efecto sobrescritura
     struct Cliente* todosLosClientes;
     int cant = cantidadRegistros(4);
-    if(cant<=0)return false;
+    if(cant<=0)
+        return false;
     todosLosClientes = (Cliente*) malloc (cant*sizeof(Cliente));
     if (todosLosClientes==NULL)
     {
         cout<<"ERROR No alcanza la memoria ram para cargar el archivo "<<BKP_CLIENTES<<endl;
         cout<<"Presione una tecla cualquiera para continuar"<<endl;
         anykey();
-        return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
+        return false;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
 
-    if(cargarBackupClientes(todosLosClientes,cant)<1) return false;
+    if(cargarBackupClientes(todosLosClientes,cant)<1)
+        return false;
     if(sobreescribirClientes(todosLosClientes,cant))
     {
         setColor(GREEN);
@@ -437,7 +449,7 @@ int cargarListaBKPClientes (Cliente *lista,int cant)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Cliente),cant,p))
+    if(fread(lista,sizeof (Cliente),cant,p) == cant)
     {
         fclose(p);
         return 1;
@@ -461,8 +473,10 @@ bool sobreescribirClientes(Cliente *lista,int cant)
     }
     if(fwrite(lista,sizeof(Cliente),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 
@@ -471,7 +485,8 @@ bool restaurar_bkp_Pedidos()
     //preguntar si esta seguro avisando del efecto sobrescritura
     struct Pedido* todosLosPedidos;
     int cant = cantidadRegistros(4);
-    if(cant<=0)return false;
+    if(cant<=0)
+        return false;
     todosLosPedidos = (Pedido*) malloc (cant*sizeof(Pedido));
     if (todosLosPedidos==NULL)
     {
@@ -481,7 +496,8 @@ bool restaurar_bkp_Pedidos()
         return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
 
-    if(escribirBackupPedidos(todosLosPedidos,cant)<1) return false;
+    if(escribirBackupPedidos(todosLosPedidos,cant)<1)
+        return false;
     if(sobreescribirPedidos(todosLosPedidos,cant))
     {
         setColor(GREEN);
@@ -534,7 +550,7 @@ int cargarListaBKPPedidos (Pedido *lista,int cant)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Pedido),cant,p))
+    if(fread(lista,sizeof (Pedido),cant,p)==cant)
     {
         fclose(p);
         return 1;
@@ -558,8 +574,10 @@ bool sobreescribirPedidos(Pedido *lista,int cant)
     }
     if(fwrite(lista,sizeof(Pedido),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 
@@ -568,7 +586,8 @@ bool restaurar_bkp_Platos()
     //preguntar si esta seguro avisando del efecto sobrescritura
     struct Plato* todosLosPlatos;
     int cant = cantidadRegistros(4);
-    if(cant<=0)return false;
+    if(cant<=0)
+        return false;
     todosLosPlatos = (Plato*) malloc (cant*sizeof(Plato));
     if (todosLosPlatos==NULL)
     {
@@ -578,7 +597,8 @@ bool restaurar_bkp_Platos()
         return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
 
-    if(escribirBackupPlatos(todosLosPlatos,cant)<1) return false;
+    if(escribirBackupPlatos(todosLosPlatos,cant)<1)
+        return false;
     if(sobreescribirPlatos(todosLosPlatos,cant))
     {
         setColor(GREEN);
@@ -631,7 +651,7 @@ int cargarListaBKPPlatos (Plato *lista,int cant)
     {
         return -1;
     }
-    if(fread(lista,sizeof (Plato),cant,p))
+    if(fread(lista,sizeof (Plato),cant,p)==cant)
     {
         fclose(p);
         return 1;
@@ -655,8 +675,10 @@ bool sobreescribirPlatos(Plato *lista,int cant)
     }
     if(fwrite(lista,sizeof(Plato),cant,p)==cant)
     {
+        fclose(p);
         return true;
     }
+    fclose(p);
     return false;
 }
 #endif // FUNCIONES_CONFIGURACION_H_INCLUDED
