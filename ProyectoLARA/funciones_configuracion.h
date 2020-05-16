@@ -329,13 +329,6 @@ int cargarListaPedidos(Pedido *lista,int cant)
     if(fread(lista,sizeof (Pedido),cant,p)==cant)
     {
         fclose(p);
-        //
-        for(int i=0; i<cant; i++)
-        {
-            mostrarPedido(lista[i]);
-            anykey();
-        }
-        // ya muestra basura en los primeros 2 campos solo del primer registro.
         return 1;
     }
     else
@@ -501,9 +494,24 @@ bool restaurar_bkp_Pedidos()
         anykey();
         return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
-
-    if(escribirBackupPedidos(todosLosPedidos,cant)<1)
-        return false;
+    //
+    FILE *p;
+    p=fopen(BKP_PEDIDOS,"rb");
+    if(p==NULL)
+    {
+        cout<<"Error! ¿no hay un backup creado? "<<endl;
+        msleep(1200);
+        exit(3333);
+    }
+    if(fread(todosLosPedidos,sizeof(Pedido),cant,p)!=cant)
+    {
+        fclose(p);
+        cout<<"No se pudieron leer todos los registros del archivo bkp_pedidos"<<endl;
+        anykey();
+        exit(7777);
+    }
+    fclose(p);
+    //
     if(sobreescribirPedidos(todosLosPedidos,cant))
     {
         setColor(GREEN);
@@ -602,9 +610,25 @@ bool restaurar_bkp_Platos()
         anykey();
         return 0;//posibilidad de manera sin mem din.(soporte a archivos de muchos GB)
     }
+    //nueva "funcion" escribirbackupdatos
+    FILE *p;
+    p=fopen(BKP_PLATOS,"rb");
+    if(p==NULL)
+    {
+        cout<<"Error! ¿no hay un backup creado? "<<endl;
+        msleep(1200);
+        exit(3333);
+    }
+    if(fread(todosLosPlatos,sizeof(Plato),cant,p)!=cant)
+    {
+        fclose(p);
+        cout<<"No se pudieron leer todos los registros del archivo bkp_platos"<<endl;
+        anykey();
+        exit(7777);
+    }
+    fclose(p);
+    //
 
-    if(escribirBackupPlatos(todosLosPlatos,cant)<1)
-        return false;
     if(sobreescribirPlatos(todosLosPlatos,cant))
     {
         setColor(GREEN);
